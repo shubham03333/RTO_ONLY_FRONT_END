@@ -48,7 +48,7 @@ const ApplyPuc = () => {
         const result = response.data;
         console.log(result);
         if (result["status"] == "success") {
-          toast.success("Applied For PUC");
+          toast.success("Proceed for payment");
 
           // navigate to the home page
           navigate("/payment");

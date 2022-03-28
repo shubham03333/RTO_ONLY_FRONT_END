@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
-import Footer from "../../Footer";
+import RVideo from "../../../assets/Roads.mp4";
+
 // import CarAnimation from "./caranimation/CarAnimation";
 const Signup = () => {
   const [name, setName] = useState("");
@@ -59,7 +60,7 @@ const Signup = () => {
     <div>
       <section className="section">
         <div className="container">
-          <div className="card shadow">
+          <div className="card shadow" style={{ borderRadius: "20px" }}>
             <div className="card-body">
               <div className="row">
                 <div className="col-md-4 border-left">
@@ -138,7 +139,16 @@ const Signup = () => {
                   </div>
                 </div>
                 <div className="col-md-8 border-start text-center">
-                  <iframe
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    src={RVideo}
+                    type="video/mp4"
+                    width="100%"
+                    height="320"
+                  />
+                  {/* <iframe
                     className="col-md-8"
                     frameBorder={0}
                     muted
@@ -148,7 +158,7 @@ const Signup = () => {
                     allow="autoplay"
                     loop
                     src="https://drive.google.com/file/d/1lAsyAwznGFNrHvh9cYeoli0Bncs25L00/preview"
-                  ></iframe>
+                  ></iframe> */}
                 </div>
               </div>
             </div>

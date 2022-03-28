@@ -1,11 +1,11 @@
 import React from "react";
-import "./RegistrationForm.css";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
+import "./RegistrationForm.css";
 const RegistrationForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,6 +31,8 @@ const RegistrationForm = () => {
       toast.warning("Please enter email");
     } else if (password.length == 0) {
       toast.warning("Please enter password");
+    } else if (aadhar_no.length != 12) {
+      toast.warning("Please enter Valid Aadhar Number");
     } else {
       const body = {
         name,
@@ -58,9 +60,9 @@ const RegistrationForm = () => {
         const result = response.data;
         console.log(result);
         if (result["status"] == "success") {
-          toast.success("Successfully signed up new user");
+          toast.success("New user Registered Successfully");
 
-          // navigate to the home page
+          // navigate to the home pagsterede
           navigate("/login");
         } else {
           toast.error(result["error"]);
@@ -127,6 +129,8 @@ const RegistrationForm = () => {
                       placeholder="aadhar_no number"
                       aria-label="aadhar_no-number"
                       aria-describedby="addon-wrapping"
+                      minLength={12}
+                      maxLength={12}
                       onChange={(e) => {
                         setaadhar_no(e.target.value);
                       }}
@@ -191,6 +195,9 @@ const RegistrationForm = () => {
                       placeholder="mobile_no number"
                       aria-label="mobile_no-number"
                       aria-describedby="addon-wrapping"
+                      required
+                      minLength={10}
+                      maxLength={10}
                       onChange={(e) => {
                         setmobile_no(e.target.value);
                       }}

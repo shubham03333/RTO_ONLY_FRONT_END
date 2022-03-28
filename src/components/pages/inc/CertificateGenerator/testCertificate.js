@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import DLService from "../../../../Services/DLService";
-import "./style.css";
+import UserService from "../../../../Services/UserService";
 import dlImage from "./images/DL.png";
-import passPhoto from "./images/passphoto shuh.jpg";
+import { URL } from "../../../../config";
+import axios from "axios";
+import FooterD from "../../../FooterD";
+
+import "./style.css";
 import { Preview, print } from "react-html2pdf";
 const DLDownload = () => {
   const { id, name } = sessionStorage;
@@ -18,16 +22,15 @@ const DLDownload = () => {
   const [l_category, setL_category] = useState("");
   const [dob, setDob] = useState("");
   const [address, setAddress] = useState("");
-
-  const [dlphoto, setDlphoto] = useState("");
-
+  const [photoId, setDlphotoid] = useState("");
+  const [myphoto, setMyphoto] = useState(null);
   console.log(id);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     console.log({ id });
-    DLService.getDLByUserId(id)
+    DLService.getDLByUserId1(id)
       .then((response) => {
         console.log(response.data);
         console.log(response.data.user);
@@ -42,29 +45,62 @@ const DLDownload = () => {
         setDl_expiry_date(dl.dl_expiry_date);
         setL_category(dl.l_category);
         setDl_no(dl.dl_no);
-        // setDlphoto(user.dlphoto);
-        // setDlphoto(passPhoto);
+        setDlphotoid(user.photo_id);
+        console.log("photo id is");
+
+        console.log(photoId);
       })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [
+    blood_group,
+    address,
+    dob,
+    gender,
+    dl_issue_date,
+    dl_expiry_date,
+    l_category,
+    dl_no,
+    photoId,
+  ]);
+
+  useEffect(() => {
+    console.log({ id });
+    // const idImage = new Image();
+    UserService.getPhotoById(id)
+      .then((response) => {
+        setMyphoto(response);
+        console.log("myphoto");
+        console.log(id);
+        console.log(myphoto);
+      })
+
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
   const [image, setImage] = useState(null);
+  const [Idphoto, setIdphoto] = useState(null);
 
   useEffect(() => {
     const catImage = new Image();
-
+    const IdImage = new Image();
     catImage.src = dlImage;
+    IdImage.src = `http://localhost:8080/downloadFile/${photoId}`;
     catImage.onload = () => setImage(catImage);
-  }, []);
+    IdImage.onload = () => setIdphoto(IdImage);
+  }, [photoId]);
 
   useEffect(() => {
-    if (image && canvas) {
+    if (image && Idphoto && canvas) {
       const ctx = canvas.current.getContext("2d");
-      //   ctx.fillRect(100, 0, 400, 300);
-      // ctx.drawImage(image, 50, 70,);
+      ctx.fillStyle = "black";
+      // ctx.fillRect(0, 0, 400, 256+80);
+      // ctx.drawImage(image, (400-256)/2, 40);
       ctx.drawImage(image, 100, 0, 400, 300);
+      ctx.drawImage(Idphoto, 118, 75, 100, 152);
 
       ctx.font = "15px Comic Sans MS";
       // ctx.fillStyle = "white";
@@ -73,7 +109,7 @@ const DLDownload = () => {
       ctx.fillText(name, 238, 87);
       ctx.fillText(blood_group, 238, 120);
       ctx.fillText(address, 238, 145);
-      ctx.fillText(dob, 263, 177);
+      ctx.fillText(dob, 270, 177);
       ctx.fillText(gender, 270, 192);
       ctx.fillText(dl_issue_date, 392, 178);
       ctx.fillText(dl_expiry_date, 392, 197);
@@ -92,23 +128,40 @@ const DLDownload = () => {
     dl_expiry_date,
     l_category,
     dl_no,
-    // dlphoto,
+    myphoto,
+    Idphoto,
   ]);
 
   return (
     <div>
-      {/* <Preview id={"invoice"} style="margin-left: 50px; margin-top: 30px"> */}
-      <h1>Download Driving Licence</h1>
+      {/* <Preview style="margin-left: 50px; margin-top: 30px"> */}
+      <h1 id="cerh1">Download Driving Licence</h1>
 
-      <div>
+      <div id={"invoice"}>
         <canvas
           ref={canvas}
           width={"600px"}
           height={"450px"}
           style={{ marginTop: "100px" }}
         />
+        {/* <img
+          src={myphoto}
+          alt="services"
+          onClick={() => navigate("/llstatus")}
+          // height={"150px"}
+          id="myphoto"
+        /> */}
       </div>
-      {/* </Preview> */}
+      <div className="img"></div>
+      <button
+        className="btn btn-primary"
+        id="dashbtn"
+        onClick={(e) => navigate("/userHome")}
+      >
+        {" "}
+        User Dashbord
+      </button>
+      <FooterD />
     </div>
   );
 };

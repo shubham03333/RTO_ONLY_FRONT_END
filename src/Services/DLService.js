@@ -21,6 +21,14 @@ class DL {
   getDLByUserId(userId) {
     return axios.get(RTO_API_BASE_URL + "/dl/byUserId/" + userId);
   }
+
+  getDLByUserId1(userId) {
+    return axios.get(RTO_API_BASE_URL + "/dl/byUserId1/" + userId);
+  }
+
+  getPhotoById(Id) {
+    return axios.get(RTO_API_BASE_URL + "/downloadFile/" + Id);
+  }
 }
 
 export default new DL();

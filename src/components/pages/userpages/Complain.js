@@ -49,7 +49,10 @@ function Complain() {
               <h4>Complaints</h4>
             </div>
             <div className="col-md-8 my-auto">
-              <h6 className="float-end"> Home/ Contact</h6>
+              <h6 className="float-end">
+                {" "}
+                <Link to="/">Home</Link> / Complaints
+              </h6>
             </div>
           </div>
         </div>
@@ -125,7 +128,7 @@ function Complain() {
           </div>
         </div>
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

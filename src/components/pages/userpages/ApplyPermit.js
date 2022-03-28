@@ -53,7 +53,7 @@ const ApplyPermit = () => {
         const result = response.data;
         console.log(result);
         if (result["status"] == "success") {
-          toast.success("Applied For Permit");
+          toast.success("Proceed for payment");
 
           // navigate to the home page
           navigate("/payment");

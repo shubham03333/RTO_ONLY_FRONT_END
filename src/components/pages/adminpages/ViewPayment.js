@@ -87,7 +87,7 @@ const ViewPayment = (props) => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Blood group"
+                      placeholder="payment for"
                       aria-label="address1"
                       aria-describedby="addon-wrapping"
                       value={payment.payment_for}
@@ -205,9 +205,9 @@ const ViewPayment = (props) => {
                       <i class="zmdi zmdi-car"></i>
                     </span>
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
-                      placeholder="Class"
+                      placeholder="date"
                       aria-label="email"
                       aria-describedby="addon-wrapping"
                       value={payment.payment_date}

@@ -21,6 +21,13 @@ class Puc {
   getPucByUserId(userId) {
     return axios.get(RTO_API_BASE_URL + "/puc/byUserId/" + userId);
   }
+  getPucByUserId1(userId) {
+    return axios.get(RTO_API_BASE_URL + "/puc/byUserId1/" + userId);
+  }
+
+  getPucStatusByRcNo(RcNo) {
+    return axios.get(RTO_API_BASE_URL + "/puc/rcNo/" + RcNo);
+  }
 }
 
 export default new Puc();

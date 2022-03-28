@@ -10,9 +10,23 @@ import { toast } from "react-toastify";
 const Payment = () => {
   const [user_id, setUser_id] = useState("");
   const [payment_for, setPayment_for] = useState("");
-  const [payment_mode, setPayment_mode] = useState();
+  const [payment_mode, setPayment_mode] = useState("");
   const [amount, setAmount] = useState("");
   const [payment_date, setPayment_date] = useState("");
+
+  var d = new Date();
+  const separator = "-";
+  console.log(d.toLocaleDateString());
+  // d.setMonth(d.getMonth() + 180);
+  console.log(d.toLocaleDateString());
+  let date = d.getDate();
+  let month = d.getMonth() + 1;
+  let year = d.getFullYear();
+  let todaysDate = `${date}${separator}${
+    month < 10 ? `0${month}` : `${month}`
+  }${separator}${year}`;
+  console.log(todaysDate);
+
   // const [hc, setHc] = useState("");
   // const [aadhar_no, setAadhar_no] = useState();
 
@@ -20,9 +34,10 @@ const Payment = () => {
 
   // ############################
   const pay = () => {
+    console.log(payment_for);
     // navigate("/");
     if (user_id.length == 0) {
-      toast.warning("Please Enter the User id No");
+      toast.warning("Please Enter the User id");
     } else {
       const body = {
         user_id,
@@ -30,16 +45,8 @@ const Payment = () => {
         payment_mode,
         amount,
         payment_date,
-        // hc,
-        // aadhar_no,
-        // new_owner_mobile,
-        // engine_capacity,
-        // insurance_status,
-        // puc_status,
-        // hypothecated_to,
-        // wheels,
-        // seat_capacity,
       };
+      console.log(body);
 
       const url = `${URL}/payment/add_payment`;
 
@@ -57,6 +64,9 @@ const Payment = () => {
         }
       });
     }
+  };
+  const paymetDateHandler = (event) => {
+    setPayment_date(todaysDate);
   };
 
   return (
@@ -86,7 +96,7 @@ const Payment = () => {
                     />
                   </div>
                   <label htmlFor="name">Payment for</label>
-                  <div className="input-group flex-nowrap mt-2">
+                  {/* <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-smartphone"></i>
                     </span>
@@ -100,10 +110,26 @@ const Payment = () => {
                         setPayment_for(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    // selected
+                    onChange={(e) => {
+                      setPayment_for(e.target.value);
+                    }}
+                  >
+                    <option>Select The Option</option>
+                    <option value="DL">Driving Licence</option>
+                    <option value="LL">Learning Licence</option>
+                    <option value="RC">Vehicle Registration</option>
+                    <option value="Vehicle transfer">Vehicle transfer</option>
+                    <option value="Permit">Permit</option>
+                    <option value="puc">Puc</option>
+                  </select>
 
                   <label htmlFor="name">Payment mode</label>
-                  <div className="input-group flex-nowrap mt-2">
+                  {/* <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-account-box-mail"></i>
                     </span>
@@ -117,7 +143,22 @@ const Payment = () => {
                         setPayment_mode(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
+
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    // selected
+                    onChange={(e) => {
+                      setPayment_mode(e.target.value);
+                    }}
+                  >
+                    <option>Select Payment Mode</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Online Banking">Online Banking</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="Cheque">Cheque</option>
+                  </select>
                 </div>
 
                 {/* second half  */}
@@ -127,7 +168,7 @@ const Payment = () => {
                   <label htmlFor="name">Amount</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-calendar-check"></i>
+                      <i class="zmdi zmdi-money"></i>
                     </span>
                     <input
                       type="number"
@@ -143,7 +184,7 @@ const Payment = () => {
                   <label htmlFor="name">Payment Date</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-email"></i>
+                      <i className="zmdi zmdi-calendar-check"></i>
                     </span>
                     <input
                       type="date"
@@ -151,9 +192,10 @@ const Payment = () => {
                       placeholder="payment_date"
                       aria-label="co2"
                       aria-describedby="addon-wrapping"
-                      onChange={(e) => {
-                        setPayment_date(e.target.value);
-                      }}
+                      // onChange={(e) => {
+                      //   setPayment_date(e.target.value);
+                      // }}
+                      onChange={paymetDateHandler}
                     />
                   </div>
                   {/* <label htmlFor="name">hc</label>
@@ -195,7 +237,7 @@ const Payment = () => {
                       className="btn btn-primary shadow w-100"
                       onClick={pay}
                     >
-                      Apply
+                      Pay
                     </button>
                   </div>
                 </div>

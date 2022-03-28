@@ -18,6 +18,12 @@ class User {
   deleteUser(userId) {
     return axios.delete(RTO_API_BASE_URL + "/user/" + userId);
   }
+
+  getPhotoById(Id) {
+    return axios.get(RTO_API_BASE_URL + "/downloadFile/" + Id);
+  }
+
+  
 }
 
 export default new User();

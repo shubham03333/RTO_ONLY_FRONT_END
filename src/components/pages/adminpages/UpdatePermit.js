@@ -157,7 +157,7 @@ const UpdatePermit = (props) => {
                       <i className="zmdi zmdi-pin"></i>
                     </span>
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
                       aria-describedby="addon-wrapping"
                       value={to_date}

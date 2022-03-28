@@ -14,7 +14,7 @@ const UpdateRc = (props) => {
   const [insurance_status, setInsurance_status] = useState("");
   const [puc_status, setPuc_status] = useState("");
   const [vehicle_class, setVehicle_class] = useState();
-  const [aadhar_no, setAadhar_no] = useState("");
+  const [user_id, setUser_id] = useState("");
 
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const UpdateRc = (props) => {
         setInsurance_status(rc.insurance_status);
         setPuc_status(rc.puc_status);
         setVehicle_class(rc.vehicle_class);
-        setAadhar_no(rc.aadhar_no);
+        setUser_id(rc.user_id);
       })
       .catch((err) => {
         console.log(err);
@@ -45,7 +45,7 @@ const UpdateRc = (props) => {
       insurance_status: insurance_status,
       puc_status: puc_status,
       vehicle_class: vehicle_class,
-      aadhar_no: aadhar_no,
+      user_id: user_id,
     };
     console.log("rc => " + JSON.stringify(rc));
     console.log("id => " + JSON.stringify(id));
@@ -136,18 +136,18 @@ const UpdateRc = (props) => {
 
                 <div className="col-md-6 border-start gender">
                   <hr />
-                  <label htmlFor="name">Aadhar no</label>
+                  <label htmlFor="name">User id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-bookmark"></i>
                     </span>
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       // aria-describedby="addon-wrapping"
                       autoComplete="off"
                       readOnly
-                      value={aadhar_no}
+                      value={user_id}
                     />
                   </div>{" "}
                   <label htmlFor="name">Vehicle class</label>

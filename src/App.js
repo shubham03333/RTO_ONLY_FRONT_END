@@ -122,7 +122,7 @@ function App() {
           <Route path="/payment" element={<Payment />} />
         </Routes>
 
-        <Footer />
+        {/* <Footer /> */}
       </Router>
       <ToastContainer theme="colored" />
     </div>

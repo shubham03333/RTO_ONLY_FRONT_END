@@ -82,7 +82,7 @@ const UpdatePuc = (props) => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="permit_no"
+                      placeholder="puc no"
                       aria-label="name"
                       aria-describedby="addon-wrapping"
                       value={puc_no}

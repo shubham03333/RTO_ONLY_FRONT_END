@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import UserService from "../../../Services/UserService";
+import FooterD from "../../FooterD";
 
 const ViewUsersProfile = (props) => {
   const { id } = useParams();
@@ -33,7 +34,7 @@ const ViewUsersProfile = (props) => {
             <div className="card-body">
               <div className="row">
                 <div className="col-md-6 border-left">
-                  <h4>User Details</h4>
+                  <h4>Personal Information</h4>
                   <hr />
                   <label htmlFor="name">Name</label>
                   <div className="input-group flex-nowrap mt-2">
@@ -106,7 +107,7 @@ const ViewUsersProfile = (props) => {
                       value={user.email}
                     />
                   </div>
-                  <label htmlFor="name">mobile_no Number</label>
+                  <label htmlFor="name">Mobile Number</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-smartphone"></i>
@@ -199,6 +200,7 @@ const ViewUsersProfile = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

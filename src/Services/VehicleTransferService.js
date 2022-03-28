@@ -24,6 +24,15 @@ class VehicleTransfer {
   getVehicleTransferByUserId(userId) {
     return axios.get(RTO_API_BASE_URL + "/vehicle_transfer/byUserId/" + userId);
   }
+  getVehicleTransferByUserId1(userId) {
+    return axios.get(
+      RTO_API_BASE_URL + "/vehicle_transfer/byUserId1/" + userId
+    );
+  }
+
+  getVtransferStatusByRcNo(RcNo) {
+    return axios.get(RTO_API_BASE_URL + "/vehicle_transfer/rcNo/" + RcNo);
+  }
 }
 
 export default new VehicleTransfer();

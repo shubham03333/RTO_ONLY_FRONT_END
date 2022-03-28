@@ -130,7 +130,7 @@ const ViewDL = (props) => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Learning Licence No"
+                      placeholder="Driving Licence No"
                       aria-label="registraLearning Licence Notion_no"
                       aria-describedby="addon-wrapping"
                       value={dl.dl_no}

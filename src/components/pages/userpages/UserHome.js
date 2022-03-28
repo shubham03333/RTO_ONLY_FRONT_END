@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../Home.css";
+import FooterD from "../../FooterD";
 import Service1 from "../../../assets/v-learners-license-services.png";
 import Service2 from "../../../assets/v-renewal-of-registration.png";
 import Service3 from "../../../assets/v-transfer-ownership.png";
@@ -168,6 +169,7 @@ function UserHome() {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 }

@@ -21,6 +21,13 @@ class Permit {
   getPermitByUserId(userId) {
     return axios.get(RTO_API_BASE_URL + "/permit/byUserId/" + userId);
   }
+
+  getPermitByUserId1(userId) {
+    return axios.get(RTO_API_BASE_URL + "/permit/byUserId1/" + userId);
+  }
+  getPermitStatusByRcNo(RcNo) {
+    return axios.get(RTO_API_BASE_URL + "/permit/rcNo/" + RcNo);
+  }
 }
 
 export default new Permit();

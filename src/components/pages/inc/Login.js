@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { URL } from "../../../config";
-import Footer from "../../Footer";
+import FooterD from "../../FooterD";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -113,7 +113,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      {/* <Footer /> */}
+      <FooterD />
     </div>
   );
 };

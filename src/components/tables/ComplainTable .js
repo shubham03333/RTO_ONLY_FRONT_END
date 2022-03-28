@@ -47,7 +47,7 @@ const ComplainTable = (props) => {
                 onClick={() => navigate("/adminHome")}
                 className="btn btn-outline-warning"
               >
-                Dashbord
+                Dashboard
               </button>
               <table
                 id="complainTable"

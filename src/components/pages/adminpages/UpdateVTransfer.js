@@ -11,6 +11,7 @@ const UpdateVTransfer = (props) => {
   const [owner, setOwner] = useState("");
   const [registration_no, setRegistration_no] = useState("");
   const [new_owner_aadhar, setNew_owner_aadhar] = useState("");
+  const [transfer_no, setTransfer_no] = useState("");
   const [new_owner_email, setNew_owner_email] = useState("");
   const [new_owner_mobile, setNew_owner_mobile] = useState("");
   const [status, setStatus] = useState("");
@@ -29,6 +30,7 @@ const UpdateVTransfer = (props) => {
         setNew_owner_aadhar(vtransfer.new_owner_aadhar);
         setNew_owner_email(vtransfer.new_owner_email);
         setNew_owner_mobile(vtransfer.new_owner_mobile);
+        setTransfer_no(vtransfer.transfer_no);
         // setVehicle_class(vtransfer.vehicle_class);
         setStatus(vtransfer.status);
       })
@@ -44,6 +46,7 @@ const UpdateVTransfer = (props) => {
       new_owner_aadhar: new_owner_aadhar,
       new_owner_email: new_owner_email,
       new_owner_mobile: new_owner_mobile,
+      transfer_no: transfer_no,
       status: status,
       // vehicle_class: vehicle_class,
     };
@@ -60,6 +63,10 @@ const UpdateVTransfer = (props) => {
 
   const changeStatusHandler = (event) => {
     setStatus(event.target.value);
+  };
+
+  const changeTransferNoHandler = (event) => {
+    setTransfer_no(event.target.value);
   };
   // const changeInsurance_statusHandler = (event) => {
   //   setInsurance_status(event.target.value);
@@ -163,6 +170,24 @@ const UpdateVTransfer = (props) => {
                       aria-describedby="addon-wrapping"
                       value={new_owner_email}
                       readOnly
+                    />
+                  </div>
+                  <label htmlFor="name">Transfer No</label>
+                  <div className="input-group flex-nowrap mt-2">
+                    <span className="input-group-text" id="addon-wrapping">
+                      <i className="zmdi zmdi-calendar-check"></i>
+                    </span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Transfer No"
+                      aria-label="Transfer No"
+                      aria-describedby="addon-wrapping"
+                      value={transfer_no}
+                      // onChange={changeTransferNoHandler}
+                      onChange={(e) => {
+                        setTransfer_no(e.target.value);
+                      }}
                     />
                   </div>
                   <label htmlFor="name">Status</label>

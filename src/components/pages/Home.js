@@ -8,6 +8,7 @@ import Service1 from "../../assets/v-learners-license-services.png";
 import Service2 from "../../assets/v-renewal-of-registration.png";
 import Service3 from "../../assets/v-transfer-ownership.png";
 import Service4 from "../../assets/v-permit-services.png";
+import Footer from "../Footer";
 
 function Home() {
   const navigate = useNavigate();
@@ -25,7 +26,13 @@ function Home() {
             </div>
 
             <div className="col-md-3 mt-2">
-              <div className="card shadow sevice-card">
+              <div
+                className="card shadow sevice-card"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%)",
+                }}
+              >
                 <img
                   src={Service1}
                   alt="services"
@@ -44,7 +51,13 @@ function Home() {
               </div>
             </div>
             <div className="col-md-3 mt-2">
-              <div className="card shadow sevice-card">
+              <div
+                className="card shadow sevice-card"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #92fe9d 0%, #00c9ff 100%)",
+                }}
+              >
                 <img
                   src={Service2}
                   className="w-80 border-bottom"
@@ -65,7 +78,13 @@ function Home() {
               </div>
             </div>
             <div className="col-md-3 mt-2">
-              <div className="card shadow sevice-card">
+              <div
+                className="card shadow sevice-card"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to top, #d9afd9 0%, #97d9e1 100%)",
+                }}
+              >
                 <img
                   src={Service3}
                   className="w-80 border-bottom"
@@ -86,7 +105,13 @@ function Home() {
             </div>
 
             <div className="col-md-3 mt-2">
-              <div className="card shadow sevice-card">
+              <div
+                className="card shadow sevice-card"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)",
+                }}
+              >
                 <img
                   src={Service4}
                   className="w-80 border-bottom"
@@ -133,6 +158,7 @@ function Home() {
       {/* Our vison, mission and values
       {<Vmc />} */}
       {<CarAnimation />}
+      <Footer />
     </div>
   );
 }

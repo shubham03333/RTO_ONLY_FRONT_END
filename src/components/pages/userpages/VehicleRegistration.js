@@ -8,7 +8,7 @@ import { URL } from "../../../config";
 import { toast } from "react-toastify";
 const VehicleRegistration = () => {
   const [owner, setOwner] = useState("");
-  const [aadhar_no, setAadhar_no] = useState();
+  const [user_id, setUser_id] = useState();
   const [make, setMake] = useState("");
   const [chassis_no, setChassis_no] = useState("");
   const [purchase_date, setPurchase_date] = useState("");
@@ -34,7 +34,7 @@ const VehicleRegistration = () => {
     } else {
       const body = {
         owner,
-        aadhar_no,
+        user_id,
         make,
         chassis_no,
         purchase_date,
@@ -114,7 +114,7 @@ const VehicleRegistration = () => {
                     />
                   </div>
 
-                  <label htmlFor="name">Aadhar No.</label>
+                  <label htmlFor="name">User Id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-account-box-mail"></i>
@@ -122,11 +122,13 @@ const VehicleRegistration = () => {
                     <input
                       type="number"
                       className="form-control"
-                      placeholder="aadhar_no number"
-                      aria-label="aadhar_no-number"
+                      placeholder="user_id number"
+                      aria-label="user_id-number"
                       aria-describedby="addon-wrapping"
+                      minLength={12}
+                      // max={12}
                       onChange={(e) => {
-                        setAadhar_no(e.target.value);
+                        setUser_id(e.target.value);
                       }}
                     />
                   </div>
@@ -165,7 +167,7 @@ const VehicleRegistration = () => {
                   <label htmlFor="name">chassis_no</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-email"></i>
+                      <i class="zmdi zmdi-reader"></i>
                     </span>
                     <input
                       type="text"
@@ -195,7 +197,7 @@ const VehicleRegistration = () => {
                     />
                   </div>
                   <label htmlFor="name">Fuel type</label>
-                  <div className="input-group flex-nowrap mt-2">
+                  {/* <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-smartphone"></i>
                     </span>
@@ -209,7 +211,23 @@ const VehicleRegistration = () => {
                         setFuel_type(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    // selected
+                    onChange={(e) => {
+                      setFuel_type(e.target.value);
+                    }}
+                  >
+                    {/* <option>Fuel Type</option> */}
+                    <option value="Diesel">Select the fuel Type</option>
+                    <option value="petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="EV">Electrical Vehicle</option>
+                    <option value="CNG">CNG</option>
+                    <option value="Hybrid">Hybrid</option>
+                  </select>
                 </div>
 
                 {/* second half  */}
@@ -239,7 +257,7 @@ const VehicleRegistration = () => {
                       <i className="zmdi zmdi-smartphone"></i>
                     </span>
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       placeholder="engine_capacity"
                       aria-label="mobile_no-number"
@@ -250,7 +268,7 @@ const VehicleRegistration = () => {
                     />
                   </div>
                   <label htmlFor="name">Insurance status</label>
-                  <div className="input-group flex-nowrap mt-2">
+                  {/* <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-smartphone"></i>
                     </span>
@@ -264,10 +282,22 @@ const VehicleRegistration = () => {
                         setIsurance_status(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    // selected
+                    onChange={(e) => {
+                      setIsurance_status(e.target.value);
+                    }}
+                  >
+                    <option value="Diesel">Select Insurance status</option>
+                    <option value="1">Clear</option>
+                    <option value="0">Pending</option>
+                  </select>
 
-                  <label htmlFor="name">Puc status,</label>
-                  <div className="input-group flex-nowrap mt-2">
+                  <label htmlFor="name">Puc status</label>
+                  {/* <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-bookmark"></i>
                     </span>
@@ -282,7 +312,19 @@ const VehicleRegistration = () => {
                         setPuc_status(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    // selected
+                    onChange={(e) => {
+                      setPuc_status(e.target.value);
+                    }}
+                  >
+                    <option value="Diesel">Select Puc status</option>
+                    <option value="1">Clear</option>
+                    <option value="0">Pending</option>
+                  </select>
                   <label htmlFor="name">Hypothecated to</label>
 
                   <div className="input-group flex-nowrap ">

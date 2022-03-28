@@ -1,61 +1,77 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../inc/RegistrationForm.css";
 import axios from "axios";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
-
+import UserService from "../../../Services/UserService";
 const ApplyDL = () => {
+  const { id, name } = sessionStorage;
   const [user_id, setUser_id] = useState();
   const [rto, setRto] = useState("");
   const [l_category, setL_category] = useState("");
-  // const [to_date, setTo_date] = useState("");
-  // const [co2, setCo2] = useState("");
-  // const [hc, setHc] = useState("");
-  // const [aadhar_no, setAadhar_no] = useState();
-
+  const [tempLLNo, setTempLLNo] = useState("");
   const navigate = useNavigate();
+  const [user, setUser] = useState([]);
+  const [aadhar_no, setaadhar_no] = useState();
 
   // ############################
+
+  useEffect(() => {
+    // console.log({ id });
+    UserService.getUserById(id)
+      .then((response) => {
+        console.log(response.data);
+        // console.log(response.data.user);
+        setUser(response.data);
+        setaadhar_no(response.data.aadhar_no);
+        console.log(aadhar_no);
+
+        // setLlId(ll.id);
+        // console.log(llId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const applyDL = () => {
     // navigate("/");
-    if (user_id.length == 0) {
-      toast.warning("Please Enter the User id");
+
+    if (aadhar_no === null) {
+      toast.warning("You need to Register first to use this service");
     } else {
-      const body = {
-        user_id,
-        rto,
-        l_category,
-        // to_date,
-        // co2,
-        // hc,
-        // aadhar_no,
-        // new_owner_mobile,
-        // engine_capacity,
-        // insurance_status,
-        // puc_status,
-        // hypothecated_to,
-        // wheels,
-        // seat_capacity,
-      };
+      if (user_id.length == 0) {
+        toast.warning("Please Enter the User id");
+      }
+      if (tempLLNo.length == 0) {
+        toast.warning(
+          "Please Enter the temp LL no you will get it from LL status"
+        );
+      } else {
+        const body = {
+          user_id,
+          rto,
+          l_category,
+          tempLLNo,
+        };
 
-      const url = `${URL}/dl/add_dl`;
+        const url = `${URL}/dl/add_dl`;
 
-      axios.post(url, body).then((response) => {
-        // get the data from the response
-        const result = response.data;
-        console.log(result);
-        if (result["status"] == "success") {
-          toast.success("Applied For Learning Licence");
-
-          // navigate to the home page
-          navigate("/payment");
-        } else {
-          toast.error(result["error"]);
-        }
-      });
+        axios.post(url, body).then((response) => {
+          // get the data from the response
+          const result = response.data;
+          console.log(result);
+          if (result["status"] == "success") {
+            toast.success("Proceed for payment");
+            console.log(response.data);
+            // navigate to the home page
+            navigate("/payment");
+          } else {
+            toast.error(result["error"]);
+          }
+        });
+      }
     }
   };
 
@@ -75,7 +91,7 @@ const ApplyDL = () => {
                       <i className="zmdi zmdi-assignment-account"></i>
                     </span>
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       placeholder="User_Id"
                       aria-label="User_Id"
@@ -124,8 +140,25 @@ const ApplyDL = () => {
 
                 <div className="col-md-6 border-start gender">
                   <hr />
-                  <label htmlFor="name">licence category</label>
+                  <label htmlFor="name">Learning Licence Number</label>
                   <div className="input-group flex-nowrap mt-2">
+                    <span className="input-group-text" id="addon-wrapping">
+                      <i className="zmdi zmdi-smartphone"></i>
+                    </span>
+                    <input
+                      type="number"
+                      className="form-control"
+                      placeholder="Temp LL no."
+                      aria-label="rto"
+                      aria-describedby="addon-wrapping"
+                      required="true"
+                      onChange={(e) => {
+                        setTempLLNo(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <label htmlFor="name">licence category</label>
+                  {/* <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-account-box-mail"></i>
                     </span>
@@ -139,7 +172,23 @@ const ApplyDL = () => {
                         setL_category(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    // selected
+                    onChange={(e) => {
+                      setL_category(e.target.value);
+                    }}
+                  >
+                    <option>Select Licence Category</option>
+                    <option value="LMV">Light Motor vehicle</option>
+                    <option value="HMV">Heavy Motor Vehicles</option>
+                    <option value="MCWG ">Motor Cycle With Gear</option>
+                    <option value="MCWOG">Motor Cycle Without Gear</option>
+                    <option value="MGV"> Medium goods vehicle</option>
+                    <option value="HGMV">Heavy Goods Motor Vehicle</option>
+                  </select>
                   {/* <label htmlFor="name">co2</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">

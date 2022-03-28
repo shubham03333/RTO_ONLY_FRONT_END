@@ -46,7 +46,7 @@ const RcTable = (props) => {
                 onClick={() => navigate("/adminHome")}
                 className="btn btn-outline-warning"
               >
-                Dashbord
+                Dashboard
               </button>
               <table
                 id="RcTable"
@@ -54,7 +54,7 @@ const RcTable = (props) => {
               >
                 <thead className="table-dark text-center">
                   <tr className="text-center">
-                    <th>Aadhar No.</th>
+                    <th>User Id</th>
                     <th> Owner</th>
                     <th> Make</th>
                     <th> Vehicle Class</th>
@@ -65,7 +65,7 @@ const RcTable = (props) => {
                 <tbody>
                   {rc.map((rc) => (
                     <tr key={rc.id}>
-                      <td> {rc.aadhar_no} </td>
+                      <td> {rc.id} </td>
                       <td> {rc.owner}</td>
                       <td> {rc.make}</td>
                       <td> {rc.vehicle_class}</td>

@@ -21,6 +21,10 @@ class Payment {
   getPaymentByUserId(userId) {
     return axios.get(RTO_API_BASE_URL + "/payment/byUserId/" + userId);
   }
+
+  getPaymentByUserId1(userId) {
+    return axios.get(RTO_API_BASE_URL + "/payment/byUserId1/" + userId);
+  }
 }
 
 export default new Payment();

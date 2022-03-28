@@ -4,6 +4,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import LLService from "../../../Services/LLService";
+import { getCurrentDate } from "../../../Services/Date";
+console.log(getCurrentDate());
 const ViewLL = (props) => {
   const { id } = useParams();
   const [ll, setLL] = useState([]);
@@ -16,6 +18,7 @@ const ViewLL = (props) => {
     LLService.getLLById(id)
       .then((response) => {
         console.log(response.data);
+        console.log(getCurrentDate());
         // console.log(response.data.user);
         setUser(response.data.user);
         setLL(response.data);

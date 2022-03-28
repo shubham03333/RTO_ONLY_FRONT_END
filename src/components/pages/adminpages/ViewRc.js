@@ -49,7 +49,7 @@ const Viewrc = (props) => {
                     />
                   </div>
 
-                  <label htmlFor="name">Aadhar Number</label>
+                  <label htmlFor="name">User id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-account-box-mail"></i>
@@ -60,7 +60,7 @@ const Viewrc = (props) => {
                       placeholder="aadhar_no number"
                       aria-label="aadhar_no-number"
                       aria-describedby="addon-wrapping"
-                      value={rc.aadhar_no}
+                      value={rc.user_id}
                     />
                   </div>
                   <label htmlFor="name">Date of Purchase</label>
@@ -140,6 +140,19 @@ const Viewrc = (props) => {
 
                 <div className="col-md-6 border-start gender">
                   <hr />
+                  <label htmlFor="name">Registration id</label>
+                  <div className="input-group flex-nowrap mt-2">
+                    <span className="input-group-text" id="addon-wrapping">
+                      <i class="zmdi zmdi-fire"></i>
+                    </span>
+                    <input
+                      type="email"
+                      className="form-control"
+                      aria-label="email"
+                      aria-describedby="addon-wrapping"
+                      value={rc.id}
+                    />
+                  </div>
                   <label htmlFor="name">Fuel Type</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">

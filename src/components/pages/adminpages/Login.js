@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { URL } from "../../../config";
+import FooterD from "../../FooterD";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -124,6 +125,7 @@ const AdminLogin = () => {
           </form>
         </div>
       </div>
+      <FooterD />
     </div>
   );
 };

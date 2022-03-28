@@ -13,6 +13,7 @@ function DLStatus() {
   const { id, name } = sessionStorage;
   const [dlId, setDlId] = useState("");
   const [dl, setDL] = useState([]);
+  const [user, setUser] = useState([]);
   const [status, setStatus] = useState("");
 
   const [dl_no, setDl_no] = useState("");
@@ -24,29 +25,30 @@ function DLStatus() {
   const [dob, setDob] = useState("");
   const [address, setAddress] = useState("");
   // const canvas = useRef(null);
-  const [user, setUser] = useState([]);
-  const [dlphoto, setDlphoto] = useState("");
+  const [dlphoto, setDlphoto] = useState();
+  const [photo, setPhoto] = useState();
 
   // console.log(id);
   // console.log(name);
   const navigate = useNavigate();
   useEffect(() => {
     // console.log({ id });
-    DLService.getDLByUserId(id)
+    DLService.getDLByUserId1(id)
       .then((response) => {
         console.log(response.data);
 
+        setUser(response.data.user);
         setDL(response.data);
         console.log(dl);
-        setUser(response.data.user);
-        setBlood_group(user.blood_group);
-        setAddress(user.address);
-        setDob(user.dob);
-        setGender(user.gender);
-        setDl_issue_date(dl.dl_issue_date);
-        setDl_expiry_date(dl.dl_expiry_date);
-        setL_category(dl.l_category);
-        setDl_no(dl.dl_no);
+
+        console.log("photo Id is");
+        console.log(user.photo_id);
+        console.log(user);
+        console.log(response.data.user);
+        // setUser(response.data.user);
+        console.log(user);
+        setDlphoto(response.data.user.photo_id);
+        console.log(dlphoto);
         // sessionStorage["dl_no"] = dl.dl_no;
         // sessionStorage["dl_issue_date"] = dl.dl_issue_date;
         // sessionStorage["dl_expiry_date"] = dl.dl_expiry_date;
@@ -58,6 +60,7 @@ function DLStatus() {
       })
       .catch((err) => {
         console.log(err);
+        toast.warning(err);
       });
   }, []);
 
@@ -70,21 +73,36 @@ function DLStatus() {
     console.log(dl.status);
     setStatus(dl.status);
     console.log(dl);
+    console.log(user);
+    setBlood_group(user.blood_group);
+    setAddress(user.address);
+    setDob(user.dob);
+    setGender(user.gender);
+    setDl_issue_date(dl.dl_issue_date);
+    setDl_expiry_date(dl.dl_expiry_date);
+    setL_category(dl.l_category);
+    setDl_no(dl.dl_no);
+    console.log("photo id is");
+    console.log(dlphoto);
+    setPhoto();
 
     if (dl.status === "Approved") {
       toast.success("Congratulations Your Driving Licence is Approved");
       setDlId(
-        // <button
-        //   type="button"
-        //   className="btn btn-success"
-        //   style={{ borderRadius: "10px" }}
-        //   onClick={() => navigate("/dldownload")}
-        // >
-        //   Download
-        // </button>
-        <a href="/dldownload">show licence</a>
+        <button
+          type="button"
+          className="btn btn-success"
+          style={{ borderRadius: "10px" }}
+          onClick={() => navigate("/dldownload")}
+        >
+          Download
+        </button>
+        // <a href="/dldownload">show licence</a>
       );
     } else {
+      if (dl.status === "error") {
+        toast.error("You have not applied for dl yet");
+      }
       toast.warning("Your dl status is pending");
     }
   };
@@ -95,7 +113,7 @@ function DLStatus() {
         <div className="container">
           <div className="row">
             <div className="col-md-12 mb-5 text-center">
-              <h3 className="main-heading">Check LL Status </h3>
+              <h3 className="main-heading">Check DL Status </h3>
               <div className="underline mx-auto"></div>
             </div>
             <div className="col-md-3 mt-2"></div>
@@ -144,60 +162,6 @@ function DLStatus() {
                   <Link
                     to="/vehicleRegistration"
                     className="btn btn-info shadow"
-                  >
-                    More
-                  </Link>
-                </div>
-              </div>
-            </div> */}
-            {/* 
-            <div className="col-md-4 mt-4">
-              <div className="card shadow sevice-card">
-                <img
-                  src={Service4}
-                  className="w-80 border-bottom"
-                  alt="services"
-                  onClick={() => navigate("/applyPermit")}
-                />
-                <div className="card-body">
-                  <h6>Vehicle Permit</h6>
-                  <p></p>
-                  <Link to="/applyPermit" className="btn btn-info shadow">
-                    More
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 mt-4">
-              <div className="card shadow sevice-card">
-                <img
-                  src={Service5}
-                  alt="services"
-                  onClick={() => navigate("/applyPuc")}
-                />
-                <div className="card-body">
-                  <h6>PUC</h6>
-                  <p></p>
-                  <Link to="/applyPuc" className="btn btn-info shadow">
-                    More
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 mt-4">
-              <div className="card shadow sevice-card">
-                <img
-                  src={Service3}
-                  className="w-80 border-bottom"
-                  alt="services"
-                  onClick={() => navigate("/ownerShipTransfer")}
-                />
-                <div className="card-body">
-                  <h6>Transfer Ownership</h6>
-                  <p></p>
-                  <Link
-                    to="/ownerShipTransfer"
-                    className="btn btn-info shadow "
                   >
                     More
                   </Link>

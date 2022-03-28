@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import LLService from "../../../Services/LLService";
+import { getCurrentDate } from "../../../Services/Date";
 const UpdateLL = (props) => {
   const { id } = useParams();
   const [ll, setLL] = useState([]);
@@ -22,6 +23,8 @@ const UpdateLL = (props) => {
     LLService.getLLById(id)
       .then((response) => {
         console.log(response.data);
+
+        console.log(getCurrentDate());
         let ll = response.data;
         setTempLLNo(ll.tempLLNo);
         setIssue_date(ll.issue_date);
@@ -82,7 +85,7 @@ const UpdateLL = (props) => {
                       <i className="zmdi zmdi-assignment-account"></i>
                     </span>
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       placeholder="LL_no"
                       aria-label="name"

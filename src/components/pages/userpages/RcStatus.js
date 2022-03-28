@@ -16,39 +16,44 @@ function RcStatus() {
   const [user, setUser] = useState([]);
   const [status, setStatus] = useState("");
 
-  console.log(id);
-  console.log(name);
+  // console.log(id);
+  // console.log(name);
   const navigate = useNavigate();
-  useEffect(() => {
-    // console.log({ id });
-    RcService.getRcByUserId(id)
+
+  const renderStatus = () => {
+    RcService.getRcById(rcId)
       .then((response) => {
-        // console.log(response.data);
-        console.log(response.data.user);
-        setUser(response.data.user);
         setRc(response.data);
+        setStatus(response.data.status);
+        console.log(response.data);
+        // setUser(response.data.user);
         console.log(rc);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
-  // const viewDL = (id) => {
-  //   navigate(`/view-rc/${id}`);
-  // };
-
-  const renderStatus = () => {
-    console.log("renderColled");
+    console.log("renderCalled");
     console.log(rc.status);
-    setStatus(rc.status);
 
-    if (rc.status === "Approved") {
+    if (status === "Approved") {
       toast.success("Congratulations Your Vehicle Registeration  is Approved");
+      setRcid(
+        <button
+          type="button"
+          className="btn btn-success"
+          style={{ borderRadius: "10px" }}
+          onClick={() => navigate("/dldownload")}
+        >
+          Download
+        </button>
+
+        // <a href="/dldownload">show licence</a>
+      );
     } else {
-      toast.warning("Your RC status is pending");
+      // toast.warning("Your RC status is pending");
     }
   };
+
   return (
     <div>
       {/* Our Services */}
@@ -59,8 +64,8 @@ function RcStatus() {
               <h3 className="main-heading">Check RC Status </h3>
               <div className="underline mx-auto"></div>
             </div>
-            <div className="col-md-3 mt-2"></div>
-            <div className="col-md-3 mt-2">
+
+            <div className="col-md-4 mt-2">
               <div className="card shadow sevice-card">
                 <img
                   src={Service2}
@@ -73,7 +78,33 @@ function RcStatus() {
                 </div>
               </div>
             </div>
-            <div className="col-md-3 mt-2">
+            <div className="col-md-4 mt-2">
+              <label htmlFor="name">Registration Id</label>
+              <div className="input-group flex-nowrap mt-2">
+                <span className="input-group-text" id="addon-wrapping">
+                  <i className="zmdi zmdi-assignment-account"></i>
+                </span>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Registration id"
+                  aria-label="User_Id"
+                  aria-describedby="addon-wrapping"
+                  onChange={(e) => {
+                    setRcid(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="form-group py-3">
+                <button
+                  className="btn btn-primary shadow w-100"
+                  onClick={renderStatus}
+                >
+                  Status
+                </button>
+              </div>
+            </div>
+            <div className="col-md-4 mt-2">
               <div className="card shadow sevice-card">
                 <img
                   src={Service2}
@@ -84,87 +115,10 @@ function RcStatus() {
                 <div className="card-body">
                   <h6>Vehicle Registration status</h6>
                   <p style={{ fontSize: "30px", color: "green" }}>{status}</p>
-
-                  {/* <Link to="/applyDL" className="btn btn-info shadow">
-                    More
-                  </Link> */}
+                  {rcId}
                 </div>
               </div>
             </div>
-            {/* <div className="col-md-4 mt-2">
-              <div className="card shadow sevice-card">
-                <img
-                  src={Service2}
-                  className="w-80 border-bottom"
-                  alt="services"
-                  onClick={() => navigate("/vehicleRegistration")}
-                />
-                <div className="card-body">
-                  <h6>Vehicle Registration</h6>
-                  <p></p>
-                  <Link
-                    to="/vehicleRegistration"
-                    className="btn btn-info shadow"
-                  >
-                    More
-                  </Link>
-                </div>
-              </div>
-            </div> */}
-            {/* 
-            <div className="col-md-4 mt-4">
-              <div className="card shadow sevice-card">
-                <img
-                  src={Service4}
-                  className="w-80 border-bottom"
-                  alt="services"
-                  onClick={() => navigate("/applyPermit")}
-                />
-                <div className="card-body">
-                  <h6>Vehicle Permit</h6>
-                  <p></p>
-                  <Link to="/applyPermit" className="btn btn-info shadow">
-                    More
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 mt-4">
-              <div className="card shadow sevice-card">
-                <img
-                  src={Service5}
-                  alt="services"
-                  onClick={() => navigate("/applyPuc")}
-                />
-                <div className="card-body">
-                  <h6>PUC</h6>
-                  <p></p>
-                  <Link to="/applyPuc" className="btn btn-info shadow">
-                    More
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 mt-4">
-              <div className="card shadow sevice-card">
-                <img
-                  src={Service3}
-                  className="w-80 border-bottom"
-                  alt="services"
-                  onClick={() => navigate("/ownerShipTransfer")}
-                />
-                <div className="card-body">
-                  <h6>Transfer Ownership</h6>
-                  <p></p>
-                  <Link
-                    to="/ownerShipTransfer"
-                    className="btn btn-info shadow "
-                  >
-                    More
-                  </Link>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </section>

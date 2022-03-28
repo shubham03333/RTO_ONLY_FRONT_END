@@ -1,6 +1,7 @@
 import React from "react";
 import Vmc from "./inc/Vmc";
 import Footer from "../Footer";
+import { Link } from "react-router-dom";
 function About() {
   return (
     <div>
@@ -12,7 +13,10 @@ function About() {
               <h4>About Us</h4>
             </div>
             <div className="col-md-8 my-auto">
-              <h6 className="float-end"> Home/ About Us</h6>
+              <h6 className="float-end">
+                {" "}
+                <Link to="/">Home</Link> / About Us
+              </h6>
             </div>
           </div>
         </div>
@@ -35,7 +39,7 @@ function About() {
       </section>
       {/* Our vison, mission and values */}
       {<Vmc />}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

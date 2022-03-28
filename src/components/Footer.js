@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   faYoutube,
   faFacebook,
@@ -9,6 +10,12 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
+  const [fullYear, setFullYear] = useState();
+
+  useEffect(() => {
+    setFullYear(new Date().getFullYear());
+  }, [fullYear]);
+
   let footerStyle = {
     position: "relative",
     // top: "55vh",
@@ -22,7 +29,9 @@ export default function Footer() {
       <div className="container">
         <div className="row">
           <div className="col" style={{ color: "white", paddingTop: "18px" }}>
-            <h5>About Us</h5>
+            <h5>
+              <u>About Us</u>
+            </h5>
             <ul className="list-unstyled">
               <li>Department</li>
               <li>Functions</li>
@@ -33,19 +42,23 @@ export default function Footer() {
             className="col-md-3"
             style={{ color: "white", paddingTop: "18px" }}
           >
-            <h5>Services</h5>
+            <h5>
+              <u>Services</u>
+            </h5>
             <ul className="list-unstyled">
               <li>Driving Licence</li>
               <li>Vehicle Registration</li>
-              <li>Permit</li>
-              <li>Payment</li>
+              <li>Permit and much more</li>
+              {/* <li>Payment</li> */}
             </ul>
           </div>
           <div
             className="col-md-3"
             style={{ color: "white", paddingTop: "18px" }}
           >
-            <h5>Policy</h5>
+            <h5>
+              <u>Policy</u>
+            </h5>
             <ul className="list-unstyled">
               <li>Acts and Rules</li>
               <li>Notification and Circulars</li>
@@ -68,9 +81,9 @@ export default function Footer() {
               <Link to="/login">
                 <li>Vehicle Transfer Status</li>
               </Link>
-              <Link to="/login">
+              {/* <Link to="/login">
                 <li>Permit Status</li>
-              </Link>
+              </Link> */}
             </ul>
           </div>
           <div className="col-md-3" style={{ paddingBottom: "1px" }}></div>
@@ -91,9 +104,10 @@ export default function Footer() {
             Conditions&emsp; | &emsp;Privacy Policy&emsp; |&emsp; Help&emsp; |
             &emsp;Guidelines &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; */}
-            &copy;2021 &emsp;&emsp;&emsp;&emsp;Terms and Conditions |
+            &copy; {fullYear}-{fullYear + 1} &emsp;&emsp;&emsp;&emsp;Contact at:
+            &emsp;<Link to="#"> rto.management.info@gmail.com </Link>&emsp;|
             &emsp;&emsp;&emsp;Privacy Policy |&emsp; &emsp;&emsp;&emsp;Help |
-            &emsp;&emsp;&emsp;&emsp;Guidelines&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;Guidelines |&emsp;&emsp;&emsp;&emsp;&emsp;
             <span>
               <Link to="#" className="youtube social">
                 <FontAwesomeIcon icon={faYoutube} size="2x" />

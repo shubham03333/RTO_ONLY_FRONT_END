@@ -21,6 +21,9 @@ class LL {
   getLLByUserId(userId) {
     return axios.get(RTO_API_BASE_URL + "/ll/byUserId/" + userId);
   }
+  getLLByUserId1(userId) {
+    return axios.get(RTO_API_BASE_URL + "/ll/byUserId1/" + userId);
+  }
 }
 
 export default new LL();

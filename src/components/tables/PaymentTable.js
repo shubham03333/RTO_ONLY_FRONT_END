@@ -48,7 +48,7 @@ const PaymentTable = (props) => {
                 onClick={() => navigate("/adminHome")}
                 className="btn btn-outline-warning"
               >
-                Dashbord
+                Dashboard
               </button>
               <table
                 id="paymentTable"
@@ -56,7 +56,7 @@ const PaymentTable = (props) => {
               >
                 <thead className="table-dark text-center">
                   <tr className="text-center">
-                    <th>Payment id</th>
+                    <th>Transaction id</th>
                     <th>Amount</th>
                     <th>User id</th>
                     <th>To Date</th>

@@ -21,6 +21,10 @@ class Complain {
   getComplainByUserId(userId) {
     return axios.get(RTO_API_BASE_URL + "/complain/byUserId/" + userId);
   }
+
+  getComplainByUserId1(userId) {
+    return axios.get(RTO_API_BASE_URL + "/complain/byUserId1/" + userId);
+  }
 }
 
 export default new Complain();

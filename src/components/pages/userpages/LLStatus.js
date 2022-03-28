@@ -8,25 +8,33 @@ import Service4 from "../../../assets/v-permit-services.png";
 import Service5 from "../../../assets/puc1.png";
 import Service6 from "../../../assets/lidence services1.png";
 import LLService from "../../../Services/LLService";
+import UserService from "../../../Services/UserService";
 import { toast } from "react-toastify";
+import FooterD from "../../FooterD";
+
 function LLStatus() {
   const { id, name } = sessionStorage;
   const [llId, setLlId] = useState();
   const [ll, setLL] = useState([]);
   const [status, setStatus] = useState("");
+  const [user, setUser] = useState([]);
+  const [aadhar_no, setaadhar_no] = useState();
 
-  // console.log(id);
+  console.log(id);
   // console.log(name);
   const navigate = useNavigate();
   useEffect(() => {
     // console.log({ id });
-    LLService.getLLByUserId(id)
+    UserService.getUserById(id)
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         // console.log(response.data.user);
-        //  setUser(response.data.user);
+        setUser(response.data);
+        setaadhar_no(response.data.aadhar_no);
         setLL(response.data);
         console.log(ll);
+        console.log(aadhar_no);
+
         // setLlId(ll.id);
         // console.log(llId);
       })
@@ -40,14 +48,49 @@ function LLStatus() {
   };
 
   const renderStatus = () => {
-    console.log("renderColled");
-    console.log(ll.status);
-    setStatus(ll.status);
-
-    if (ll.status === "Approved") {
-      toast.success("Congratulations Your Learning Licence is Approved");
+    if (aadhar_no === null) {
+      toast.warning("You need to Register first to use this service");
     } else {
-      toast.warning("Your LL status is pending");
+      LLService.getLLByUserId1(id)
+        .then((response) => {
+          console.log(response.data);
+          // console.log(response.data.user);
+          setUser(response.data.user);
+          setLL(response.data);
+          console.log(ll);
+          // setLlId(ll.id);
+          // console.log(llId);
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.warning(err);
+        });
+      console.log("renderColled");
+      console.log(ll.status);
+      setStatus(ll.status);
+      console.log(ll);
+      console.log(user);
+
+      if (ll.status === "Approved") {
+        toast.success("Congratulations Your Learning Licence is Approved");
+        toast.success("Congratulations Your Driving Licence is Approved");
+        setLlId(
+          <button
+            type="button"
+            className="btn btn-success"
+            style={{ borderRadius: "10px" }}
+            onClick={() => navigate("/dldownload")}
+          >
+            Download
+          </button>
+          // <a href="/dldownload">show licence</a>
+        );
+      } else {
+        if (ll.status === "error") {
+          toast.error("You have not applied for LL yet");
+        }
+        // toast.error("Your LL is pending!!");
+      }
     }
   };
   return (
@@ -84,8 +127,8 @@ function LLStatus() {
                 />
                 <div className="card-body">
                   <h6>Learning Licence status</h6>
-                  <p style={{fontSize:"30px",color:"green"}}>{status}</p>
-
+                  <p style={{ fontSize: "30px", color: "green" }}>{status}</p>
+                  {llId}
                   {/* <Link to="/applyDL" className="btn btn-info shadow">
                     More
                   </Link> */}
