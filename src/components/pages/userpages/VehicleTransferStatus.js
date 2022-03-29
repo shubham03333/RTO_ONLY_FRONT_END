@@ -13,6 +13,7 @@ import VehicleTransferService from "../../../Services/VehicleTransferService";
 import { toast } from "react-toastify";
 function VehicleTransferStatus() {
   const { id, name } = sessionStorage;
+  const [vtransfer, setVtransfer] = useState([]);
   const [rcNo, setRcNo] = useState("");
   const [vehicle_transfer, setVehicle_transfer] = useState([]);
   const [user, setUser] = useState([]);
@@ -36,17 +37,18 @@ function VehicleTransferStatus() {
   //       console.log(err);
   //     });
   // }, []);
-
+  const viewVtransfer = (id) => {
+    navigate(`/view-vtransfercer/${id}`);
+  };
   const renderStatus = () => {
-    // console.log(vehicle_transfer.status);
-    // setStatus(vehicle_transfer.status);
-
     VehicleTransferService.getVtransferStatusByRcNo(rcNo)
       .then((response) => {
         setRc(response.data);
         setStatus(response.data.status);
         console.log(response.data);
+        setVtransfer(response.data);
         // setUser(response.data.user);
+        console.log("transfer_id" + vtransfer.id);
         console.log(rc);
       })
       .catch((err) => {
@@ -62,9 +64,9 @@ function VehicleTransferStatus() {
           type="button"
           className="btn btn-success"
           style={{ borderRadius: "10px" }}
-          onClick={() => navigate("/dldownload")}
+          onClick={() => viewVtransfer(vtransfer.id)}
         >
-          Download
+          View Transfer details
         </button>
 
         // <a href="/dldownload">show licence</a>

@@ -8,6 +8,7 @@ import { URL } from "../../../config";
 import { toast } from "react-toastify";
 
 const Payment = () => {
+  const { id, name } = sessionStorage;
   const [user_id, setUser_id] = useState("");
   const [payment_for, setPayment_for] = useState("");
   const [payment_mode, setPayment_mode] = useState("");
@@ -22,10 +23,11 @@ const Payment = () => {
   let date = d.getDate();
   let month = d.getMonth() + 1;
   let year = d.getFullYear();
-  let todaysDate = `${date}${separator}${
+  let todaysDate = `${year}${separator}${
     month < 10 ? `0${month}` : `${month}`
-  }${separator}${year}`;
+  }${separator}${date}`;
   console.log(todaysDate);
+  console.log(id);
 
   // const [hc, setHc] = useState("");
   // const [aadhar_no, setAadhar_no] = useState();
@@ -34,6 +36,7 @@ const Payment = () => {
 
   // ############################
   const pay = () => {
+    setPayment_date(todaysDate);
     console.log(payment_for);
     // navigate("/");
     if (user_id.length == 0) {
@@ -65,8 +68,21 @@ const Payment = () => {
       });
     }
   };
-  const paymetDateHandler = (event) => {
-    setPayment_date(todaysDate);
+  const paymetAmountHandler = (event) => {
+    console.log("amount called");
+    if (payment_for == "LL") {
+      setAmount(500);
+    } else if (payment_for == "DL") {
+      setAmount(1000);
+    } else if (payment_for == "RC") {
+      setAmount(3000);
+    } else if (payment_for == "Permit") {
+      setAmount(2000);
+    } else if (payment_for == "Vehicle transfer") {
+      setAmount(2500);
+    } else if (payment_for == "puc") {
+      setAmount(100);
+    }
   };
 
   return (
@@ -90,27 +106,13 @@ const Payment = () => {
                       placeholder="Enter user id"
                       aria-label="name"
                       aria-describedby="addon-wrapping"
+                      value={id}
                       onChange={(e) => {
-                        setUser_id(e.target.value);
+                        setUser_id(id);
                       }}
                     />
                   </div>
                   <label htmlFor="name">Payment for</label>
-                  {/* <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Payment_for"
-                      aria-label="Payment_for"
-                      aria-describedby="addon-wrapping"
-                      onChange={(e) => {
-                        setPayment_for(e.target.value);
-                      }}
-                    />
-                  </div> */}
                   <select
                     class="form-select"
                     aria-label="Default select example"
@@ -151,10 +153,11 @@ const Payment = () => {
                     // selected
                     onChange={(e) => {
                       setPayment_mode(e.target.value);
+                      setPayment_date(todaysDate);
                     }}
                   >
                     <option>Select Payment Mode</option>
-                    <option value="UPI">UPI</option>
+                    <option>UPI</option>
                     <option value="Online Banking">Online Banking</option>
                     <option value="Debit Card">Debit Card</option>
                     <option value="Cheque">Cheque</option>
@@ -176,61 +179,10 @@ const Payment = () => {
                       placeholder="setAmount"
                       aria-label="to_date"
                       aria-describedby="addon-wrapping"
-                      onChange={(e) => {
-                        setAmount(e.target.value);
-                      }}
+                      value={amount}
+                      onClick={paymetAmountHandler}
                     />
                   </div>
-                  <label htmlFor="name">Payment Date</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-calendar-check"></i>
-                    </span>
-                    <input
-                      type="date"
-                      className="form-control"
-                      placeholder="payment_date"
-                      aria-label="co2"
-                      aria-describedby="addon-wrapping"
-                      // onChange={(e) => {
-                      //   setPayment_date(e.target.value);
-                      // }}
-                      onChange={paymetDateHandler}
-                    />
-                  </div>
-                  {/* <label htmlFor="name">hc</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="hc"
-                      aria-label="hc"
-                      aria-describedby="addon-wrapping"
-                      onChange={(e) => {
-                        setHc(e.target.value);
-                      }}
-                    />
-                  </div>
-                  <label htmlFor="name">Aadhar No</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Aadhar_no"
-                      aria-label="Aadhar_no"
-                      aria-describedby="addon-wrapping"
-                      onChange={(e) => {
-                        setAadhar_no(e.target.value);
-                      }}
-                    />
-                  </div> */}
-                  {/* ############################ */}
 
                   <div className="form-group py-3">
                     <button

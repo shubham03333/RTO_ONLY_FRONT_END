@@ -3,12 +3,21 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/RTOLOGO.png";
 function Navbar() {
+  const { id, name } = sessionStorage;
   const navigate = useNavigate();
+  console.log(id);
+  console.log(name);
+
+  const logoutUser = () => {
+    sessionStorage.removeItem("id");
+    sessionStorage.removeItem("name");
+    navigate("/");
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="#">
             <img
               src={logo}
               style={{ width: "80px", height: "55px", borderRadius: "20%" }}
@@ -27,76 +36,75 @@ function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul
-              className="navbar-nav me-auto mb-2 mb-lg-0"
-              style={{ marginLeft: "0px" }}
-            >
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/about">
-                  About
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link " to="/complaint">
-                  Complaint
-                </Link>
-              </li>
-              {/* <li className="nav-item">
-                <Link className="nav-link " to="/UserTable">
-                  UserTable
-                </Link>
-              </li> */}
-              <li className="nav-item">
-                <Link className="nav-link " to="/signup">
-                  Sign up
-                </Link>
-              </li>
-              {/* <li className="nav-item">
-                <Link className="nav-link " to="/rcTable">
-                  rcTable
-                </Link>
-              </li> */}
-              {/* <li className="nav-item">
-                <Link className="nav-link " to="/vtransferTable">
-                  VtransferTable
-                </Link>
-              </li> */}
-              {/* <li className="nav-item">
-                <Link className="nav-link " to="/vehicleRegistration">
-                  VehicleRegistration
-                </Link>
-              </li> */}
-            </ul>
-            {/* <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form> */}
-            <div className="d-flex ">
-              <button
-                type="button"
-                className="btn btn-outline-secondary shadow-w-100"
-                // className="btn btn-bg-primary shadow-w-100"
-                onClick={() => navigate("/login")}
+            {id == undefined && (
+              <ul
+                className="navbar-nav me-auto mb-2 mb-lg-0"
+                style={{ marginLeft: "0px" }}
               >
-                User Login
-              </button>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">
+                    About
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link " to="/complaint">
+                    Complaint
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link " to="/signup">
+                    Sign up
+                  </Link>
+                </li>
+              </ul>
+            )}
+            {/* <button
+              type="button"
+              className="btn btn-outline-secondary shadow-w-100"
+              // className="btn btn-bg-primary shadow-w-100"
+              // style={{ marginLeft: "100px" }}
+              style={{ marginRight: "-200px" }}
+              onClick={() => navigate("/login")}
+            >
+              back
+            </button> */}
+            {/* UserTable */}
+            <div className="d-flex">
+              {id == undefined && (
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary shadow-w-100"
+                  style={{ marginLeft: "300px" }}
+                  // className="btn btn-bg-primary shadow-w-100"
+                  onClick={() => navigate("/login")}
+                >
+                  User Login
+                </button>
+              )}
+              {id > 0 && (
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary shadow-w-100"
+                  // className="btn btn-bg-primary shadow-w-100"
+                  onClick={logoutUser}
+                  style={{ marginLeft: "1200px" }}
+                >
+                  Logout
+                </button>
+                
+              )}
               <button
                 type="button"
                 className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                style={{ marginRight: "10px" }}
               >
                 <span className="visually-hidden">Toggle Dropdown</span>
               </button>
@@ -111,11 +119,11 @@ function Navbar() {
                     User registration
                   </Link>
                 </li>
-                <li>
-                  <Link className="dropdown-item" to="/">
-                    Logout
-                  </Link>
-                </li>
+                {id > 0 && (
+                  <li onClick={logoutUser}>
+                    <a className="dropdown-item">Logout</a>
+                  </li>
+                )}
               </ul>
             </div>
           </div>

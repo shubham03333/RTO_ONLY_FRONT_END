@@ -33,9 +33,18 @@ export default function Footer() {
               <u>About Us</u>
             </h5>
             <ul className="list-unstyled">
-              <li>Department</li>
-              <li>Functions</li>
-              <li>Power and Duties</li>
+              <a href="/about#departments">
+                <li>Department</li>
+              </a>
+              <a href="/about#functions">
+                {" "}
+                <li>Functions</li>
+              </a>
+
+              <a href="/about#power">
+                {" "}
+                <li>Power and Duties</li>
+              </a>
             </ul>
           </div>
           <div
@@ -60,8 +69,13 @@ export default function Footer() {
               <u>Policy</u>
             </h5>
             <ul className="list-unstyled">
-              <li>Acts and Rules</li>
-              <li>Notification and Circulars</li>
+              <a href="/about#acts">
+                {" "}
+                <li>Acts and Rules</li>
+              </a>
+              <Link to="/">
+                <li>Notification and Circulars</li>
+              </Link>
             </ul>
           </div>
           <div
@@ -105,16 +119,18 @@ export default function Footer() {
             &emsp;Guidelines &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; */}
             &copy; {fullYear}-{fullYear + 1} &emsp;&emsp;&emsp;&emsp;Contact at:
-            &emsp;<Link to="#"> rto.management.info@gmail.com </Link>&emsp;|
-            &emsp;&emsp;&emsp;Privacy Policy |&emsp; &emsp;&emsp;&emsp;Help |
-            &emsp;&emsp;&emsp;&emsp;Guidelines |&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;<Link to="#"> rto.management.info@gmail.com </Link>{" "}
+            &emsp;&emsp; | &emsp;&emsp;&emsp;{" "}
+            <a href="/privacypolicy#privacyt">Privacy Policy</a>
+            &emsp;|&emsp; &emsp;&emsp;&emsp;Help | &emsp;&emsp;&emsp; &emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;
             <span>
               <Link to="#" className="youtube social">
                 <FontAwesomeIcon icon={faYoutube} size="2x" />
               </Link>
               &emsp;
               <a
-                href="https://www.facebook.com/profile.php?id=100025573611203"
+                href="https://shubhamsjadhav.blogspot.com/"
                 className="facebook social"
               >
                 <FontAwesomeIcon icon={faFacebook} size="2x" />

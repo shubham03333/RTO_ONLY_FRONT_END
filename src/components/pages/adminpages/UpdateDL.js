@@ -18,6 +18,35 @@ const UpdateDL = (props) => {
 
   const navigate = useNavigate();
 
+  var d = new Date();
+  var td = new Date();
+  const separator = "-";
+  console.log(d.toLocaleDateString());
+  d.setMonth(d.getMonth() + 180);
+  console.log(d.toLocaleDateString());
+  let date = d.getDate();
+  let month = d.getMonth() + 1;
+  let year = d.getFullYear();
+
+  //############
+  console.log(td.toLocaleDateString());
+  console.log(td.toLocaleDateString());
+  let tdate = td.getDate();
+  let tmonth = td.getMonth() + 1;
+  let tyear = td.getFullYear();
+
+  let todDate = `${tyear}${separator}${
+    month < 10 ? `0${tmonth}` : `${tmonth}`
+  }${separator}${tdate}`;
+  console.log("today is " + todDate);
+
+  //############
+
+  let todaysDate = `${year}${separator}${
+    month < 10 ? `0${month}` : `${month}`
+  }${separator}${date}`;
+  console.log(todaysDate);
+
   useEffect(() => {
     DLService.getDLById(id)
       .then((response) => {
@@ -55,6 +84,8 @@ const UpdateDL = (props) => {
 
   const changeDl_noHandler = (event) => {
     setDl_no(event.target.value);
+    setDl_issue_date(todDate);
+    setDl_expiry_date(todaysDate);
   };
   const changeIssue_dateHandler = (event) => {
     setDl_issue_date(event.target.value);

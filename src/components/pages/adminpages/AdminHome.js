@@ -143,6 +143,9 @@ function AdminHome() {
   //     <button className="btn btn-danger">{pendingDLCount}</button>;
   //   }
   // };
+  const startControlPanel = () => {
+    window.location.reload(false);
+  };
 
   return (
     <div>
@@ -158,8 +161,13 @@ function AdminHome() {
                     "linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%)",
                 }}
               >
-                <div className="card-body">
-                  <h6>Total Users </h6>
+                <div
+                  className="card-body"
+                  style={{ cursor: "pointer" }}
+                  onClick={startControlPanel}
+                >
+                  {id == undefined && <h6>Run</h6>}
+                  {id != undefined && <h6>Total Users </h6>}
                   <h4
                     style={{
                       fontSize: "30px",

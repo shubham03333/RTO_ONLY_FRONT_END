@@ -19,6 +19,22 @@ function RcStatus() {
   // console.log(id);
   // console.log(name);
   const navigate = useNavigate();
+  useEffect(() => {
+    // console.log({ id });
+    RcService.getRcByUserId1(id)
+      .then((response) => {
+        // console.log(response.data);
+        console.log(response.data.user);
+        setUser(response.data.user);
+        setRc(response.data);
+        setRcid(response.data.registration_id);
+        // setStatus(response.data.status);
+        console.log(rc);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const renderStatus = () => {
     RcService.getRcById(rcId)
@@ -32,6 +48,7 @@ function RcStatus() {
       .catch((err) => {
         console.log(err);
       });
+    // setStatus(rc.status);
     console.log("renderCalled");
     console.log(rc.status);
 
@@ -42,7 +59,7 @@ function RcStatus() {
           type="button"
           className="btn btn-success"
           style={{ borderRadius: "10px" }}
-          onClick={() => navigate("/dldownload")}
+          onClick={() => navigate("/rcdownload")}
         >
           Download
         </button>

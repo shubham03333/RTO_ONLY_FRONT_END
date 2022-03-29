@@ -13,9 +13,34 @@ const UpdateLL = (props) => {
   const [issue_date, setIssue_date] = useState("");
   const [expiry_date, setExpiry_date] = useState("");
   const [status, setStatus] = useState("");
-  // const [registration_id, setRegistration_id] = useState("");
-  // const [registration_no, setRegistration_no] = useState("");
-  // const [vehicle_class, setVehicle_class] = useState();
+  var d = new Date();
+  var td = new Date();
+  const separator = "-";
+  console.log(d.toLocaleDateString());
+  d.setMonth(d.getMonth() + 6);
+  console.log(d.toLocaleDateString());
+  let date = d.getDate();
+  let month = d.getMonth() + 1;
+  let year = d.getFullYear();
+
+  //############
+  console.log(td.toLocaleDateString());
+  console.log(td.toLocaleDateString());
+  let tdate = td.getDate();
+  let tmonth = td.getMonth() + 1;
+  let tyear = td.getFullYear();
+
+  let todDate = `${tyear}${separator}${
+    month < 10 ? `0${tmonth}` : `${tmonth}`
+  }${separator}${tdate}`;
+  console.log("today is " + todDate);
+
+  //############
+
+  let todaysDate = `${year}${separator}${
+    month < 10 ? `0${month}` : `${month}`
+  }${separator}${date}`;
+  console.log(todaysDate);
 
   const navigate = useNavigate();
 
@@ -58,12 +83,16 @@ const UpdateLL = (props) => {
 
   const changetempLLNoHandler = (event) => {
     setTempLLNo(event.target.value);
+    setIssue_date(todDate);
+    setExpiry_date(todaysDate);
   };
   const changeIssue_dateHandler = (event) => {
-    setIssue_date(event.target.value);
+    // setIssue_date(event.target.value);
+    setIssue_date(todDate);
   };
   const changeExpiry_dateHandler = (event) => {
-    setExpiry_date(event.target.value);
+    // setExpiry_date(event.target.value);
+    setExpiry_date(todaysDate);
   };
   const changeStatusHandler = (event) => {
     setStatus(event.target.value);
@@ -104,7 +133,7 @@ const UpdateLL = (props) => {
                       className="form-control"
                       aria-describedby="addon-wrapping"
                       value={issue_date}
-                      onChange={changeIssue_dateHandler}
+                      // onChange={changeIssue_dateHandler}
                     />
                   </div>
                   {/* <label htmlFor="name">Status</label>
@@ -132,7 +161,7 @@ const UpdateLL = (props) => {
                       className="form-control"
                       aria-describedby="addon-wrapping"
                       value={expiry_date}
-                      onChange={changeExpiry_dateHandler}
+                      // onChange={changeExpiry_dateHandler}
                     />
                   </div>
                   {/* <label htmlFor="name">To Date</label>

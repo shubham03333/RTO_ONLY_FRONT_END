@@ -15,7 +15,7 @@ function PermitStatus() {
   const { id, name } = sessionStorage;
   const [permit, setPermit] = useState([]);
   const [rcId, setRcid] = useState();
-  const [user, setUser] = useState([]);
+  // const [user, setUser] = useState([]);
   const [status, setStatus] = useState("");
   const [rc, setRc] = useState([]);
   const [rcNo, setRcNo] = useState("");
@@ -29,14 +29,14 @@ function PermitStatus() {
   //     .then((response) => {
   //       // console.log(response.data);
   //       console.log(response.data.user);
-  //       setUser(response.data.user);
+  //       // setUser(response.data.user);
   //       setPermit(response.data);
   //       console.log(permit);
   //     })
   //     .catch((err) => {
   //       console.log(err);
   //     });
-  // }, []);
+  // }, [permit]);
 
   const renderStatus = () => {
     console.log("renderColled");
@@ -55,14 +55,14 @@ function PermitStatus() {
       });
     console.log(rc.status);
 
-    if (permit.status === "Approved") {
+    if (status === "Approved") {
       toast.success("Congratulations Your Vehicle Transfer  is Approved");
       setRcNo(
         <button
           type="button"
           className="btn btn-success"
           style={{ borderRadius: "10px" }}
-          onClick={() => navigate("/dldownload")}
+          onClick={() => navigate("/permitdownload")}
         >
           Download
         </button>

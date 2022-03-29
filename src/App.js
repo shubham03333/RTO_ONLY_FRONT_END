@@ -26,6 +26,7 @@ import ViewRc from "./components/pages/adminpages/ViewRc";
 import UpdateRc from "./components/pages/adminpages/UpdateRc";
 import VtransferTable from "./components/tables/VtransferTable ";
 import ViewVehicleTransfer from "./components/pages/adminpages/ViewVehicleTransfer";
+import ViewVehicleTransferCertificate from "./components/pages/adminpages/ViewVehicleTransferCertificate";
 import UpdateVTransfer from "./components/pages/adminpages/UpdateVTransfer";
 import VehicleRegistration from "./components/pages/userpages/VehicleRegistration";
 import OwnershipTransfer from "./components/pages/userpages/OwnershipTransfer";
@@ -51,7 +52,6 @@ import UpdateDL from "./components/pages/adminpages/UpdateDL";
 import LLStatus from "./components/pages/userpages/LLStatus";
 import ViewUsersProfile from "./components/pages/adminpages/ViewUsersProfile";
 import DLStatus from "./components/pages/userpages/DLStatus";
-import DLDownload from "./components/pages/inc/CertificateGenerator/testCertificate";
 import RcStatus from "./components/pages/userpages/RcStatus";
 import VehicleTransferStatus from "./components/pages/userpages/VehicleTransferStatus";
 import PermitStatus from "./components/pages/userpages/PermitStatus";
@@ -59,6 +59,13 @@ import PucStatus from "./components/pages/userpages/PucStatus";
 import ViewPayment from "./components/pages/adminpages/ViewPayment";
 import PaymentTable from "./components/tables/PaymentTable";
 import Payment from "./components/pages/userpages/Payment";
+import DLDownload from "./components/pages/inc/CertificateGenerator/testCertificate";
+import LLDownload from "./components/pages/inc/CertificateGenerator/LLCertficate";
+import RCDownload from "./components/pages/inc/CertificateGenerator/RCCertificate";
+import PermitDownload from "./components/pages/inc/CertificateGenerator/PermitCertificate";
+import PucDownload from "./components/pages/inc/CertificateGenerator/PucCertificate";
+import Privacy from "./components/pages/inc/staticpages/Privacy";
+
 function App() {
   return (
     <div>
@@ -84,6 +91,12 @@ function App() {
           <Route path="/update-rc/:id" element={<UpdateRc />} />
           <Route path="/vtransferTable" element={<VtransferTable />} />
           <Route path="/view-vtransfer/:id" element={<ViewVehicleTransfer />} />
+
+          <Route
+            path="/view-vtransfercer/:id"
+            element={<ViewVehicleTransferCertificate />}
+          />
+
           <Route path="/update-vtransfer/:id" element={<UpdateVTransfer />} />
           <Route
             path="/vehicleRegistration"
@@ -111,7 +124,6 @@ function App() {
           <Route path="/update-dl/:id" element={<UpdateDL />} />
           <Route path="/llstatus" element={<LLStatus />} />
           <Route path="/dlstatus" element={<DLStatus />} />
-          <Route path="/dldownload" element={<DLDownload />} />
           <Route path="/rcstatus" element={<RcStatus />} />
           <Route path="/transferstatus" element={<VehicleTransferStatus />} />
           <Route path="/permitstatus" element={<PermitStatus />} />
@@ -120,6 +132,12 @@ function App() {
           <Route path="/view-payment/:id" element={<ViewPayment />} />
           <Route path="/paymentTable" element={<PaymentTable />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/dldownload" element={<DLDownload />} />
+          <Route path="/lldownload" element={<LLDownload />} />
+          <Route path="/rcdownload" element={<RCDownload />} />
+          <Route path="/permitdownload" element={<PermitDownload />} />
+          <Route path="/pucdownload" element={<PucDownload />} />
+          <Route path="/privacypolicy" element={<Privacy />} />
         </Routes>
 
         {/* <Footer /> */}

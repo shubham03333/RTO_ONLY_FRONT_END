@@ -23,13 +23,32 @@ function LLStatus() {
   console.log(id);
   // console.log(name);
   const navigate = useNavigate();
+  // useEffect(() => {
+  //   // console.log({ id });
+  //   UserService.getUserById(id)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       // console.log(response.data.user);
+  //       setUser(response.data);
+  //       setaadhar_no(response.data.aadhar_no);
+  //       setLL(response.data);
+  //       console.log(ll);
+  //       console.log(aadhar_no);
+
+  //       // setLlId(ll.id);
+  //       // console.log(llId);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
   useEffect(() => {
     // console.log({ id });
-    UserService.getUserById(id)
+    LLService.getLLByUserId1(id)
       .then((response) => {
         console.log(response.data);
         // console.log(response.data.user);
-        setUser(response.data);
+        setUser(response.data.user);
         setaadhar_no(response.data.aadhar_no);
         setLL(response.data);
         console.log(ll);
@@ -51,20 +70,20 @@ function LLStatus() {
     if (aadhar_no === null) {
       toast.warning("You need to Register first to use this service");
     } else {
-      LLService.getLLByUserId1(id)
-        .then((response) => {
-          console.log(response.data);
-          // console.log(response.data.user);
-          setUser(response.data.user);
-          setLL(response.data);
-          console.log(ll);
-          // setLlId(ll.id);
-          // console.log(llId);
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.warning(err);
-        });
+      // LLService.getLLByUserId1(id)
+      //   .then((response) => {
+      // console.log(response.data);
+      // console.log(response.data.user);
+      // setUser(response.data.user);
+      // setLL(response.data);
+      console.log(ll);
+      // setLlId(ll.id);
+      // console.log(llId);
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      //   toast.warning(err);
+      // });
       console.log("renderColled");
       console.log(ll.status);
       setStatus(ll.status);
@@ -73,16 +92,17 @@ function LLStatus() {
 
       if (ll.status === "Approved") {
         toast.success("Congratulations Your Learning Licence is Approved");
-        toast.success("Congratulations Your Driving Licence is Approved");
+
         setLlId(
           <button
             type="button"
             className="btn btn-success"
             style={{ borderRadius: "10px" }}
-            onClick={() => navigate("/dldownload")}
+            onClick={() => navigate("/lldownload")}
           >
             Download
           </button>
+
           // <a href="/dldownload">show licence</a>
         );
       } else {

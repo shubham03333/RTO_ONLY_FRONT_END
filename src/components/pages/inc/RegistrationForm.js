@@ -46,15 +46,9 @@ const RegistrationForm = () => {
         role,
         blood_group,
       };
-      // console.log(body);
-      // console.log(aadhar_no);
-      // console.log(mobile_no);
-      // url to call the api
+
       const url = `${URL}/user/register`;
-      // console.log("register user called");
-      // upload();
-      // http method: post
-      // body: contains the data to be sent to the API
+
       axios.post(url, body).then((response) => {
         // get the data from the response
         const result = response.data;
@@ -100,6 +94,7 @@ const RegistrationForm = () => {
               <div className="row">
                 <div className="col-md-6 border-left">
                   <h4>User Registration</h4>
+
                   <hr />
                   <label htmlFor="name">Name</label>
                   <div className="input-group flex-nowrap mt-2">
@@ -117,7 +112,6 @@ const RegistrationForm = () => {
                       }}
                     />
                   </div>
-
                   <label htmlFor="name">aadhar_no Number</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">

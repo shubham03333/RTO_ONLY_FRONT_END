@@ -13,8 +13,8 @@ import { toast } from "react-toastify";
 function PucStatus() {
   const { id, name } = sessionStorage;
   const [puc, setPuc] = useState([]);
-
-  const [user, setUser] = useState([]);
+  const [pucId, setPucid] = useState();
+  // const [user, setUser] = useState([]);
   const [status, setStatus] = useState("");
   const [rcId, setRcid] = useState();
   const [rc, setRc] = useState([]);
@@ -29,14 +29,15 @@ function PucStatus() {
   //     .then((response) => {
   //       // console.log(response.data);
   //       console.log(response.data.user);
-  //       setUser(response.data.user);
+  //       // setUser(response.data.user);
   //       setPuc(response.data);
+  //       setRcid(response.data.registration_id);
   //       console.log(puc);
   //     })
   //     .catch((err) => {
   //       console.log(err);
   //     });
-  // }, []);
+  // }, [puc]);
 
   const renderStatus = () => {
     console.log("renderColled");
@@ -47,6 +48,8 @@ function PucStatus() {
         setRc(response.data);
         setStatus(response.data.status);
         console.log(response.data);
+        setRcid(response.data.registration_id);
+        console.log(rcId);
         // setUser(response.data.user);
         console.log(rc);
       })
@@ -56,14 +59,14 @@ function PucStatus() {
     console.log("renderCalled");
     console.log(rc.status);
 
-    if (puc.status === "Approved") {
+    if (status === "Approved") {
       toast.success("Congratulations Your puc is Approved");
-      setRcNo(
+      setPucid(
         <button
           type="button"
           className="btn btn-success"
           style={{ borderRadius: "10px" }}
-          onClick={() => navigate("/dldownload")}
+          onClick={() => navigate("/pucdownload")}
         >
           Download
         </button>
@@ -136,7 +139,7 @@ function PucStatus() {
                 <div className="card-body">
                   <h6>View Puc status</h6>
                   <p style={{ fontSize: "30px", color: "green" }}>{status}</p>
-                  {rcNo}
+                  {pucId}
                   {/* <Link to="/applyDL" className="btn btn-info shadow">
                     More
                   </Link> */}
