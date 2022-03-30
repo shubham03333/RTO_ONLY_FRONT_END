@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import RcService from "../../Services/RcService";
 import { useNavigate } from "react-router-dom";
-
+import FooterD from "../FooterD";
 const RcTable = (props) => {
   const [rc, setRc] = useState([]);
+
   const navigate = useNavigate();
+
+  // const [transaId, setTransaId] = useState("");
+  // const [payment, setPayment] = useState("");
 
   useEffect(() => {
     RcService.getRc()
@@ -17,6 +21,7 @@ const RcTable = (props) => {
         console.log(err);
       });
   }, []);
+
   console.log(rc);
   const deleteRc = (id) => {
     RcService.deleteRc(id).then((res) => {
@@ -59,17 +64,21 @@ const RcTable = (props) => {
                     <th> Make</th>
                     <th> Vehicle Class</th>
                     <th> Status</th>
+                    {obj.payment != null && <th> Transaction id</th>}
+                    {obj.payment == null && <th> Transaction id</th>}
                     <th> Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {rc.map((rc) => (
-                    <tr key={rc.id}>
+                    <tr key={rc.id} className="text-center">
                       <td> {rc.id} </td>
                       <td> {rc.owner}</td>
                       <td> {rc.make}</td>
                       <td> {rc.vehicle_class}</td>
                       <td> {rc.status}</td>
+                      {rc.payment != null && <td> {rc.payment.id}</td>}
+                      {rc.payment == null && <td></td>}
                       <td>
                         <button
                           onClick={() => editRc(rc.id)}
@@ -106,6 +115,7 @@ const RcTable = (props) => {
     <div>
       {rcList[0]}
       {console.log(rcList)}
+      <FooterD />
     </div>
   );
 };

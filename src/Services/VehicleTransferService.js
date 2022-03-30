@@ -33,6 +33,10 @@ class VehicleTransfer {
   getVtransferStatusByRcNo(RcNo) {
     return axios.get(RTO_API_BASE_URL + "/vehicle_transfer/rcNo/" + RcNo);
   }
+
+  getVtransferStatusByReg_id(regId) {
+    return axios.get(RTO_API_BASE_URL + "/vehicle_transfer/byregId/" + regId);
+  }
 }
 
 export default new VehicleTransfer();

@@ -24,7 +24,7 @@ const PucDownload = () => {
     console.log({ id });
     PucService.getPucByUserId1(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setPuc(response.data);
         setFrom_date(response.data.from_date);
         setTo_date(response.data.to_date);
@@ -57,7 +57,7 @@ const PucDownload = () => {
     const catImage = new Image();
     catImage.src = dlImage;
     catImage.onload = () => setImage(catImage);
-  });
+  }, []);
 
   useEffect(() => {
     if (image && canvas) {

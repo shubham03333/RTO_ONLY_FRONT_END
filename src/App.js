@@ -25,8 +25,6 @@ import RcTable from "./components/tables/RcTable";
 import ViewRc from "./components/pages/adminpages/ViewRc";
 import UpdateRc from "./components/pages/adminpages/UpdateRc";
 import VtransferTable from "./components/tables/VtransferTable ";
-import ViewVehicleTransfer from "./components/pages/adminpages/ViewVehicleTransfer";
-import ViewVehicleTransferCertificate from "./components/pages/adminpages/ViewVehicleTransferCertificate";
 import UpdateVTransfer from "./components/pages/adminpages/UpdateVTransfer";
 import VehicleRegistration from "./components/pages/userpages/VehicleRegistration";
 import OwnershipTransfer from "./components/pages/userpages/OwnershipTransfer";
@@ -65,6 +63,8 @@ import RCDownload from "./components/pages/inc/CertificateGenerator/RCCertificat
 import PermitDownload from "./components/pages/inc/CertificateGenerator/PermitCertificate";
 import PucDownload from "./components/pages/inc/CertificateGenerator/PucCertificate";
 import Privacy from "./components/pages/inc/staticpages/Privacy";
+import ViewVehicleTransfer from "./components/pages/adminpages/ViewVehicleTransfer";
+import ViewVehicleTransferCertificate from "./components/pages/adminpages/ViewVehicleTransferCertificate";
 
 function App() {
   return (
@@ -138,6 +138,7 @@ function App() {
           <Route path="/permitdownload" element={<PermitDownload />} />
           <Route path="/pucdownload" element={<PucDownload />} />
           <Route path="/privacypolicy" element={<Privacy />} />
+          <Route path="/payment/:id" element={<Payment />} />
         </Routes>
 
         {/* <Footer /> */}

@@ -111,7 +111,7 @@ const ViewDL = (props) => {
                   <label htmlFor="name">Gender</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i class="zmdi zmdi-male-female"></i>
                     </span>
                     <input
                       type="tel"
@@ -146,7 +146,7 @@ const ViewDL = (props) => {
                   <label htmlFor="name">Issue Date</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i class="zmdi zmdi-fire"></i>
+                      <i className="zmdi zmdi-calendar-check"></i>
                     </span>
                     <input
                       type="text"
@@ -159,7 +159,7 @@ const ViewDL = (props) => {
                   <label htmlFor="name">Expiry Date</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-bookmark"></i>
+                      <i className="zmdi zmdi-calendar-check"></i>
                     </span>
                     <input
                       type="text"
@@ -175,7 +175,7 @@ const ViewDL = (props) => {
                   <label htmlFor="name">Payment Id</label>
                   <div className="input-group flex-nowrap ">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
+                      <i class="zmdi zmdi-n-1-square"></i>
                     </span>
                     <input
                       type="text"
@@ -189,7 +189,7 @@ const ViewDL = (props) => {
                   <label htmlFor="name">User id</label>
                   <div className="input-group flex-nowrap ">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
+                      <i class="zmdi zmdi-n-1-square"></i>
                     </span>
                     <input
                       type="text"
@@ -203,7 +203,7 @@ const ViewDL = (props) => {
                   <label htmlFor="name">RTO</label>
                   <div className="input-group flex-nowrap ">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
+                      <i className="zmdi zmdi-pin"></i>
                     </span>
                     <input
                       type="text"

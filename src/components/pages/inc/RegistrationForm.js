@@ -54,7 +54,7 @@ const RegistrationForm = () => {
         const result = response.data;
         console.log(result);
         if (result["status"] == "success") {
-          toast.success("New user Registered Successfully");
+          toast.success("Congratulations have Successfully Registered");
 
           // navigate to the home pagsterede
           navigate("/login");

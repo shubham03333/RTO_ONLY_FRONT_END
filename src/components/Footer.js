@@ -122,8 +122,8 @@ export default function Footer() {
             &emsp;<Link to="#"> rto.management.info@gmail.com </Link>{" "}
             &emsp;&emsp; | &emsp;&emsp;&emsp;{" "}
             <a href="/privacypolicy#privacyt">Privacy Policy</a>
-            &emsp;|&emsp; &emsp;&emsp;&emsp;Help | &emsp;&emsp;&emsp; &emsp;
-            &emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;|&emsp; &emsp;&emsp;&emsp;<Link to="/complaint">Help</Link>
+            &emsp;| &emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;
             <span>
               <Link to="#" className="youtube social">
                 <FontAwesomeIcon icon={faYoutube} size="2x" />

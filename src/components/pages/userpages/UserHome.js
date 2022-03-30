@@ -37,7 +37,7 @@ function UserHome() {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Welcome {name} your user id: {id}
+                        Welcome {name} your user id : {id}
                       </button>
                       <ul
                         className="dropdown-menu"

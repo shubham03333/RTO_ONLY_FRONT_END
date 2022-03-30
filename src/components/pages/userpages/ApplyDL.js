@@ -61,8 +61,14 @@ const ApplyDL = () => {
         axios.post(url, body).then((response) => {
           // get the data from the response
           const result = response.data;
+
           console.log(result);
+
           if (result["status"] == "success") {
+            const { id } = result["data"];
+
+            sessionStorage["dlid"] = id;
+
             toast.success("Proceed for payment");
             console.log(response.data);
             // navigate to the home page

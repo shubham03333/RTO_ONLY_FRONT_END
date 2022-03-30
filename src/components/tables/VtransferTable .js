@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import VehicleTransferService from "../../Services/VehicleTransferService";
 import { useNavigate } from "react-router-dom";
-
+import FooterD from "../FooterD";
 const VtransferTable = (props) => {
   const [vtransfer, setVtransfer] = useState([]);
 
@@ -60,17 +60,23 @@ const VtransferTable = (props) => {
                     <th>New Owner</th>
                     <th>New Owner Email</th>
                     <th>Status</th>
+                    {obj.payment != null && <th>Transaction id</th>}
+                    {obj.payment == null && <th>Transaction id</th>}
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {vtransfer.map((vtransfer) => (
-                    <tr key={vtransfer.id}>
+                    <tr key={vtransfer.id} className="text-center">
                       <td> {vtransfer.registration_no} </td>
                       <td> {vtransfer.transfer_no}</td>
                       <td> {vtransfer.new_owner}</td>
                       <td> {vtransfer.new_owner_email}</td>
                       <td> {vtransfer.status}</td>
+                      {vtransfer.payment != null && (
+                        <td> {vtransfer.payment.id}</td>
+                      )}
+                      {vtransfer.payment == null && <td></td>}
                       <td>
                         <button
                           onClick={() => editVtransfer(vtransfer.id)}
@@ -107,6 +113,7 @@ const VtransferTable = (props) => {
     <div>
       {vtransferList[0]}
       {console.log(vtransferList)}
+      <FooterD />
     </div>
   );
 };

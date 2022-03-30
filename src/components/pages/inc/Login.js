@@ -38,7 +38,7 @@ const Login = () => {
         const result = response.data;
         console.log(result);
         if (result["status"] == "success") {
-          toast.success("Welcome to the RTO Management system");
+          toast.success("Welcome to the RTO Management");
 
           // get the data sent by server
           const { id, name } = result["data"];

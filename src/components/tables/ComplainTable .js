@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ComplainService from "../../Services/ComplainService";
 import { useNavigate } from "react-router-dom";
-
+import FooterD from "../FooterD";
 const ComplainTable = (props) => {
   const [complain, setComplain] = useState([]);
 
@@ -65,7 +65,7 @@ const ComplainTable = (props) => {
                 </thead>
                 <tbody>
                   {complain.map((complain) => (
-                    <tr key={complain.id}>
+                    <tr key={complain.id} className="text-center">
                       <td> {complain.aadhar_no} </td>
                       <td> {complain.user_id}</td>
                       <td> {complain.complain_no}</td>
@@ -107,6 +107,7 @@ const ComplainTable = (props) => {
     <div>
       {complainList[0]}
       {console.log(complainList)}
+      <FooterD />
     </div>
   );
 };

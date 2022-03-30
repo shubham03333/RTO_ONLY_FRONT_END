@@ -43,18 +43,24 @@ const AdminLogin = () => {
 
           const { id, name, role } = result["data"];
           console.log("role " + role);
-          if (role === "user") {
-            console.log("inside if");
-            navigate("/userHome");
-          } else {
-            console.log("admin login");
-            navigate("/adminHome");
-
+          if (role === "admin") {
             // persist the logged in user's information for future use
             sessionStorage["id"] = id;
             sessionStorage["name"] = name;
             sessionStorage["role"] = role;
             sessionStorage["loginStatus"] = 1;
+
+            navigate("/adminHome");
+          } else {
+            navigate("/userHome");
+            // persist the logged in user's information for future use
+            sessionStorage["id"] = id;
+            sessionStorage["name"] = name;
+            sessionStorage["role"] = role;
+            sessionStorage["loginStatus"] = 1;
+
+            // persist the logged in user's information for future use
+
             // if ("role" == "admin") {
             //   navigate("/adminHome");
             // } else {

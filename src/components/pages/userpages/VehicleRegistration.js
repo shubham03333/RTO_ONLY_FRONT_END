@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
+
 const VehicleRegistration = () => {
   const [owner, setOwner] = useState("");
   const [user_id, setUser_id] = useState();
@@ -21,8 +22,6 @@ const VehicleRegistration = () => {
   const [hypothecated_to, setHypothecated_to] = useState("");
   const [wheels, setWheels] = useState("");
   const [seat_capacity, setSeat_capacity] = useState("");
-
-  // find about image
 
   const navigate = useNavigate();
 
@@ -52,13 +51,18 @@ const VehicleRegistration = () => {
       const url = `${URL}/rc/add_rc`;
 
       axios.post(url, body).then((response) => {
-        // get the data from the response
         const result = response.data;
-        console.log(result);
-        if (result["status"] == "success") {
-          toast.success("Vehicle Registered Successfully");
+        console.log("regID ");
 
-          // navigate to the home page
+        console.log(result);
+
+        console.log("regID ");
+        if (result["status"] == "success") {
+          const { id } = result["data"];
+
+          sessionStorage["regid"] = id;
+          toast.success("Proceed to payment");
+
           navigate("/payment");
         } else {
           toast.error(result["error"]);

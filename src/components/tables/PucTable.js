@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PucServices from "../../Services/PucService";
 import { useNavigate } from "react-router-dom";
-
+import FooterD from "../FooterD";
 const PucTable = (props) => {
   const [puc, setPuc] = useState([]);
 
@@ -60,17 +60,21 @@ const PucTable = (props) => {
                     <th>From Date</th>
                     <th>To Date</th>
                     <th>Status</th>
+                    {obj.payment != null && <th>Transaction id</th>}
+                    {obj.payment == null && <th>Transaction id</th>}
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {puc.map((puc) => (
-                    <tr key={puc.id}>
+                    <tr key={puc.id} className="text-center">
                       <td> {puc.registration_no} </td>
                       <td> {puc.registration_id}</td>
                       <td> {puc.from_date}</td>
                       <td> {puc.to_date}</td>
                       <td> {puc.status}</td>
+                      {puc.payment != null && <td> {puc.payment.id}</td>}
+                      {puc.payment == null && <td></td>}
                       <td>
                         <button
                           onClick={() => editPuc(puc.id)}
@@ -107,6 +111,7 @@ const PucTable = (props) => {
     <div>
       {pucList[0]}
       {console.log(pucList)}
+      <FooterD />
     </div>
   );
 };

@@ -1,20 +1,53 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import "../inc/RegistrationForm.css";
 import axios from "axios";
-import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
+import VehicleTransferService from "../../../Services/VehicleTransferService";
 
 const Payment = () => {
-  const { id, name } = sessionStorage;
+  // const { chassis_no } = sessionStorage;
+  const { id, regid, llid, dlid } = sessionStorage;
   const [user_id, setUser_id] = useState("");
   const [payment_for, setPayment_for] = useState("");
   const [payment_mode, setPayment_mode] = useState("");
   const [amount, setAmount] = useState("");
   const [payment_date, setPayment_date] = useState("");
+  const [payment, setPayment] = useState([]);
+  const [vtid, setVtid] = useState("");
+  const [vehicleRegistration_id, setVehicleRegistration_id] = useState("");
+  const [lcategory, setLcategory] = useState("");
+  const [learningLicence_id, setLearningLicence_id] = useState("");
+  const [drivingLicence_id, setDrivingLicence_id] = useState("");
 
+  const { tid } = useParams();
+  console.log("tid");
+  console.log(tid);
+  const [vtransfer, setVtransfer] = useState([]);
+
+  console.log("session");
+  console.log(regid);
+  console.log("session");
+  // useEffect(() => {
+  //   VehicleTransferService.getVtransferStatusByReg_id(tid)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setVtransfer(response.data);
+  //       setVtid(response.data.id);
+  //       setPayment(response.data.payment);
+  //       console.log(vtransfer);
+  //       //  setTid(vtransfer.id);
+  //       console.log(tid);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  //############### under test ################//
   var d = new Date();
   const separator = "-";
   console.log(d.toLocaleDateString());
@@ -38,7 +71,8 @@ const Payment = () => {
   const pay = () => {
     setPayment_date(todaysDate);
     console.log(payment_for);
-    // navigate("/");
+    // e.preventDefault();
+
     if (user_id.length == 0) {
       toast.warning("Please Enter the User id");
     } else {
@@ -48,8 +82,13 @@ const Payment = () => {
         payment_mode,
         amount,
         payment_date,
+        lcategory,
+        vehicleRegistration_id,
+        drivingLicence_id,
+        learningLicence_id,
       };
       console.log(body);
+      setVtransfer();
 
       const url = `${URL}/payment/add_payment`;
 
@@ -57,18 +96,42 @@ const Payment = () => {
         // get the data from the response
         const result = response.data;
         console.log(result);
+        // console.log(body.id);
+        console.log("id printed");
+        // navigate("/");
         if (result["status"] == "success") {
           toast.success("Payment Successfull");
 
-          // navigate to the home page
+          sessionStorage.removeItem("regid");
+          sessionStorage.removeItem("dlid");
+          sessionStorage.removeItem("llid");
+          // setPayment(result);
+          // console.log(result.id);
           navigate("/userHome");
+          // navigate to the home page
         } else {
           toast.error(result["error"]);
         }
       });
     }
   };
+
+  const setRegIdHandler = (event) => {
+    if (regid != undefined) {
+      setVehicleRegistration_id(regid);
+    } else {
+      setVehicleRegistration_id(event.target.value);
+    }
+  };
+
+  const setUserIdHandler = (event) => {
+    setUser_id(id);
+  };
+
   const paymetAmountHandler = (event) => {
+    setDrivingLicence_id(dlid);
+    setLearningLicence_id(llid);
+
     console.log("amount called");
     if (payment_for == "LL") {
       setAmount(500);
@@ -107,9 +170,7 @@ const Payment = () => {
                       aria-label="name"
                       aria-describedby="addon-wrapping"
                       value={id}
-                      onChange={(e) => {
-                        setUser_id(id);
-                      }}
+                      onClick={setUserIdHandler}
                     />
                   </div>
                   <label htmlFor="name">Payment for</label>
@@ -131,21 +192,6 @@ const Payment = () => {
                   </select>
 
                   <label htmlFor="name">Payment mode</label>
-                  {/* <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-account-box-mail"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Payment_mode"
-                      aria-label="from_date"
-                      aria-describedby="addon-wrapping"
-                      onChange={(e) => {
-                        setPayment_mode(e.target.value);
-                      }}
-                    />
-                  </div> */}
 
                   <select
                     class="form-select"
@@ -168,6 +214,40 @@ const Payment = () => {
 
                 <div className="col-md-6 border-start gender">
                   <hr />
+                  <label htmlFor="name">vehicle registration id</label>
+                  <div className="input-group flex-nowrap mt-2">
+                    <span className="input-group-text" id="addon-wrapping">
+                      <i className="zmdi zmdi-assignment-account"></i>
+                    </span>
+                    <input
+                      type="number"
+                      className="form-control"
+                      placeholder="registration id"
+                      aria-label="name"
+                      aria-describedby="addon-wrapping"
+                      value={regid}
+                      onClick={setRegIdHandler}
+                    />
+                  </div>
+                  {/* { payment_for == "LL" && ( */}
+                  <label htmlFor="name">licence category</label>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    // selected
+                    onChange={(e) => {
+                      setLcategory(e.target.value);
+                    }}
+                  >
+                    <option>Select Licence Category</option>
+                    <option value="LMV">Light Motor vehicle</option>
+                    <option value="HMV">Heavy Motor Vehicles</option>
+                    <option value="MCWG ">Motor Cycle With Gear</option>
+                    <option value="MCWOG">Motor Cycle Without Gear</option>
+                    <option value="MGV"> Medium goods vehicle</option>
+                    <option value="HGMV">Heavy Goods Motor Vehicle</option>
+                  </select>
+                  {/* )} */}
                   <label htmlFor="name">Amount</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">

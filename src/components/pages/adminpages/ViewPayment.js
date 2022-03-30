@@ -68,7 +68,7 @@ const ViewPayment = (props) => {
                   <label htmlFor="name">User id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-calendar-check"></i>
+                      <i class="zmdi zmdi-n-1-square"></i>
                     </span>
                     <input
                       type="number"
@@ -202,7 +202,7 @@ const ViewPayment = (props) => {
                   <label htmlFor="name">Transaction Date</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i class="zmdi zmdi-car"></i>
+                      <i className="zmdi zmdi-calendar-check"></i>
                     </span>
                     <input
                       type="date"
@@ -216,7 +216,7 @@ const ViewPayment = (props) => {
                   <label htmlFor="name">Transaction id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i class="zmdi zmdi-n-1-square"></i>
                     </span>
                     <input
                       type="tel"

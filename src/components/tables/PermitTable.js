@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PermitService from "../../Services/PermitService";
 import { useNavigate } from "react-router-dom";
-
+import FooterD from "../FooterD";
 const PermitTable = (props) => {
   const [permit, setPermit] = useState([]);
 
@@ -60,17 +60,21 @@ const PermitTable = (props) => {
                     <th>From state</th>
                     <th>To State</th>
                     <th>Status</th>
+                    {obj.payment != null && <th>Transaction id</th>}
+                    {obj.payment == null && <th>Transaction id</th>}
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {permit.map((permit) => (
-                    <tr key={permit.id}>
+                    <tr key={permit.id} className="text-center">
                       <td> {permit.registration_no} </td>
                       <td> {permit.registration_id}</td>
                       <td> {permit.from_state}</td>
                       <td> {permit.to_state}</td>
                       <td> {permit.status}</td>
+                      {permit.payment != null && <td> {permit.payment.id}</td>}
+                      {permit.payment == null && <td></td>}
                       <td>
                         <button
                           onClick={() => editPermit(permit.id)}
@@ -107,6 +111,7 @@ const PermitTable = (props) => {
     <div>
       {permitList[0]}
       {console.log(permitList)}
+      <FooterD />
     </div>
   );
 };

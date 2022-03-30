@@ -67,6 +67,9 @@ const UpdateRc = (props) => {
     setmobile_no(event.target.value);
   };
 
+  const changeEmailHandler = (event) => {
+    setEmail(event.target.value);
+  };
   return (
     <div>
       <section className="section">
@@ -102,8 +105,9 @@ const UpdateRc = (props) => {
                       type="text"
                       className="form-control"
                       aria-describedby="addon-wrapping"
-                      readOnly
+                      // readOnly
                       value={email}
+                      onChange={changeEmailHandler}
                     />
                   </div>
                   <label htmlFor="name">Password</label>
@@ -115,6 +119,7 @@ const UpdateRc = (props) => {
                       type="password"
                       className="form-control"
                       aria-describedby="addon-wrapping"
+                      readOnly
                       value={password}
                       onChange={changePasswordHandler}
                     />

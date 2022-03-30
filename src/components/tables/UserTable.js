@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserService from "../../Services/UserService";
 import { useNavigate } from "react-router-dom";
-
+import FooterD from "../FooterD";
 const UserTable = (props) => {
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ const UserTable = (props) => {
                 </thead>
                 <tbody>
                   {user.map((user) => (
-                    <tr key={user.id}>
+                    <tr key={user.id} className="text-center">
                       <td> {user.aadhar_no} </td>
                       <td> {user.email}</td>
                       <td> {user.name}</td>
@@ -105,6 +105,7 @@ const UserTable = (props) => {
     <div>
       {userList[0]}
       {console.log(userList)}
+      <FooterD />
     </div>
   );
 };

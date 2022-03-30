@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import VehicleTransferService from "../../../Services/VehicleTransferService";
+
 const ViewVehicleTransfer = (props) => {
   const { id } = useParams();
   const [vtransfer, setVtransfer] = useState([]);
@@ -17,7 +18,7 @@ const ViewVehicleTransfer = (props) => {
         console.log(response.data);
         setVtransfer(response.data);
         // const result = response.data;
-        // setvtransfer(result["data"]);
+        // setVtransfer(result["data"]);
       })
       .catch((err) => {
         console.log(err);
@@ -142,6 +143,22 @@ const ViewVehicleTransfer = (props) => {
                       value={vtransfer.payment_id}
                     />
                   </div>
+
+                  {/* <label htmlFor="name">Transaction id</label>
+                  <div className="input-group flex-nowrap mt-2">
+                    <span className="input-group-text" id="addon-wrapping">
+                      <i class="zmdi zmdi-n-1-square"></i>
+                    </span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Pending"
+                      aria-label="text"
+                      aria-describedby="addon-wrapping"
+                      value={vtransfer.payment.id}
+                    />
+                  </div> */}
+
                   {/* <label htmlFor="name">Fuel Type</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">

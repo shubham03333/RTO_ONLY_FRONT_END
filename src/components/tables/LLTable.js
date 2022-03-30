@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LLService from "../../Services/LLService";
 import { useNavigate } from "react-router-dom";
+import FooterD from "../FooterD";
 
 const LLTable = (props) => {
   const [ll, setLL] = useState([]);
@@ -57,20 +58,26 @@ const LLTable = (props) => {
                 <thead className="table-dark text-center">
                   <tr className="text-center">
                     <th>User id</th>
+                    <th>Name</th>
                     <th>Aadhar No</th>
                     <th>Licence Category</th>
                     {/* <th>To Date</th> */}
                     <th>Status</th>
+                    {obj.payment != null && <th>Transaction id</th>}
+                    {obj.payment == null && <th>Transaction id</th>}
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {ll.map((ll) => (
-                    <tr key={ll.id}>
+                    <tr key={ll.id} className="text-center">
                       <td> {ll.user_id}</td>
+                      <td> {ll.user.name}</td>
                       <td> {ll.user.aadhar_no} </td>
                       <td> {ll.l_category}</td>
                       <td> {ll.status}</td>
+                      {ll.payment != null && <td> {ll.payment.id}</td>}
+                      {ll.payment == null && <td></td>}
                       {/* <td> {complain.status}</td> */}
                       <td>
                         <button
@@ -108,6 +115,7 @@ const LLTable = (props) => {
     <div>
       {llList[0]}
       {console.log(llList)}
+      <FooterD />
     </div>
   );
 };

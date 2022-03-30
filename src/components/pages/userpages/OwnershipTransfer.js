@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../inc/RegistrationForm.css";
 import axios from "axios";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
+import Payment from "../inc/../userpages/Payment";
+import VehicleTransferService from "../../../Services/VehicleTransferService";
+
 const OwnershipTransfer = () => {
   const [registration_no, setRegistration_no] = useState("");
   const [transfer_no, setTransfer_no] = useState();
@@ -15,20 +17,41 @@ const OwnershipTransfer = () => {
   const [new_owner_mobile, setNew_owner_mobile] = useState("");
   const [payment_no, setPayment_no] = useState();
   const [registration_id, setRegistration_id] = useState("");
-  // const [engine_capacity, setEngine_capacity] = useState("");
-  // const [insurance_status, setIsurance_status] = useState("");
-
-  // find about image
+  const [tid, setTid] = useState("");
+  const [user_id, setUser_id] = useState("");
+  const [vtransfer, setVtransfer] = useState([]);
+  const [payment, setPayment] = useState([]);
 
   const navigate = useNavigate();
-
+  console.log("tid");
+  console.log("regId");
+  console.log(registration_id);
+  // const viewVtransfer = (tid) => {
+  //   navigate(`/view-vtransfer/${tid}`);
+  // };
   // ############################
+
+  // useEffect(() => {
+  //   // console.log({ id });
+  //   VehicleTransferService.getVtransferStatusByReg_id(registration_id)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       // setVtransfer(response.data);
+  //       // const result = response.data;
+  //       // setvtransfer(result["data"]);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
   const transferVehicle = () => {
     // navigate("/");
     if (registration_no.length == 0) {
       toast.warning("Please Enter the Vehicle registration No");
     } else {
       const body = {
+        user_id,
         registration_no,
         transfer_no,
         new_owner,
@@ -37,25 +60,26 @@ const OwnershipTransfer = () => {
         new_owner_mobile,
         payment_no,
         registration_id,
-        // engine_capacity,
-        // insurance_status,
-        // puc_status,
-        // hypothecated_to,
-        // wheels,
-        // seat_capacity,
+        // payment,
       };
 
+      // setTid(body.id);
       const url = `${URL}/vehicle_transfer/add_vehicleTransfer`;
 
       axios.post(url, body).then((response) => {
         // get the data from the response
         const result = response.data;
+        setTid(response.data.id);
+
         console.log(result);
+        console.log("resu");
+
         if (result["status"] == "success") {
           toast.success("Ownership Transfer requested");
 
           // navigate to the home page
-          navigate("/payment");
+          navigate(`/payment/${registration_id}`);
+          // navigate("/payment");
         } else {
           toast.error(result["error"]);
         }
@@ -73,6 +97,22 @@ const OwnershipTransfer = () => {
                 <div className="col-md-6 border-left">
                   <h4>Vehicle Transfer</h4>
                   <hr />
+                  <label htmlFor="name">User id</label>
+                  <div className="input-group flex-nowrap mt-2">
+                    <span className="input-group-text" id="addon-wrapping">
+                      <i className="zmdi zmdi-account-box-mail"></i>
+                    </span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="user id"
+                      aria-label="transfer_no"
+                      aria-describedby="addon-wrapping"
+                      onChange={(e) => {
+                        setUser_id(e.target.value);
+                      }}
+                    />
+                  </div>
                   <label htmlFor="name">Registration No</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
@@ -90,22 +130,6 @@ const OwnershipTransfer = () => {
                     />
                   </div>
 
-                  <label htmlFor="name">Transfer No</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-account-box-mail"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="transfer_no"
-                      aria-label="transfer_no"
-                      aria-describedby="addon-wrapping"
-                      onChange={(e) => {
-                        setTransfer_no(e.target.value);
-                      }}
-                    />
-                  </div>
                   <label htmlFor="name">New Owner</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
@@ -192,7 +216,7 @@ const OwnershipTransfer = () => {
                       }}
                     />
                   </div>
-                  <label htmlFor="name">Payment No</label>
+                  {/* <label htmlFor="name">Payment No</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-smartphone"></i>
@@ -207,7 +231,7 @@ const OwnershipTransfer = () => {
                         setPayment_no(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
                   {/* ############################ */}
 
                   <div className="form-group py-3">
@@ -224,6 +248,7 @@ const OwnershipTransfer = () => {
           </div>
         </div>
       </section>
+      {/* <Payment /> */}
     </div>
   );
 };

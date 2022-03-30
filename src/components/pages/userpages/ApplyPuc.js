@@ -8,19 +8,21 @@ import { URL } from "../../../config";
 import { toast } from "react-toastify";
 
 const ApplyPuc = () => {
+  const { id } = sessionStorage;
   const [registration_no, setRegistration_no] = useState("");
   const [registration_id, setRegistration_id] = useState("");
   const [from_date, setFrom_date] = useState();
   const [to_date, setTo_date] = useState("");
   const [co2, setCo2] = useState("");
   const [hc, setHc] = useState("");
-  const [aadhar_no, setAadhar_no] = useState();
-
+  const [aadhar_no, setAadhar_no] = useState("");
+  const [user_id, setUser_id] = useState();
   const navigate = useNavigate();
 
   // ############################
   const applyPuc = () => {
     // navigate("/");
+    setUser_id(id);
     if (registration_no.length == 0) {
       toast.warning("Please Enter the Vehicle registration No");
     } else {
@@ -32,6 +34,7 @@ const ApplyPuc = () => {
         co2,
         hc,
         aadhar_no,
+        user_id,
         // new_owner_mobile,
         // engine_capacity,
         // insurance_status,

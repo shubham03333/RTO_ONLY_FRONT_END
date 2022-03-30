@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import PaymentService from "../../Services/PaymentService";
 import { useNavigate } from "react-router-dom";
-
+import FooterD from "../FooterD";
 const PaymentTable = (props) => {
   const [payment, setPayment] = useState([]);
   const [amount, setAmount] = useState([]);
   const [userid, setUserid] = useState([]);
+
+  // console.log("session");
+  // console.log(id);
+  // console.log("session");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,18 +64,20 @@ const PaymentTable = (props) => {
                     <th>Transaction id</th>
                     <th>Amount</th>
                     <th>User id</th>
-                    <th>To Date</th>
-                    {/* <th>Status</th> */}
+                    <th>Payment Date</th>
+                    <th>Payment for</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {payment.map((payment) => (
-                    <tr key={payment.id}>
+                    <tr key={payment.id} className="text-center">
                       <td> {payment.id}</td>
                       <td> {payment.amount} </td>
                       <td> {payment.user_id}</td>
                       <td> {payment.payment_date}</td>
+                      <td> {payment.payment_for}</td>
+                      {/* <td> {payment.user_id}</td> */}
                       {/* <td> {complain.status}</td> */}
                       <td>
                         {/* <button
@@ -79,13 +86,13 @@ const PaymentTable = (props) => {
                         >
                           Update{" "}
                         </button> */}
-                        <button
+                        {/* <button
                           style={{ marginLeft: "10px" }}
                           onClick={() => deletePayment(payment.id)}
                           className="btn btn-danger"
                         >
                           Delete{" "}
-                        </button>
+                        </button> */}
                         <button
                           style={{ marginLeft: "10px" }}
                           onClick={() => viewPayment(payment.id)}
@@ -108,6 +115,7 @@ const PaymentTable = (props) => {
     <div>
       {paymentList[0]}
       {console.log(paymentList)}
+      <FooterD />
     </div>
   );
 };

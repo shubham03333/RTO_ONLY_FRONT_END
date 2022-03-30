@@ -23,10 +23,11 @@ const RCDownload = () => {
   // const [user, setUser] = useState([]);
 
   const navigate = useNavigate();
+
   const gotoDashbord = () => {
     //  sessionStorage.removeItem;
-    sessionStorage.removeItem("purchase_date");
-    sessionStorage.removeItem("owner");
+    // sessionStorage.removeItem("purchase_date");
+    // sessionStorage.removeItem("owner");
     navigate("/userHome");
   };
 
@@ -35,7 +36,6 @@ const RCDownload = () => {
     RCService.getRcByUserId1(id)
       .then((response) => {
         console.log(response.data);
-        console.log(response.data.user);
         setOwner(response.data.owner);
         setChassis_no(response.data.chassis_no);
         setFuel_type(response.data.fuel_type);
@@ -45,14 +45,12 @@ const RCDownload = () => {
         setSeat_capacity(response.data.seat_capacity);
         setEngine_capacity(response.data.engine_capacity);
         setPurchase_date(response.data.purchase_date);
-
         setRegistration_no(response.data.registration_no);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [
-    // user,
     owner,
     make,
     engine_no,
@@ -70,14 +68,14 @@ const RCDownload = () => {
     console.log({ id });
     UserService.getUserById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setAddress(response.data.address);
       })
 
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [address]);
 
   const [image, setImage] = useState(null);
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DLService from "../../Services/DLService";
 import { useNavigate } from "react-router-dom";
-
+import FooterD from "../FooterD";
 const DLTable = (props) => {
   const [dl, setdl] = useState([]);
   const [aadhar_no, setAadhar] = useState([]);
@@ -57,21 +57,27 @@ const DLTable = (props) => {
                 <thead className="table-dark text-center">
                   <tr className="text-center">
                     <th>User id</th>
+                    <th>Name</th>
                     <th>Aadhar No</th>
                     <th>Licence Category</th>
                     {/* <th>To Date</th> */}
                     <th>Status</th>
+                    {obj.payment != null && <th>Transaction id</th>}
+                    {obj.payment == null && <th>Transaction id</th>}
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {dl.map((dl) => (
-                    <tr key={dl.id}>
+                    <tr key={dl.id} className="text-center">
                       <td> {dl.user_id}</td>
+                      <td> {dl.user.name}</td>
                       <td> {dl.user.aadhar_no} </td>
                       <td> {dl.l_category}</td>
                       <td> {dl.status}</td>
                       {/* <td> {complain.status}</td> */}
+                      {dl.payment != null && <td> {dl.payment.id}</td>}
+                      {dl.payment == null && <td></td>}
                       <td>
                         <button
                           onClick={() => editDL(dl.id)}
@@ -108,6 +114,7 @@ const DLTable = (props) => {
     <div>
       {dlList[0]}
       {console.log(dlList)}
+      <FooterD />
     </div>
   );
 };

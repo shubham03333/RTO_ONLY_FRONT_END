@@ -11,6 +11,11 @@ function Navbar() {
   const logoutUser = () => {
     sessionStorage.removeItem("id");
     sessionStorage.removeItem("name");
+    sessionStorage.removeItem("regid");
+    sessionStorage.removeItem("dlid");
+    sessionStorage.removeItem("llid");
+    sessionStorage.removeItem("role");
+    sessionStorage.removeItem("loginStatus");
     navigate("/");
   };
   return (
@@ -93,11 +98,12 @@ function Navbar() {
                   className="btn btn-outline-secondary shadow-w-100"
                   // className="btn btn-bg-primary shadow-w-100"
                   onClick={logoutUser}
-                  style={{ marginLeft: "1200px" }}
+                  // style={{ marginLeft: "1200px" }}
+                  // style={{ marginLeft: "760%" }}
+                  style={{ marginLeft: "75%" }}
                 >
                   Logout
                 </button>
-                
               )}
               <button
                 type="button"

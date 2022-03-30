@@ -194,7 +194,7 @@ const ApplyPermit = () => {
                       }}
                     />
                   </div>
-                  <label htmlFor="name">Payment No</label>
+                  {/* <label htmlFor="name">Payment No</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-smartphone"></i>
@@ -209,7 +209,7 @@ const ApplyPermit = () => {
                         setPayment_no(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
                   {/* ############################ */}
 
                   <div className="form-group py-3">

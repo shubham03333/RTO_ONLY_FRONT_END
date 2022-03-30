@@ -72,6 +72,9 @@ const ApplyLL = () => {
           const result = response.data;
           console.log(result);
           if (result["status"] == "success") {
+            const { id } = result["data"];
+
+            sessionStorage["llid"] = id;
             toast.success("Proceed for payment");
 
             // navigate to the home page
@@ -151,22 +154,6 @@ const ApplyLL = () => {
                 <div className="col-md-6 border-start gender">
                   <hr />
                   <label htmlFor="name">licence category</label>
-                  {/* <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-account-box-mail"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="l_category"
-                      aria-label="l_category"
-                      aria-describedby="addon-wrapping"
-                      required
-                      onChange={(e) => {
-                        setL_category(e.target.value);
-                      }}
-                    />
-                  </div> */}
                   <select
                     class="form-select"
                     aria-label="Default select example"
