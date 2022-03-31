@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const RTO_API_BASE_URL = "http://localhost:8080";
+import { URL } from "../config";
+
+// const RTO_API_BASE_URL = "http://localhost:8080";
+
+import { URL } from "../config";
 
 class Permit {
   getPermit() {

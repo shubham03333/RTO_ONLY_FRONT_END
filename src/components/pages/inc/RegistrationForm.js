@@ -73,7 +73,8 @@ const RegistrationForm = () => {
     const files = e.target.files;
     const formData = new FormData();
     formData.append("file", files[0]);
-    fetch("http://localhost:8080/user/uploadFile", {
+    // fetch("http://43.204.34.34:8080/user/uploadFile", {
+    fetch(`${URL}/user/uploadFile`, {
       method: "POST",
       body: formData,
     }).then((response) => {
