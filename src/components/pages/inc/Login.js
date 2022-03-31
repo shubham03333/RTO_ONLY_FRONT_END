@@ -78,7 +78,7 @@ const Login = () => {
           <h2>Login</h2>
           <form onSubmit={validate}>
             <input
-              type="text"
+              type="email"
               placeholder="Email"
               className="form-control"
               // value={email}

@@ -53,6 +53,7 @@ function RcStatus() {
     console.log(rc.status);
 
     if (status === "Approved") {
+      sessionStorage["regid"] = rcId;
       toast.success("Congratulations Your Vehicle Registeration  is Approved");
       setRcid(
         <button

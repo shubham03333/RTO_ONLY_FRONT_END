@@ -6,7 +6,7 @@ import dlImage from "./images/puc.png";
 import FooterD from "../../../FooterD";
 
 const PucDownload = () => {
-  const { id } = sessionStorage;
+  const { id, regNO } = sessionStorage;
   const canvas = useRef(null);
   const [registration_no, setRegistration_no] = useState("");
   const [from_date, setFrom_date] = useState();
@@ -22,7 +22,7 @@ const PucDownload = () => {
 
   useEffect(() => {
     console.log({ id });
-    PucService.getPucByUserId1(id)
+    PucService.getPucStatusByRcNo(regNO)
       .then((response) => {
         // console.log(response.data);
         setPuc(response.data);

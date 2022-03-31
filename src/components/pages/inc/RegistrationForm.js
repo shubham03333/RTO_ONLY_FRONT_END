@@ -55,7 +55,7 @@ const RegistrationForm = () => {
         console.log(result);
         if (result["status"] == "success") {
           toast.success("Congratulations have Successfully Registered");
-
+          sessionStorage.removeItem("id");
           // navigate to the home pagsterede
           navigate("/login");
         } else {

@@ -6,7 +6,7 @@ import dlImage from "./images/permit.png";
 import FooterD from "../../../FooterD";
 
 const PermitDownload = () => {
-  const { id } = sessionStorage;
+  const { id, regNO } = sessionStorage;
   const canvas = useRef(null);
   const [registration_no, setRegistration_no] = useState("");
   const [from_date, setFrom_date] = useState();
@@ -21,7 +21,7 @@ const PermitDownload = () => {
 
   useEffect(() => {
     console.log({ id });
-    PermitService.getPermitByUserId1(id)
+    PermitService.getPermitStatusByRcNo(regNO)
       .then((response) => {
         console.log(response.data);
         setFrom_date(response.data.from_date);

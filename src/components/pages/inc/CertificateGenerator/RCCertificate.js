@@ -6,7 +6,7 @@ import dlImage from "./images/rc.png";
 import FooterD from "../../../FooterD";
 
 const RCDownload = () => {
-  const { id } = sessionStorage;
+  const { id, regid } = sessionStorage;
   const canvas = useRef(null);
   const [owner, setOwner] = useState("");
   const [registration_no, setRegistration_no] = useState("");
@@ -33,7 +33,7 @@ const RCDownload = () => {
 
   useEffect(() => {
     console.log({ id });
-    RCService.getRcByUserId1(id)
+    RCService.getRcById(regid)
       .then((response) => {
         console.log(response.data);
         setOwner(response.data.owner);

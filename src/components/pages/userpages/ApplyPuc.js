@@ -16,13 +16,13 @@ const ApplyPuc = () => {
   const [co2, setCo2] = useState("");
   const [hc, setHc] = useState("");
   const [aadhar_no, setAadhar_no] = useState("");
-  const [user_id, setUser_id] = useState();
+  const [user_id, setUser_id] = useState(id);
   const navigate = useNavigate();
 
   // ############################
   const applyPuc = () => {
     // navigate("/");
-    setUser_id(id);
+
     if (registration_no.length == 0) {
       toast.warning("Please Enter the Vehicle registration No");
     } else {
@@ -35,13 +35,6 @@ const ApplyPuc = () => {
         hc,
         aadhar_no,
         user_id,
-        // new_owner_mobile,
-        // engine_capacity,
-        // insurance_status,
-        // puc_status,
-        // hypothecated_to,
-        // wheels,
-        // seat_capacity,
       };
 
       const url = `${URL}/puc/add_puc`;
@@ -52,7 +45,9 @@ const ApplyPuc = () => {
         console.log(result);
         if (result["status"] == "success") {
           toast.success("Proceed for payment");
+          // const { id } = result["data"];
 
+          sessionStorage["regid"] = registration_id;
           // navigate to the home page
           navigate("/payment");
         } else {

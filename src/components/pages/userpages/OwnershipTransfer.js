@@ -49,6 +49,8 @@ const OwnershipTransfer = () => {
     // navigate("/");
     if (registration_no.length == 0) {
       toast.warning("Please Enter the Vehicle registration No");
+    } else if (new_owner_aadhar.length != 12) {
+      toast.warning("Please enter Valid Aadhar Number");
     } else {
       const body = {
         user_id,
@@ -190,7 +192,7 @@ const OwnershipTransfer = () => {
                       <i className="zmdi zmdi-email"></i>
                     </span>
                     <input
-                      type="text"
+                      type="email"
                       className="form-control"
                       placeholder="new_owner_email"
                       aria-label="new_owner_email"
@@ -206,7 +208,7 @@ const OwnershipTransfer = () => {
                       <i className="zmdi zmdi-smartphone"></i>
                     </span>
                     <input
-                      type="text"
+                      type="tel"
                       className="form-control"
                       placeholder="new_owner_mobile"
                       aria-label="new_owner_mobile"

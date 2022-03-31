@@ -56,6 +56,7 @@ function PermitStatus() {
     console.log(rc.status);
 
     if (status === "Approved") {
+      sessionStorage["regNO"] = rcNo;
       toast.success("Congratulations Your Vehicle Transfer  is Approved");
       setRcNo(
         <button

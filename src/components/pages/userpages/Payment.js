@@ -111,6 +111,7 @@ const Payment = () => {
           // navigate to the home page
         } else {
           toast.error(result["error"]);
+          // toast.warning("check your payment for option!!");
         }
       });
     }
@@ -182,7 +183,9 @@ const Payment = () => {
                       setPayment_for(e.target.value);
                     }}
                   >
-                    <option>Select The Option</option>
+                    <option style={{ color: "red" }}>
+                      Please Select The exact option{" "}
+                    </option>
                     <option value="DL">Driving Licence</option>
                     <option value="LL">Learning Licence</option>
                     <option value="RC">Vehicle Registration</option>

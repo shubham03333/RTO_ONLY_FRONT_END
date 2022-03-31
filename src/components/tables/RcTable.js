@@ -59,7 +59,7 @@ const RcTable = (props) => {
               >
                 <thead className="table-dark text-center">
                   <tr className="text-center">
-                    <th>User Id</th>
+                    <th>Registration ID</th>
                     <th> Owner</th>
                     <th> Make</th>
                     <th> Vehicle Class</th>

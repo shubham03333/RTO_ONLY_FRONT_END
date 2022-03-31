@@ -61,6 +61,7 @@ function PucStatus() {
 
     if (status === "Approved") {
       toast.success("Congratulations Your puc is Approved");
+      sessionStorage["regNO"] = rcNo;
       setPucid(
         <button
           type="button"

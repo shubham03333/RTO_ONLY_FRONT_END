@@ -8,6 +8,7 @@ import { URL } from "../../../config";
 import { toast } from "react-toastify";
 
 const ApplyPermit = () => {
+  const { id } = sessionStorage;
   const [registration_no, setRegistration_no] = useState("");
   const [registration_id, setRegistration_id] = useState("");
   const [from_date, setFrom_date] = useState();
@@ -15,6 +16,7 @@ const ApplyPermit = () => {
   const [from_state, setFrom_state] = useState("");
   const [to_state, setTo_state] = useState("");
   const [payment_no, setPayment_no] = useState();
+  const [user_id, setUser_id] = useState(id);
   // const [new_owner_mobile, setNew_owner_mobile] = useState("");
   // const [engine_capacity, setEngine_capacity] = useState("");
   // const [insurance_status, setIsurance_status] = useState("");
@@ -37,6 +39,7 @@ const ApplyPermit = () => {
         from_state,
         to_state,
         payment_no,
+        user_id,
         // new_owner_mobile,
         // engine_capacity,
         // insurance_status,
@@ -54,7 +57,7 @@ const ApplyPermit = () => {
         console.log(result);
         if (result["status"] == "success") {
           toast.success("Proceed for payment");
-
+          sessionStorage["regid"] = registration_id;
           // navigate to the home page
           navigate("/payment");
         } else {

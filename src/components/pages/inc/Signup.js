@@ -73,7 +73,7 @@ const Signup = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder=" name"
+                      placeholder="name"
                       aria-label="name"
                       aria-describedby="addon-wrapping"
                       onChange={(e) => {
@@ -87,7 +87,7 @@ const Signup = () => {
                       <i className="zmdi zmdi-email"></i>
                     </span>
                     <input
-                      type="text"
+                      type="email"
                       className="form-control"
                       placeholder="email id"
                       aria-label="email-id"
