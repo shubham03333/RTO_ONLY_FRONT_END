@@ -20,8 +20,11 @@ const UpdateDL = (props) => {
 
   var d = new Date();
   var td = new Date();
+
   const separator = "-";
+
   console.log(d.toLocaleDateString());
+
   d.setMonth(d.getMonth() + 180);
   console.log(d.toLocaleDateString());
   let date = d.getDate();
@@ -36,16 +39,15 @@ const UpdateDL = (props) => {
   let tyear = td.getFullYear();
 
   let todDate = `${tyear}${separator}${
-    month < 10 ? `0${tmonth}` : `${tmonth}`
-  }${separator}${tdate}`;
+    tmonth < 10 ? `0${tmonth}` : `${tmonth}`
+  }${separator}${tdate < 10 ? `0${tdate}` : `${tdate}`}`;
   console.log("today is " + todDate);
 
   //############
 
   let todaysDate = `${year}${separator}${
     month < 10 ? `0${month}` : `${month}`
-  }${separator}${date}`;
-  console.log(todaysDate);
+  }${separator}${date < 10 ? `0${date}` : `${date}`}`;
 
   useEffect(() => {
     DLService.getDLById(id)

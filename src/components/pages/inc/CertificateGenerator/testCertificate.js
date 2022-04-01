@@ -26,7 +26,7 @@ const DLDownload = () => {
 
   useEffect(() => {
     console.log({ id });
-    DLService.getDLByUserId1(id)
+    DLService.getDLByUserIdforcert(id)
       .then((response) => {
         console.log(response.data);
         console.log(response.data.user);

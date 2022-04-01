@@ -33,7 +33,7 @@ function DLStatus() {
   const navigate = useNavigate();
   useEffect(() => {
     // console.log({ id });
-    DLService.getDLByUserId1(id)
+    DLService.getDLByUserIdforcert(id)
       .then((response) => {
         console.log(response.data);
 

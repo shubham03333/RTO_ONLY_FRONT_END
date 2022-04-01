@@ -10,13 +10,17 @@ const UpdateLL = (props) => {
   const [ll, setLL] = useState([]);
 
   const [tempLLNo, setTempLLNo] = useState("");
-  const [issue_date, setIssue_date] = useState("");
-  const [expiry_date, setExpiry_date] = useState("");
+  const [issue_date, setIssue_date] = useState(new Date());
+  const [expiry_date, setExpiry_date] = useState(new Date());
   const [status, setStatus] = useState("");
+
+  const navigate = useNavigate();
+
   var d = new Date();
   var td = new Date();
+
   const separator = "-";
-  console.log(d.toLocaleDateString());
+
   d.setMonth(d.getMonth() + 6);
   console.log(d.toLocaleDateString());
   let date = d.getDate();
@@ -24,26 +28,28 @@ const UpdateLL = (props) => {
   let year = d.getFullYear();
 
   //############
-  console.log(td.toLocaleDateString());
-  console.log(td.toLocaleDateString());
+  // console.log(td.toLocaleDateString());
   let tdate = td.getDate();
   let tmonth = td.getMonth() + 1;
   let tyear = td.getFullYear();
 
   let todDate = `${tyear}${separator}${
-    month < 10 ? `0${tmonth}` : `${tmonth}`
-  }${separator}${tdate}`;
+    tmonth < 10 ? `0${tmonth}` : `${tmonth}`
+  }${separator}${tdate < 10 ? `0${tdate}` : `${tdate}`}`;
   console.log("today is " + todDate);
 
-  //############
+  console.log("today is " + todDate);
 
   let todaysDate = `${year}${separator}${
     month < 10 ? `0${month}` : `${month}`
-  }${separator}${date}`;
-  console.log(todaysDate);
+  }${separator}${date < 10 ? `0${date}` : `${date}`}`;
 
-  const navigate = useNavigate();
+  // var myDate = new Date(todDate);
 
+  // var str = todDate;
+  // var strToDate = new Date(str);
+
+  // console.log("date converted " + strToDate);
   useEffect(() => {
     LLService.getLLById(id)
       .then((response) => {
@@ -82,18 +88,22 @@ const UpdateLL = (props) => {
   };
 
   const changetempLLNoHandler = (event) => {
+    setIssue_date(todDate);
+    // setIssue_date(new Date(todDate));
+    setExpiry_date(todaysDate);
     setTempLLNo(event.target.value);
-    setIssue_date(todDate);
-    setExpiry_date(todaysDate);
+
+    console.log("Inside handler " + todDate);
+    console.log("Inside handler " + todaysDate);
   };
-  const changeIssue_dateHandler = (event) => {
-    // setIssue_date(event.target.value);
-    setIssue_date(todDate);
-  };
-  const changeExpiry_dateHandler = (event) => {
-    // setExpiry_date(event.target.value);
-    setExpiry_date(todaysDate);
-  };
+  // const changeIssue_dateHandler = (event) => {
+  //   // setIssue_date(event.target.value);
+  //   setIssue_date(todDate);
+  // };
+  // const changeExpiry_dateHandler = (event) => {
+  //   // setExpiry_date(event.target.value);
+  //   setExpiry_date(todaysDate);
+  // };
   const changeStatusHandler = (event) => {
     setStatus(event.target.value);
   };
@@ -126,7 +136,7 @@ const UpdateLL = (props) => {
                   <label htmlFor="name">Issue Date</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-email"></i>
+                      <i className="zmdi zmdi-calendar-check"></i>
                     </span>
                     <input
                       type="date"
@@ -136,21 +146,7 @@ const UpdateLL = (props) => {
                       // onChange={changeIssue_dateHandler}
                     />
                   </div>
-                  {/* <label htmlFor="name">Status</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      aria-describedby="addon-wrapping"
-                      value={status}
-                      onChange={changeStatusHandler}
-                    />
-                  </div> */}
-                  {/*  */}
-                  {/*  */}
+
                   <label htmlFor="name">Expiry Date</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
@@ -164,40 +160,13 @@ const UpdateLL = (props) => {
                       // onChange={changeExpiry_dateHandler}
                     />
                   </div>
-                  {/* <label htmlFor="name">To Date</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-bookmark"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      // aria-describedby="addon-wrapping"
-                      autoComplete="off"
-                      readOnly
-                      value={to_date}
-                    />
-                  </div>{" "} */}
                 </div>
 
                 {/* second half  */}
 
                 <div className="col-md-6 border-start gender">
                   <hr />
-                  {/* 
-                  <label htmlFor="name">Registration id</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-pin"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      aria-describedby="addon-wrapping"
-                      value={registration_id}
-                      readOnly
-                    />
-                  </div> */}
+
                   <label htmlFor="name">Status</label>
                   <div className="form-check">
                     <input

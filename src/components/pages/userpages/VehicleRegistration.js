@@ -155,7 +155,7 @@ const VehicleRegistration = () => {
                   <label htmlFor="name">Make</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-pin"></i>
+                      <i class="zmdi zmdi-car"></i>
                     </span>
                     <input
                       type="text"
@@ -187,7 +187,7 @@ const VehicleRegistration = () => {
                   <label htmlFor="name">Vehicle class</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i class="zmdi zmdi-car"></i>
                     </span>
                     <input
                       type="text"
@@ -241,7 +241,7 @@ const VehicleRegistration = () => {
                   <label htmlFor="name">Engine No</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i class="zmdi zmdi-n-1-square"></i>
                     </span>
                     <input
                       type="text"
@@ -258,7 +258,7 @@ const VehicleRegistration = () => {
                   <label htmlFor="name">Engine capacity</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i class="zmdi zmdi-n-2-square"></i>
                     </span>
                     <input
                       type="number"
@@ -333,7 +333,7 @@ const VehicleRegistration = () => {
 
                   <div className="input-group flex-nowrap ">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
+                      <i className="zmdi zmdi-assignment-account"></i>
                     </span>
                     <input
                       type="text"
@@ -351,7 +351,7 @@ const VehicleRegistration = () => {
                   <label htmlFor="name">wheels</label>
                   <div className="input-group flex-nowrap ">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
+                      <i class="zmdi zmdi-circle"></i>
                     </span>
                     <input
                       type="number"
@@ -368,7 +368,7 @@ const VehicleRegistration = () => {
                   <label htmlFor="name">Seat capacity</label>
                   <div className="input-group flex-nowrap ">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
+                      <i class="zmdi zmdi-seat"></i>
                     </span>
                     <input
                       type="number"

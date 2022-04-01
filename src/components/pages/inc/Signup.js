@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
 import RVideo from "../../../assets/Roads.mp4";
+import FooterD from "../../FooterD";
 
 // import CarAnimation from "./caranimation/CarAnimation";
 const Signup = () => {
@@ -51,7 +52,10 @@ const Signup = () => {
           // navigate to the signin page
           navigate("/login");
         } else {
-          toast.error(result["error"]);
+          if (result["error"]) {
+            toast.error(result["error"]);
+          }
+          toast.warning("Enter valid email id");
         }
       });
     }
@@ -89,7 +93,7 @@ const Signup = () => {
                     <input
                       type="email"
                       className="form-control"
-                      placeholder="email id"
+                      placeholder="example@gmail.com"
                       aria-label="email-id"
                       aria-describedby="addon-wrapping"
                       onChange={(e) => {
@@ -155,7 +159,7 @@ const Signup = () => {
                     autoPlay
                     width="100%"
                     height="320"
-                    allow="autoplay"
+                  allow="autoplay"
                     loop
                     src="https://drive.google.com/file/d/1lAsyAwznGFNrHvh9cYeoli0Bncs25L00/preview"
                   ></iframe> */}
@@ -165,7 +169,9 @@ const Signup = () => {
           </div>
         </div>
       </section>
-      {/* <Footer /> */}
+      <div style={{ marginTop: "7%" }}>
+        <FooterD />
+      </div>
     </div>
   );
 };

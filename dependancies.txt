@@ -31,3 +31,5 @@ rm -rf node_modules package-lock.json &&npm  install && npm start
 
 npm i ajv-keywords
  npm install ajv-errors@1 
+
+ sudo kill -9 $(sudo lsof -t -i:3000)

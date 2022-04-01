@@ -31,10 +31,10 @@ const LLDownload = () => {
 
   useEffect(() => {
     console.log({ id });
-    LLService.getLLByUserId1(id)
+    LLService.getLLByUserIdforcert(id)
       .then((response) => {
         console.log(response.data);
-        console.log(response.data.user);
+        // console.log(response.data.user);
         setUser(response.data.user);
         setLL(response.data);
         console.log(ll);
@@ -80,7 +80,7 @@ const LLDownload = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [myphoto]);
 
   const [image, setImage] = useState(null);
   const [Idphoto, setIdphoto] = useState(null);

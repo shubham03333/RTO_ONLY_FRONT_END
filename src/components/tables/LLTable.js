@@ -5,8 +5,8 @@ import FooterD from "../FooterD";
 
 const LLTable = (props) => {
   const [ll, setLL] = useState([]);
-  const [aadhar_no, setAadhar] = useState([]);
-  const [status, setStatus] = useState([]);
+  const [aadhar_no, setAadhar] = useState("");
+  const [status, setStatus] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +33,16 @@ const LLTable = (props) => {
   const editLL = (id) => {
     navigate(`/update-ll/${id}`);
   };
+
+  // sortByDescending() {
+
+  //   let sortedDescending = ll.sort((a, b) => {
+  //     return b.status - a.status;
+  //   });
+  //    this.setState({
+  //     ll: sortedDescending
+  //   });
+  // }
 
   console.log(ll);
   const llList = ll.map((obj) => {

@@ -44,7 +44,7 @@ function LLStatus() {
   // }, []);
   useEffect(() => {
     // console.log({ id });
-    LLService.getLLByUserId1(id)
+    LLService.getLLByUserIdforcert(id)
       .then((response) => {
         console.log(response.data);
         // console.log(response.data.user);

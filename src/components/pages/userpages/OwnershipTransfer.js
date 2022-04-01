@@ -102,7 +102,7 @@ const OwnershipTransfer = () => {
                   <label htmlFor="name">User id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-account-box-mail"></i>
+                      <i class="zmdi zmdi-n-1-square"></i>
                     </span>
                     <input
                       type="text"
@@ -118,7 +118,7 @@ const OwnershipTransfer = () => {
                   <label htmlFor="name">Registration No</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-assignment-account"></i>
+                      <i class="zmdi zmdi-n-2-square"></i>
                     </span>
                     <input
                       type="text"
@@ -135,7 +135,7 @@ const OwnershipTransfer = () => {
                   <label htmlFor="name">New Owner</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-calendar-check"></i>
+                      <i class="zmdi zmdi-account-circle"></i>
                     </span>
                     <input
                       type="text"
@@ -151,7 +151,7 @@ const OwnershipTransfer = () => {
                   <label htmlFor="name">New Owner Aadhar</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-pin"></i>
+                      <i className="zmdi zmdi-account-box-mail"></i>
                     </span>
                     <input
                       type="text"
@@ -173,7 +173,7 @@ const OwnershipTransfer = () => {
                   <label htmlFor="name">Registration id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i class="zmdi zmdi-n-3-square"></i>
                     </span>
                     <input
                       type="text"

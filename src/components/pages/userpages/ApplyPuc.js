@@ -25,6 +25,8 @@ const ApplyPuc = () => {
 
     if (registration_no.length == 0) {
       toast.warning("Please Enter the Vehicle registration No");
+    } else if (aadhar_no.length != 12) {
+      toast.warning("Please Enter valid aadhar No");
     } else {
       const body = {
         registration_no,
@@ -86,7 +88,7 @@ const ApplyPuc = () => {
                   <label htmlFor="name">Registration id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i class="zmdi zmdi-n-1-square"></i>
                     </span>
                     <input
                       type="text"
@@ -103,7 +105,7 @@ const ApplyPuc = () => {
                   <label htmlFor="name">From Date</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-account-box-mail"></i>
+                      <i className="zmdi zmdi-calendar-check"></i>
                     </span>
                     <input
                       type="date"
@@ -142,7 +144,7 @@ const ApplyPuc = () => {
                   <label htmlFor="name">co2</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-email"></i>
+                      <i class="zmdi zmdi-block-alt"></i>
                     </span>
                     <input
                       type="text"
@@ -158,7 +160,7 @@ const ApplyPuc = () => {
                   <label htmlFor="name">hc</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i class="zmdi zmdi-block-alt"></i>
                     </span>
                     <input
                       type="text"
@@ -174,7 +176,7 @@ const ApplyPuc = () => {
                   <label htmlFor="name">Aadhar No</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i className="zmdi zmdi-account-box-mail"></i>
                     </span>
                     <input
                       type="text"
