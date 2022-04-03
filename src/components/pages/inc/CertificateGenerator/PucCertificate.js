@@ -10,9 +10,9 @@ const PucDownload = () => {
   const canvas = useRef(null);
   const [registration_no, setRegistration_no] = useState("");
   const [from_date, setFrom_date] = useState();
-  const [to_date, setTo_date] = useState("");
-  const [co2, setCo2] = useState("");
-  const [hc, setHc] = useState("");
+  const [to_date, setTo_date] = useState();
+  const [co2, setCo2] = useState();
+  const [hc, setHc] = useState();
   const [puc_no, setPuc_no] = useState("");
   const [puc, setPuc] = useState([]);
 
@@ -25,7 +25,7 @@ const PucDownload = () => {
     PucService.getPucStatusByRcNo(regNO)
       .then((response) => {
         // console.log(response.data);
-        setPuc(response.data);
+        // setPuc(response.data);
         setFrom_date(response.data.from_date);
         setTo_date(response.data.to_date);
         setCo2(response.data.co2);
@@ -71,9 +71,9 @@ const PucDownload = () => {
       ctx.fillText(puc_no, 215, 63);
       ctx.fillText(from_date, 210, 85);
       ctx.fillText(to_date, 415, 85);
-      ctx.fillText(co2, 261, 192);
+      ctx.fillText(co2, 265, 192);
 
-      ctx.fillText(hc, 259, 215);
+      ctx.fillText(hc, 265, 215);
       ctx.fillText(registration_no, 265, 120);
     }
   }, [canvas, from_date, to_date, co2, hc, puc_no, registration_no]);
@@ -91,8 +91,15 @@ const PucDownload = () => {
         />
       </div>
       <div className="img"></div>
+      <p style={{ marginTop: "-8%", marginLeft: "36%" }}>
+        {" "}
+        <i className="text-danger">*</i> To download PUC right click on the
+        image and save image
+      </p>
+      <br />
       <button
-        className="btn btn-primary"
+        className="btn btn-primary mt-1"
+        style={{ marginBottom: "2%" }}
         id="dashbtn"
         onClick={(e) => navigate("/userHome")}
       >

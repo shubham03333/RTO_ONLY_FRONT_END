@@ -1,9 +1,6 @@
 import axios from "axios";
-import { URL } from "../config";
 
-// const RTO_API_BASE_URL = "http://localhost:8080";
-
-const RTO_API_BASE_URL = `${URL}`;
+const RTO_API_BASE_URL = "http://localhost:8080";
 
 class DL {
   getDL() {
@@ -31,6 +28,10 @@ class DL {
 
   getPhotoById(Id) {
     return axios.get(RTO_API_BASE_URL + "/downloadFile/" + Id);
+  }
+
+  getDLByUserIdforcert(userId) {
+    return axios.get(RTO_API_BASE_URL + "/dl/byUserIdforcert/" + userId);
   }
 }
 

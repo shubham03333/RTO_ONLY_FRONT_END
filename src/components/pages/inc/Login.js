@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { URL } from "../../../config";
 import FooterD from "../../FooterD";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -74,7 +75,7 @@ const Login = () => {
           </p>
         </div>
 
-        <div className="col-md-3" id="lf">
+        <div className="col-md-3 " id="lf">
           <h2>Login</h2>
           <form onSubmit={validate}>
             <input
@@ -95,13 +96,27 @@ const Login = () => {
                 setPassword(e.target.value);
               }}
             />
-
             <input
               type="submit"
               className="btn btn-primary button form-control"
               value="Login"
             />
             <hr />
+            <Link
+              to="/signup"
+              style={{ textAlign: "start" }}
+              className="col-2-md-2"
+            >
+              <span>Sign Up here</span>
+            </Link>
+            &emsp; &emsp;
+            <Link
+              to="/resetPassword"
+              style={{ textAlign: "end" }}
+              className="col-2-md-2"
+            >
+              <span>forgot password?</span>
+            </Link>
             <button
               className="btn btn-success button"
               onClick={() => {

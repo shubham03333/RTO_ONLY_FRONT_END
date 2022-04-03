@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import PermitService from "../../../Services/PermitService";
+import FooterD from "../../FooterD";
 const ViewPermit = (props) => {
   const { id } = useParams();
   const [permit, setPermit] = useState([]);
@@ -241,6 +242,7 @@ const ViewPermit = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

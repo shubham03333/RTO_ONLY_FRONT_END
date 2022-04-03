@@ -65,7 +65,7 @@ import PucDownload from "./components/pages/inc/CertificateGenerator/PucCertific
 import Privacy from "./components/pages/inc/staticpages/Privacy";
 import ViewVehicleTransfer from "./components/pages/adminpages/ViewVehicleTransfer";
 import ViewVehicleTransferCertificate from "./components/pages/adminpages/ViewVehicleTransferCertificate";
-
+import ResetPassword from "./components/pages/userpages/ResetPassword"
 function App() {
   return (
     <div>
@@ -129,7 +129,11 @@ function App() {
           <Route path="/permitstatus" element={<PermitStatus />} />
           <Route path="/pucstatus" element={<PucStatus />} />
           {/* <Route path="/rcstatus" element={<RcStatus />} /> */}
+
+
           <Route path="/view-payment/:id" element={<ViewPayment />} />
+
+          
           <Route path="/paymentTable" element={<PaymentTable />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/dldownload" element={<DLDownload />} />
@@ -139,6 +143,7 @@ function App() {
           <Route path="/pucdownload" element={<PucDownload />} />
           <Route path="/privacypolicy" element={<Privacy />} />
           <Route path="/payment/:id" element={<Payment />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
         </Routes>
 
         {/* <Footer /> */}

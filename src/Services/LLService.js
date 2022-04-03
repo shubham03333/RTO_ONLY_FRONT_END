@@ -1,8 +1,6 @@
 import axios from "axios";
-import { URL } from "../config";
-// const RTO_API_BASE_URL = "http://localhost:8080";
 
-const RTO_API_BASE_URL = `${URL}`;
+const RTO_API_BASE_URL = "http://localhost:8080";
 
 class LL {
   getLL() {
@@ -25,6 +23,9 @@ class LL {
   }
   getLLByUserId1(userId) {
     return axios.get(RTO_API_BASE_URL + "/ll/byUserId1/" + userId);
+  }
+  getLLByUserIdforcert(userId) {
+    return axios.get(RTO_API_BASE_URL + "/ll/byUserIdforcert/" + userId);
   }
 }
 

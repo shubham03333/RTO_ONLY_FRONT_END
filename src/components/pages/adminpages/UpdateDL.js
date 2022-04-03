@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import DLService from "../../../Services/DLService";
+import FooterD from "../../FooterD";
 const UpdateDL = (props) => {
   const { id } = useParams();
   const [dl, setDl] = useState([]);
@@ -253,6 +254,7 @@ const UpdateDL = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

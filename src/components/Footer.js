@@ -9,8 +9,7 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
-import "./Footer.css"
-
+import "./Footer.css";
 
 export default function Footer() {
   const [fullYear, setFullYear] = useState();
@@ -19,16 +18,13 @@ export default function Footer() {
     setFullYear(new Date().getFullYear());
   }, [fullYear]);
 
-  let fontStyle ={
-
-  }
+  let fontStyle = {};
   let footerStyle = {
     position: "relative",
     // top: "55vh",
     top: "100%",
     width: "100%",
-    backgroundColor: "black", 
-    
+    backgroundColor: "black",
   };
 
   return (
@@ -164,9 +160,9 @@ export default function Footer() {
             </Link>
             &emsp;| &emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;
             <span>
-              <Link to="#" className="youtube social">
+              <a className="youtube social" href="https://www.youtube.com/">
                 <FontAwesomeIcon icon={faYoutube} size="2x" />
-              </Link>
+              </a>
               &emsp;
               <a
                 href="https://shubhamsjadhav.blogspot.com/"
@@ -175,13 +171,13 @@ export default function Footer() {
                 <FontAwesomeIcon icon={faFacebook} size="2x" />
               </a>
               &emsp;
-              <Link to="#" className="twitter social">
+              <a href="https://www.twitter.com/" className="twitter social">
                 <FontAwesomeIcon icon={faTwitter} size="2x" />
-              </Link>
+              </a>
               &emsp;
-              <Link to="#" className="instagram social">
+              <a href="https://www.instagram.com/" className="instagram social">
                 <FontAwesomeIcon icon={faInstagram} size="2x" />
-              </Link>
+              </a>
             </span>
           </p>
         </div>

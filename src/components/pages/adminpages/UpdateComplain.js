@@ -4,6 +4,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import ComplainService from "../../../Services/ComplainService";
+import FooterD from "../../FooterD";
+
 const UpdateComplain = (props) => {
   const { id } = useParams();
   const [complain, setComplain] = useState([]);
@@ -230,6 +232,7 @@ const UpdateComplain = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

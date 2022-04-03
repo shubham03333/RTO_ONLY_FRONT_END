@@ -4,7 +4,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import PaymentService from "../../../Services/PaymentService";
+import FooterD from "../../FooterD";
 const ViewPayment = (props) => {
+  
   const { id } = useParams();
   const [payment, setPayment] = useState([]);
   const [user, setUser] = useState([]);
@@ -241,6 +243,7 @@ const ViewPayment = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

@@ -59,6 +59,7 @@ const UserTable = (props) => {
                     <th> Email</th>
                     <th> Name</th>
                     <th> Address</th>
+                    <th> Admin status</th>
                     <th> Actions</th>
                   </tr>
                 </thead>
@@ -69,6 +70,7 @@ const UserTable = (props) => {
                       <td> {user.email}</td>
                       <td> {user.name}</td>
                       <td> {user.address}</td>
+                      <td> {user.status}</td>
                       <td>
                         <button
                           onClick={() => editUser(user.id)}

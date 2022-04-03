@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import PucServices from "../../../Services/PucService";
+import FooterD from "../../FooterD";
 const ViewPuc = (props) => {
   const { id } = useParams();
   const [puc, setPuc] = useState([]);
@@ -241,6 +242,7 @@ const ViewPuc = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

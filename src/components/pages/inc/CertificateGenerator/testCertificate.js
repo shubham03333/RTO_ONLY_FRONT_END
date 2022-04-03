@@ -136,9 +136,17 @@ const DLDownload = () => {
         />
       </div>
       <div className="img"></div>
+      <p style={{ marginTop: "-8%", marginLeft: "36%" }}>
+        {" "}
+        <i className="text-danger">*</i> To download DL right click on the image
+        and save image
+      </p>
+      <br />
       <button
-        className="btn btn-primary"
+        className="btn btn-primary mt-1"
+        style={{ marginBottom: "2%" }}
         id="dashbtn"
+        // onClick={(e) => navigate("/userHome")}
         onClick={(e) => navigate("/userHome")}
       >
         {" "}

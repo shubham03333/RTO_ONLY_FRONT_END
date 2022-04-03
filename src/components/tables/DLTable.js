@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DLService from "../../Services/DLService";
 import { useNavigate } from "react-router-dom";
+import bg from "../../assets/5.png";
+
 import FooterD from "../FooterD";
 const DLTable = (props) => {
   const [dl, setdl] = useState([]);
@@ -111,11 +113,13 @@ const DLTable = (props) => {
     );
   });
   return (
+    // <div style={{ backgroundImage: `url(${bg})` }}>
     <div>
       {dlList[0]}
       {console.log(dlList)}
       <FooterD />
     </div>
+    // </div>
   );
 };
 export default DLTable;

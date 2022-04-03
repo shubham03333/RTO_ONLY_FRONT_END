@@ -13,6 +13,7 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [status1, setStatus1] = useState("");
 
   const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ const AdminLogin = () => {
         email,
         password,
         role,
+        status1,
       };
 
       // url to make signin api call
@@ -38,12 +40,17 @@ const AdminLogin = () => {
         // get the server result
         const result = response.data;
         console.log(result);
+        console.log(result.status1);
         if (result["status"] == "success") {
           toast.success("Welcome to the application");
 
-          const { id, name, role } = result["data"];
+          // console.log("status " + status1);
+
+          const { id, name, role, status1 } = result["data"];
           console.log("role " + role);
-          if (role === "admin") {
+          console.log("status " + status1);
+
+          if (role === "admin" && status1 === "approved") {
             // persist the logged in user's information for future use
             sessionStorage["id"] = id;
             sessionStorage["name"] = name;

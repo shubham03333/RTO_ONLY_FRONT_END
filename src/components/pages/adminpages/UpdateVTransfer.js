@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import VehicleTransferService from "../../../Services/VehicleTransferService";
+import FooterD from "../../FooterD";
 const UpdateVTransfer = (props) => {
   const { id } = useParams();
   const [vtransfer, setVtransfer] = useState([]);
@@ -257,6 +258,7 @@ const UpdateVTransfer = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

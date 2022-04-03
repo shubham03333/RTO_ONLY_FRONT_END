@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import LLService from "../../../Services/LLService";
 import { getCurrentDate } from "../../../Services/Date";
+import FooterD from "../../FooterD";
 const UpdateLL = (props) => {
   const { id } = useParams();
   const [ll, setLL] = useState([]);
@@ -234,6 +235,7 @@ const UpdateLL = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

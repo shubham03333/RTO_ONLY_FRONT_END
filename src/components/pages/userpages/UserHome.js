@@ -7,7 +7,8 @@ import Service2 from "../../../assets/v-renewal-of-registration.png";
 import Service3 from "../../../assets/v-transfer-ownership.png";
 import Service4 from "../../../assets/v-permit-services.png";
 import Service5 from "../../../assets/puc1.png";
-import Service6 from "../../../assets/lidence services1.png";
+import bg from "../../../assets/1.png";
+
 function UserHome() {
   const { id, name } = sessionStorage;
   console.log(id);
@@ -18,7 +19,7 @@ function UserHome() {
   };
 
   return (
-    <div>
+    <div style={{ backgroundImage: `url(${bg})` }}>
       {/* Our Services */}
 
       <section className="section  border-top">

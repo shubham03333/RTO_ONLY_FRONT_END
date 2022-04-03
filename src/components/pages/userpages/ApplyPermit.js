@@ -96,7 +96,7 @@ const ApplyPermit = () => {
                   <label htmlFor="name">Registration id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-smartphone"></i>
+                      <i class="zmdi zmdi-n-1-square"></i>
                     </span>
                     <input
                       type="text"
@@ -113,7 +113,7 @@ const ApplyPermit = () => {
                   <label htmlFor="name">From Date</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-account-box-mail"></i>
+                      <i className="zmdi zmdi-calendar-check"></i>
                     </span>
                     <input
                       type="date"
@@ -142,22 +142,6 @@ const ApplyPermit = () => {
                       }}
                     />
                   </div>
-                  {/* <label htmlFor="name">New Owner Aadhar</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-pin"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="new_owner_aadhar"
-                      aria-label="new_owner_aadhar"
-                      aria-describedby="addon-wrapping"
-                      onChange={(e) => {
-                        setNew_owner_aadhar(e.target.value);
-                      }}
-                    />
-                  </div> */}
                 </div>
 
                 {/* second half  */}

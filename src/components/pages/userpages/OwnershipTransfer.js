@@ -77,7 +77,12 @@ const OwnershipTransfer = () => {
         console.log("resu");
 
         if (result["status"] == "success") {
-          toast.success("Ownership Transfer requested");
+          const { registration_id } = result["data"];
+
+          sessionStorage["regid"] = registration_id;
+          toast.success("Proceed to payment");
+
+          // toast.success("Ownership Transfer requested");
 
           // navigate to the home page
           navigate(`/payment/${registration_id}`);
@@ -250,7 +255,6 @@ const OwnershipTransfer = () => {
           </div>
         </div>
       </section>
-      {/* <Payment /> */}
     </div>
   );
 };

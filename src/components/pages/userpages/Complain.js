@@ -16,6 +16,8 @@ function Complain() {
   const registerComplain = () => {
     if (user_id.length == 0) {
       toast.warning("Please Enter the User id");
+    } else if (aadhar_no.length != 12) {
+      toast.warning("Please enter Valid Aadhar Number");
     } else {
       const body = {
         user_id,

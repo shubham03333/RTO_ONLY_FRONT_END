@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import VehicleTransferService from "../../../Services/VehicleTransferService";
+import FooterD from "../../FooterD";
 const ViewVehicleTransferCertificate = (props) => {
   const { id } = useParams();
   const [vtransfer, setVtransfer] = useState([]);
@@ -142,91 +143,7 @@ const ViewVehicleTransferCertificate = (props) => {
                       value={vtransfer.payment_id}
                     />
                   </div>
-                  {/* <label htmlFor="name">Fuel Type</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i class="zmdi zmdi-fire"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      aria-label="text"
-                      aria-describedby="addon-wrapping"
-                      // value={vtransfer.vehicleRegistration1.fuel_type}
-                    />
-                  </div>
-                  <label htmlFor="name">Insurance Status</label>
-                  <div className="input-group flex-nowrap mt-2">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-bookmark"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="blood group"
-                      aria-label="blood-group"
-                      // aria-describedby="addon-wrapping"
-                      autoComplete="off"
-                      value={vtransfer.insurance_status}
-                    />
-                  </div>
 
-                  <label htmlFor="name">PUC status</label>
-                  <div className="input-group flex-nowrap ">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="text"
-                      aria-label="text"
-                      autoComplete="new-text"
-                      value={vtransfer.puc_status}
-                    />
-                  </div> */}
-                  {/* <label htmlFor="name">Hypothecated to</label>
-                  <div className="input-group flex-nowrap ">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Nill"
-                      aria-label="text"
-                      autoComplete="new-text"
-                      value={vtransfer.hypothecated_to}
-                    />
-                  </div>
-                  <label htmlFor="name">Wheels</label>
-                  <div className="input-group flex-nowrap ">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="text"
-                      aria-label="text"
-                      autoComplete="new-text"
-                      value={vtransfer.wheels}
-                    />
-                  </div>
-                  <label htmlFor="name">Payment id</label>
-                  <div className="input-group flex-nowrap ">
-                    <span className="input-group-text" id="addon-wrapping">
-                      <i className="zmdi zmdi-lock"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="text"
-                      aria-label="text"
-                      autoComplete="new-text"
-                      value={vtransfer.payment_id}
-                    />
-                  </div> */}
                   <div className="form-group py-3">
                     <button
                       className="btn btn-primary shadow w-100"
@@ -241,6 +158,7 @@ const ViewVehicleTransferCertificate = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

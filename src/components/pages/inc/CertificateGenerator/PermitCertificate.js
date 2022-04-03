@@ -9,9 +9,9 @@ const PermitDownload = () => {
   const { id, regNO } = sessionStorage;
   const canvas = useRef(null);
   const [registration_no, setRegistration_no] = useState("");
-  const [from_date, setFrom_date] = useState();
-  const [to_date, setTo_date] = useState("");
-  const [from_state, setFrom_state] = useState("");
+  const [from_date, setFrom_date] = useState("");
+  const [to_date, setTo_date] = useState();
+  const [from_state, setFrom_state] = useState();
   const [to_state, setTo_state] = useState("");
   const [permit_no, setPermit_no] = useState("");
   const [permit, setPermit] = useState([]);
@@ -29,7 +29,7 @@ const PermitDownload = () => {
         setFrom_state(response.data.from_state);
         setTo_state(response.data.to_state);
         setPermit_no(response.data.permit_no);
-        setPermit(response.data);
+        // setPermit(response.data);
         setRegistration_no(response.data.registration_no);
       })
       .catch((err) => {
@@ -78,9 +78,9 @@ const PermitDownload = () => {
       ctx.fillText(permit_no, 215, 63);
       ctx.fillText(from_date, 210, 98);
       ctx.fillText(to_date, 415, 98);
-      ctx.fillText(from_state, 210, 183);
+      ctx.fillText(from_state, 170, 200);
 
-      ctx.fillText(to_state, 365, 199);
+      ctx.fillText(to_state, 365, 200);
       ctx.fillText(registration_no, 275, 140);
     }
   }, [
@@ -106,8 +106,15 @@ const PermitDownload = () => {
         />
       </div>
       <div className="img"></div>
+      <p style={{ marginTop: "-8%", marginLeft: "36%" }}>
+        {" "}
+        <i className="text-danger">*</i> To download Permit right click on the
+        image and save image
+      </p>
+      <br />
       <button
-        className="btn btn-primary"
+        className="btn btn-primary mt-1"
+        style={{ marginBottom: "2%" }}
         id="dashbtn"
         onClick={(e) => navigate("/userHome")}
       >

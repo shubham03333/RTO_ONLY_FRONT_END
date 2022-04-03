@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import UserService from "../../../Services/UserService";
+import FooterD from "../../FooterD";
 
 const UpdateRc = (props) => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const UpdateRc = (props) => {
   const [address, setAddress] = useState("");
   const [mobile_no, setmobile_no] = useState();
   const [aadhar_no, setAadhar_no] = useState("");
-
+  const [status, setStatus] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,6 +49,7 @@ const UpdateRc = (props) => {
       address: address,
       mobile_no: mobile_no,
       aadhar_no: aadhar_no,
+      status: status,
     };
     console.log("user => " + JSON.stringify(user));
     console.log("id => " + JSON.stringify(id));
@@ -183,6 +185,26 @@ const UpdateRc = (props) => {
                       onChange={changeMobileNoHandler}
                     />
                   </div>
+                  <label htmlFor="name">Status</label>
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="status"
+                      id="flexRadioDefault1"
+                      value="approved"
+                      // defaultChecked
+                      onChange={(e) => {
+                        setStatus(e.target.value);
+                      }}
+                    />
+                    <label
+                      className="form-check-label radiog"
+                      htmlFor="flexRadioDefault1"
+                    >
+                      Approve
+                    </label>
+                  </div>
                   <div
                     className="btn-group mt-3"
                     role="group"
@@ -212,6 +234,7 @@ const UpdateRc = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

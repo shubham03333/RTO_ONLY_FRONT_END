@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import UserService from "../../../Services/UserService";
+import FooterD from "../../FooterD";
 
 const ViewUser = (props) => {
   const { id } = useParams();
@@ -199,6 +200,7 @@ const ViewUser = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

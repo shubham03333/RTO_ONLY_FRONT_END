@@ -18,7 +18,9 @@ const Payment = () => {
   const [payment_date, setPayment_date] = useState("");
   const [payment, setPayment] = useState([]);
   const [vtid, setVtid] = useState("");
-  const [vehicleRegistration_id, setVehicleRegistration_id] = useState("");
+  const [vehicleRegistration_id, setVehicleRegistration_id] = useState();
+  // const [vehicleRegistration_id, setVehicleRegistration_id] = useState(regid);
+
   const [lcategory, setLcategory] = useState("");
   const [learningLicence_id, setLearningLicence_id] = useState("");
   const [drivingLicence_id, setDrivingLicence_id] = useState("");
@@ -51,14 +53,16 @@ const Payment = () => {
   var d = new Date();
   const separator = "-";
   console.log(d.toLocaleDateString());
-  // d.setMonth(d.getMonth() + 180);
+  // d.setMonth(d.getMonth() + 180);npm install react-scripts --save
   console.log(d.toLocaleDateString());
   let date = d.getDate();
   let month = d.getMonth() + 1;
   let year = d.getFullYear();
+
   let todaysDate = `${year}${separator}${
     month < 10 ? `0${month}` : `${month}`
-  }${separator}${date}`;
+  }${separator}${date < 10 ? `0${date}` : `${date}`}`;
+
   console.log(todaysDate);
   console.log(id);
 

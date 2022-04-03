@@ -33,3 +33,10 @@ npm i ajv-keywords
  npm install ajv-errors@1 
 
  sudo kill -9 $(sudo lsof -t -i:3000)
+
+
+
+ npm install react-scripts
+
+
+ npm install react-scripts --save

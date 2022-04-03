@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import LLService from "../../../Services/LLService";
 import { getCurrentDate } from "../../../Services/Date";
+import FooterD from "../../FooterD";
 console.log(getCurrentDate());
 const ViewLL = (props) => {
   const { id } = useParams();
@@ -245,6 +246,7 @@ const ViewLL = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

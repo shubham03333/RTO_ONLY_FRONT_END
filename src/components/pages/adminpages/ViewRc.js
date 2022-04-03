@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import RcService from "../../../Services/RcService";
+import FooterD from "../../FooterD";
 const Viewrc = (props) => {
   const { id } = useParams();
   const [rc, setRc] = useState([]);
@@ -252,6 +253,7 @@ const Viewrc = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

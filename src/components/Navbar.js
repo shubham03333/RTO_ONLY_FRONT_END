@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/RTOLOGO.png";
+import bg from "../assets/1.png";
 function Navbar() {
   const { id, name } = sessionStorage;
   const navigate = useNavigate();
@@ -21,6 +22,10 @@ function Navbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        {/* <nav
+        className="navbar navbar-expand-lg navbar navbar-dark bg-dark"
+        style={{ backgroundImage: `url(${bg})` }}
+      > */}
         <div className="container-fluid">
           <Link className="navbar-brand" to="#">
             <img
@@ -80,6 +85,27 @@ function Navbar() {
               back
             </button> */}
             {/* UserTable */}
+            {/* <nav class="navbar navbar-light bg-light"> */}
+
+            {id > 0 && (
+              <div className="col-md-3">
+                <div class="container-fluid">
+                  <form class="d-flex">
+                    <input
+                      class="form-control me-2"
+                      type="search"
+                      placeholder="Search"
+                      aria-label="Search"
+                    />
+                    <button class="btn btn-outline-success" type="submit">
+                      Search
+                    </button>
+                  </form>
+                </div>
+              </div>
+            )}
+
+            {/* </nav> */}
             <div className="d-flex">
               {id == undefined && (
                 <button
@@ -100,7 +126,7 @@ function Navbar() {
                   onClick={logoutUser}
                   // style={{ marginLeft: "1200px" }}
                   // style={{ marginLeft: "760%" }}
-                  style={{ marginLeft: "75%" }}
+                  style={{ marginLeft: "55%" }}
                 >
                   Logout
                 </button>

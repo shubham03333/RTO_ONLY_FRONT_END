@@ -70,20 +70,8 @@ function LLStatus() {
     if (aadhar_no === null) {
       toast.warning("You need to Register first to use this service");
     } else {
-      // LLService.getLLByUserId1(id)
-      //   .then((response) => {
-      // console.log(response.data);
-      // console.log(response.data.user);
-      // setUser(response.data.user);
-      // setLL(response.data);
+    
       console.log(ll);
-      // setLlId(ll.id);
-      // console.log(llId);
-      // })
-      // .catch((err) => {
-      //   console.log(err);
-      //   toast.warning(err);
-      // });
       console.log("renderColled");
       console.log(ll.status);
       setStatus(ll.status);

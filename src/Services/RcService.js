@@ -1,8 +1,6 @@
 import axios from "axios";
-import { URL } from "../config";
-// const RTO_API_BASE_URL = "http://localhost:8080";
 
-const RTO_API_BASE_URL = `${URL}`;
+const RTO_API_BASE_URL = "http://localhost:8080";
 
 class Rc {
   getRc() {

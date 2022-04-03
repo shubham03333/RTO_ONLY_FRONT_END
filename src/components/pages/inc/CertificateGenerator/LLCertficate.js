@@ -44,7 +44,7 @@ const LLDownload = () => {
         setGender(user.gender);
         setIssue_date(ll.issue_date);
         setExpiry_date(ll.expiry_date);
-        setL_category(ll.L_category);
+        setL_category(ll.l_category);
         setLl_no(ll.tempLLNo);
         setDlphotoid(user.photo_id);
         console.log("photo id is");
@@ -74,13 +74,13 @@ const LLDownload = () => {
         setMyphoto(response);
         console.log("myphoto");
         console.log(id);
-        console.log(myphoto);
+        // console.log(myphoto);
       })
 
       .catch((err) => {
         console.log(err);
       });
-  }, [myphoto]);
+  }, []);
 
   const [image, setImage] = useState(null);
   const [Idphoto, setIdphoto] = useState(null);
@@ -98,24 +98,21 @@ const LLDownload = () => {
     if (image && Idphoto && canvas) {
       const ctx = canvas.current.getContext("2d");
       ctx.fillStyle = "black";
-      // ctx.fillRect(0, 0, 400, 256+80);
-      // ctx.drawImage(image, (400-256)/2, 40);
+
       ctx.drawImage(image, 100, 0, 400, 300);
       ctx.drawImage(Idphoto, 410, 116, 70, 95);
 
       ctx.font = "13px Comic Sans MS";
-      // ctx.fillStyle = "white";
-      // ctx.textAlign = "center";
 
       ctx.fillText(name, 137, 223);
-      // ctx.fillText(blood_group, 238, 120);
       ctx.fillText(address, 150, 245);
       ctx.fillText(dob, 220, 198);
-      // ctx.fillText(gender, 270, 192);
       ctx.fillText(issue_date, 190, 85);
       ctx.fillText(expiry_date, 410, 85);
-      // ctx.fillText(L_category, 275, 229);
       ctx.fillText(ll_no, 200, 63);
+      ctx.fillText(L_category, 220, 162);
+      ctx.fillText(issue_date, 320, 162);
+      ctx.fillText(blood_group, 375, 198);
     }
   }, [
     image,
@@ -147,9 +144,17 @@ const LLDownload = () => {
         />
       </div>
       <div className="img"></div>
+      <p style={{ marginTop: "-8%", marginLeft: "36%" }}>
+        {" "}
+        <i className="text-danger">*</i> To download LL right click on the image
+        and save image
+      </p>
+      <br />
       <button
-        className="btn btn-primary"
+        className="btn btn-primary mt-1"
+        style={{ marginBottom: "2%" }}
         id="dashbtn"
+        // onClick={(e) => navigate("/userHome")}
         onClick={(e) => navigate("/userHome")}
       >
         {" "}

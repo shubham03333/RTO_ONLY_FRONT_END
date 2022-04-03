@@ -44,6 +44,7 @@ function PermitStatus() {
     setStatus(permit.status);
     PermitService.getPermitStatusByRcNo(rcNo)
       .then((response) => {
+        const result = response.data;
         setRc(response.data);
         setStatus(response.data.status);
         console.log(response.data);
@@ -51,6 +52,7 @@ function PermitStatus() {
         console.log(rc);
       })
       .catch((err) => {
+        toast.error(err);
         console.log(err);
       });
     console.log(rc.status);
@@ -70,8 +72,11 @@ function PermitStatus() {
 
         // <a href="/dldownload">show licence</a>
       );
-    } else {
-      // toast.warning("Your vehicle transfer status is pending");
+    } else if (status === "Pending") {
+      toast.warning(
+        "Your vehicle transfer status is pending or you have not applied yet"
+      );
+      // toast.error(err);
     }
   };
   return (

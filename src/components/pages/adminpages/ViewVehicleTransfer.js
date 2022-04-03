@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import VehicleTransferService from "../../../Services/VehicleTransferService";
-
+import FooterD from "../../FooterD";
 const ViewVehicleTransfer = (props) => {
   const { id } = useParams();
   const [vtransfer, setVtransfer] = useState([]);
@@ -129,7 +129,7 @@ const ViewVehicleTransfer = (props) => {
                     />
                   </div>
 
-                  <label htmlFor="name">Payment Id</label>
+                  {/* <label htmlFor="name">Payment Id</label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i class="zmdi zmdi-n-1-square"></i>
@@ -142,7 +142,7 @@ const ViewVehicleTransfer = (props) => {
                       aria-describedby="addon-wrapping"
                       value={vtransfer.payment_id}
                     />
-                  </div>
+                  </div> */}
 
                   {/* <label htmlFor="name">Transaction id</label>
                   <div className="input-group flex-nowrap mt-2">
@@ -258,6 +258,7 @@ const ViewVehicleTransfer = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

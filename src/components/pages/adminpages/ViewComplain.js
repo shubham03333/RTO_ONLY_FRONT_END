@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import ComplainService from "../../../Services/ComplainService";
+import FooterD from "../../FooterD";
 const ViewComplain = (props) => {
   const { id } = useParams();
   const [complain, setComplain] = useState([]);
@@ -244,6 +245,7 @@ const ViewComplain = (props) => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

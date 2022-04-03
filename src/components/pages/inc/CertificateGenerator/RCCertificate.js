@@ -11,7 +11,7 @@ const RCDownload = () => {
   const [owner, setOwner] = useState("");
   const [registration_no, setRegistration_no] = useState("");
   const [chassis_no, setChassis_no] = useState("");
-  const [fuel_type, setFuel_type] = useState();
+  const [fuel_type, setFuel_type] = useState("");
   const [make, setMake] = useState("");
   const [engine_no, setEngine_no] = useState("");
   const [vehicle_class, setVehicle_class] = useState("");
@@ -19,7 +19,7 @@ const RCDownload = () => {
   const [engine_capacity, setEngine_capacity] = useState("");
   const [address, setAddress] = useState("");
   const [purchase_date, setPurchase_date] = useState("");
-
+  const [validTill, setValidTill] = useState("");
   // const [user, setUser] = useState([]);
 
   const navigate = useNavigate();
@@ -46,6 +46,7 @@ const RCDownload = () => {
         setEngine_capacity(response.data.engine_capacity);
         setPurchase_date(response.data.purchase_date);
         setRegistration_no(response.data.registration_no);
+        setValidTill(response.data.validTill);
       })
       .catch((err) => {
         console.log(err);
@@ -62,6 +63,7 @@ const RCDownload = () => {
     registration_no,
     address,
     purchase_date,
+    validTill,
   ]);
 
   useEffect(() => {
@@ -94,6 +96,7 @@ const RCDownload = () => {
       ctx.font = "13px Comic Sans MS";
       ctx.fillText(registration_no, 215, 63);
       ctx.fillText(purchase_date, 210, 85);
+      ctx.fillText(validTill, 415, 85);
       ctx.fillText(owner, 225, 110);
       ctx.fillText(address, 235, 128);
 
@@ -121,6 +124,7 @@ const RCDownload = () => {
     registration_no,
     address,
     purchase_date,
+    validTill,
   ]);
 
   return (
@@ -136,8 +140,16 @@ const RCDownload = () => {
         />
       </div>
       <div className="img"></div>
+
+      <p style={{ marginTop: "-8%", marginLeft: "36%" }}>
+        {" "}
+        <i className="text-danger">*</i> To download RC right click on the image
+        and save image
+      </p>
+      <br />
       <button
-        className="btn btn-primary"
+        className="btn btn-primary mt-1"
+        style={{ marginBottom: "2%" }}
         id="dashbtn"
         // onClick={(e) => navigate("/userHome")}
         onClick={gotoDashbord}

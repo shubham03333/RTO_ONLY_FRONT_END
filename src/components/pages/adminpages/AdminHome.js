@@ -14,6 +14,8 @@ import VehicleTransferService from "../../../Services/VehicleTransferService";
 import PermitService from "../../../Services/PermitService";
 import PucService from "../../../Services/PucService";
 import UserService from "../../../Services/UserService";
+import bg from "../../../assets/5.png";
+
 import FooterD from "../../FooterD";
 import "../Home.css";
 
@@ -148,6 +150,7 @@ function AdminHome() {
   };
 
   return (
+    // < style={{ backgroundImage: `url(${bg})` }}>
     <div>
       {/* Our Services */}
       <section className="section  border-top">
