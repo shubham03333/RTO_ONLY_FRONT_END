@@ -4,6 +4,7 @@ import DLService from "../../../../Services/DLService";
 import UserService from "../../../../Services/UserService";
 import dlImage from "./images/DL.png";
 import FooterD from "../../../FooterD";
+import axios from "axios";
 
 const DLDownload = () => {
   const { id, name } = sessionStorage;
@@ -23,16 +24,26 @@ const DLDownload = () => {
   console.log(id);
 
   const navigate = useNavigate();
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
 
   useEffect(() => {
     console.log({ id });
     DLService.getDLByUserIdforcert(id)
       .then((response) => {
-        console.log(response.data);
-        console.log(response.data.user);
+        // console.log(response.data);
+        // console.log(response.data.user);
         setUser(response.data.user);
         setDL(response.data);
-        console.log(dl);
+        // console.log(dl);
         setBlood_group(user.blood_group);
         setAddress(user.address);
         setDob(user.dob);
@@ -42,9 +53,8 @@ const DLDownload = () => {
         setL_category(dl.l_category);
         setDl_no(dl.dl_no);
         setDlphotoid(user.photo_id);
-        console.log("photo id is");
 
-        console.log(photoId);
+        // console.log(photoId);
       })
       .catch((err) => {
         console.log(err);
@@ -66,9 +76,6 @@ const DLDownload = () => {
     UserService.getPhotoById(id)
       .then((response) => {
         setMyphoto(response);
-        console.log("myphoto");
-        console.log(id);
-        console.log(myphoto);
       })
 
       .catch((err) => {
@@ -83,6 +90,7 @@ const DLDownload = () => {
     const catImage = new Image();
     const IdImage = new Image();
     catImage.src = dlImage;
+    // IdImage.src = UserService.getPhotoById(photoId);
     IdImage.src = `http://localhost:8080/downloadFile/${photoId}`;
     catImage.onload = () => setImage(catImage);
     IdImage.onload = () => setIdphoto(IdImage);

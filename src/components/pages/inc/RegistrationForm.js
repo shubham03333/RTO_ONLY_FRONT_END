@@ -20,6 +20,17 @@ const RegistrationForm = () => {
 
   // find about image
 
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
+
   const navigate = useNavigate();
 
   // ############################
@@ -76,6 +87,7 @@ const RegistrationForm = () => {
     fetch("http://localhost:8080/user/uploadFile", {
       method: "POST",
       body: formData,
+      // Authorization: "Bearer " + accessToken,
     }).then((response) => {
       response.json().then((result) => {
         console.warn("result", result);

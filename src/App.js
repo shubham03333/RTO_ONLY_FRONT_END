@@ -65,87 +65,133 @@ import PucDownload from "./components/pages/inc/CertificateGenerator/PucCertific
 import Privacy from "./components/pages/inc/staticpages/Privacy";
 import ViewVehicleTransfer from "./components/pages/adminpages/ViewVehicleTransfer";
 import ViewVehicleTransferCertificate from "./components/pages/adminpages/ViewVehicleTransferCertificate";
-import ResetPassword from "./components/pages/userpages/ResetPassword"
+import ResetPassword from "./components/pages/userpages/ResetPassword";
+import ErrorPage from "./components/pages/ErrorPage";
+import RtoQuiz from "./components/pages/inc/exam/RtoQuiz";
+import Timer from "./components/pages/inc/exam/Timmer";
 function App() {
+  const { id, name } = sessionStorage;
+  console.log(id);
   return (
     <div>
       <Router>
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/complaint" element={<Complain />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/register" element={<RegistrationForm />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/complaint" element={<Complain />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/register" element={<RegistrationForm />} />
+          <Route exact path="/adminLogin" element={<AdminLogin />} />
+          {id && <Route exact path="/userHome" element={<UserHome />} />}
           {/* <Route path="/table" element={<UserTable />} /> */}
-          <Route path="/userHome" element={<UserHome />} />
-          <Route path="/adminHome" element={<AdminHome />} />
-          <Route path="/adminLogin" element={<AdminLogin />} />
-          <Route path="/userTable" element={<UserTable />} />
-          <Route path="/view-user/:id" element={<ViewUser />} />
-          <Route path="/view-userProfile/:id" element={<ViewUsersProfile />} />
-          <Route path="/update-user/:id" element={<UpdateUser />} />
-          <Route path="/rcTable" element={<RcTable />} />
-          <Route path="/view-rc/:id" element={<ViewRc />} />
-          <Route path="/update-rc/:id" element={<UpdateRc />} />
-          <Route path="/vtransferTable" element={<VtransferTable />} />
-          <Route path="/view-vtransfer/:id" element={<ViewVehicleTransfer />} />
-
+          {id && <Route exact path="/adminHome" element={<AdminHome />} />}
           <Route
-            path="/view-vtransfercer/:id"
-            element={<ViewVehicleTransferCertificate />}
+            exact
+            path="/view-userProfile/:id"
+            element={<ViewUsersProfile />}
           />
-
-          <Route path="/update-vtransfer/:id" element={<UpdateVTransfer />} />
           <Route
-            path="/vehicleRegistration"
-            element={<VehicleRegistration />}
+            exact
+            path="/view-vtransfer/:id"
+            element={<ViewVehicleTransfer />}
           />
-          <Route path="/ownerShipTransfer" element={<OwnershipTransfer />} />
-          <Route path="/applyPermit" element={<ApplyPermit />} />
-          <Route path="/applyPuc" element={<ApplyPuc />} />
-          <Route path="/applyLL" element={<ApplyLL />} />
-          <Route path="/applyDL" element={<ApplyDL />} />
-          <Route path="/permitTable" element={<PermitTable />} />
-          <Route path="/view-permit/:id" element={<ViewPermit />} />
-          <Route path="/update-permit/:id" element={<UpdatePermit />} />
-          <Route path="/pucTable" element={<PucTable />} />
-          <Route path="/view-puc/:id" element={<ViewPuc />} />
-          <Route path="/update-puc/:id" element={<UpdatePuc />} />
-          <Route path="/complainTable" element={<ComplainTable />} />
-          <Route path="/view-complain/:id" element={<ViewComplain />} />
-          <Route path="/update-complain/:id" element={<UpdateComplain />} />
-          <Route path="/llTable" element={<LLTable />} />
-          <Route path="/view-ll/:id" element={<ViewLL />} />
-          <Route path="/update-ll/:id" element={<UpdateLL />} />
-          <Route path="/dlTable" element={<DLTable />} />
-          <Route path="/view-dl/:id" element={<ViewDL />} />
-          <Route path="/update-dl/:id" element={<UpdateDL />} />
-          <Route path="/llstatus" element={<LLStatus />} />
-          <Route path="/dlstatus" element={<DLStatus />} />
-          <Route path="/rcstatus" element={<RcStatus />} />
-          <Route path="/transferstatus" element={<VehicleTransferStatus />} />
-          <Route path="/permitstatus" element={<PermitStatus />} />
-          <Route path="/pucstatus" element={<PucStatus />} />
-          {/* <Route path="/rcstatus" element={<RcStatus />} /> */}
+          <Route exact path="/update-user/:id" element={<UpdateUser />} />
+          <Route
+            exact
+            path="/update-vtransfer/:id"
+            element={<UpdateVTransfer />}
+          />
+          <Route exact path="/update-rc/:id" element={<UpdateRc />} />
+          <Route exact path="/view-user/:id" element={<ViewUser />} />
+          <Route exact path="/view-rc/:id" element={<ViewRc />} />
+          {id && <Route exact path="/permitTable" element={<PermitTable />} />}
+          {id && <Route exact path="/rcTable" element={<RcTable />} />}
+          {id && (
+            <Route exact path="/vtransferTable" element={<VtransferTable />} />
+          )}
+          {id && <Route exact path="/userTable" element={<UserTable />} />}
+          {id && <Route exact path="/pucTable" element={<PucTable />} />}
+          {id && (
+            <Route exact path="/complainTable" element={<ComplainTable />} />
+          )}
+          {id && <Route exact path="/llTable" element={<LLTable />} />}
+          <Route exact path="/update-ll/:id" element={<UpdateLL />} />
+          {id && <Route exact path="/dlTable" element={<DLTable />} />}
+          {id && (
+            <Route exact path="/paymentTable" element={<PaymentTable />} />
+          )}
+          <Route exact path="/update-dl/:id" element={<UpdateDL />} />
 
+          {id && (
+            <Route
+              exact
+              path="/view-vtransfercer/:id"
+              element={<ViewVehicleTransferCertificate />}
+            />
+          )}
 
-          <Route path="/view-payment/:id" element={<ViewPayment />} />
+          {id && (
+            <Route
+              exact
+              path="/vehicleRegistration"
+              element={<VehicleRegistration />}
+            />
+          )}
+          {id && (
+            <Route
+              exact
+              path="/ownerShipTransfer"
+              element={<OwnershipTransfer />}
+            />
+          )}
+          {id && <Route exact path="/applyPermit" element={<ApplyPermit />} />}
+          {id && <Route exact path="/applyPuc" element={<ApplyPuc />} />}
+          {id && <Route exact path="/applyLL" element={<ApplyLL />} />}
+          {id && <Route exact path="/applyDL" element={<ApplyDL />} />}
+          <Route exact path="/view-permit/:id" element={<ViewPermit />} />
+          <Route exact path="/update-permit/:id" element={<UpdatePermit />} />
+          <Route exact path="/view-puc/:id" element={<ViewPuc />} />
+          <Route exact path="/update-puc/:id" element={<UpdatePuc />} />
+          <Route exact path="/view-complain/:id" element={<ViewComplain />} />
+          <Route
+            exact
+            path="/update-complain/:id"
+            element={<UpdateComplain />}
+          />
+          <Route exact path="/view-ll/:id" element={<ViewLL />} />
+          <Route exact path="/view-dl/:id" element={<ViewDL />} />
+          {id && <Route exact path="/llstatus" element={<LLStatus />} />}
+          {id && <Route exact path="/dlstatus" element={<DLStatus />} />}
+          {id && <Route exact path="/rcstatus" element={<RcStatus />} />}
+          {id && (
+            <Route
+              exact
+              path="/transferstatus"
+              element={<VehicleTransferStatus />}
+            />
+          )}
+          {id && (
+            <Route exact path="/permitstatus" element={<PermitStatus />} />
+          )}
+          {id && <Route exact path="/pucstatus" element={<PucStatus />} />}
 
-          
-          <Route path="/paymentTable" element={<PaymentTable />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/dldownload" element={<DLDownload />} />
-          <Route path="/lldownload" element={<LLDownload />} />
-          <Route path="/rcdownload" element={<RCDownload />} />
-          <Route path="/permitdownload" element={<PermitDownload />} />
-          <Route path="/pucdownload" element={<PucDownload />} />
-          <Route path="/privacypolicy" element={<Privacy />} />
-          <Route path="/payment/:id" element={<Payment />} />
-          <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route exact path="/view-payment/:id" element={<ViewPayment />} />
+
+          {id && <Route exact path="/payment" element={<Payment />} />}
+          <Route exact path="/dldownload" element={<DLDownload />} />
+          <Route exact path="/lldownload" element={<LLDownload />} />
+          <Route exact path="/rcdownload" element={<RCDownload />} />
+          <Route exact path="/permitdownload" element={<PermitDownload />} />
+          <Route exact path="/pucdownload" element={<PucDownload />} />
+          <Route exact path="/privacypolicy" element={<Privacy />} />
+          <Route exact path="/payment/:id" element={<Payment />} />
+          <Route exact path="/resetPassword" element={<ResetPassword />} />
+          <Route exact path="/quiz" element={<RtoQuiz />} />
+          <Route exact path="/timer" element={<Timer />} />
+          <Route path="/*" element={<ErrorPage />} />
         </Routes>
-
         {/* <Footer /> */}
       </Router>
       <ToastContainer theme="colored" />

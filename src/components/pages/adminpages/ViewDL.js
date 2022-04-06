@@ -16,7 +16,7 @@ const ViewDL = (props) => {
     console.log({ id });
     DLService.getDLById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // console.log(response.data.user);
         setUser(response.data.user);
         setDL(response.data);

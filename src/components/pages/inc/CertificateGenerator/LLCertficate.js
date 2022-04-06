@@ -33,11 +33,11 @@ const LLDownload = () => {
     console.log({ id });
     LLService.getLLByUserIdforcert(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // console.log(response.data.user);
         setUser(response.data.user);
         setLL(response.data);
-        console.log(ll);
+        // console.log(ll);
         setBlood_group(user.blood_group);
         setAddress(user.address);
         setDob(user.dob);
@@ -47,9 +47,9 @@ const LLDownload = () => {
         setL_category(ll.l_category);
         setLl_no(ll.tempLLNo);
         setDlphotoid(user.photo_id);
-        console.log("photo id is");
+        // console.log("photo id is");
 
-        console.log(photoId);
+        // console.log(photoId);
       })
       .catch((err) => {
         console.log(err);
@@ -67,7 +67,7 @@ const LLDownload = () => {
   ]);
 
   useEffect(() => {
-    console.log({ id });
+    // console.log({ id });
     // const idImage = new Image();
     UserService.getPhotoById(id)
       .then((response) => {

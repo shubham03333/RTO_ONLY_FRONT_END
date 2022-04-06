@@ -7,13 +7,11 @@ const RcTable = (props) => {
 
   const navigate = useNavigate();
 
-  // const [transaId, setTransaId] = useState("");
-  // const [payment, setPayment] = useState("");
+
 
   useEffect(() => {
     RcService.getRc()
       .then((response) => {
-        console.log(response.data);
         const result = response.data;
         setRc(result["data"]);
       })
@@ -36,7 +34,6 @@ const RcTable = (props) => {
     navigate(`/update-rc/${id}`);
   };
 
-  console.log(rc);
   const rcList = rc.map((obj) => {
     return (
       <div className="rctable">

@@ -13,6 +13,16 @@ function Complain() {
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
   const registerComplain = () => {
     if (user_id.length == 0) {
       toast.warning("Please Enter the User id");
@@ -27,10 +37,10 @@ function Complain() {
 
       const url = `${URL}/complain/add_complain`;
 
-      axios.post(url, body).then((response) => {
+      authAxios.post(url, body).then((response) => {
         // get the data from the response
         const result = response.data;
-        console.log(result);
+        // console.log(result);
         if (result["status"] == "success") {
           toast.success("Complaint registered successfully");
 
@@ -116,13 +126,22 @@ function Complain() {
                   <p>#XXX, pune , Pune Maharastra - 561230,India</p>
                   <p>Phone: +91 789456813</p>
                   <p>Email: email@test.com</p> */}
-                  <iframe
+                  {/* <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3809.3798026887484!2d74.12865575058555!3d17.297214688074387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc183f76a66bd4b%3A0x629bf898a1c05602!2sRTO%20Karad!5e0!3m2!1sen!2sin!4v1641562486959!5m2!1sen!2sin"
                     width="100%"
                     height="400"
                     // style="border:0;"
                     allowfullscreen=""
                     loading="lazy"
+                  ></iframe> */}
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.287609416296!2d73.75055291543053!3d18.60612918735926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b97c138deee7%3A0x5548eed7fc280ee5!2sBhumkar%20Chowk!5e0!3m2!1sen!2sin!4v1649232397361!5m2!1sen!2sin"
+                    width="600"
+                    height="450"
+                    // style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    // referrerpolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
               </div>

@@ -9,7 +9,6 @@ const UserTable = (props) => {
   useEffect(() => {
     UserService.getUser()
       .then((response) => {
-        console.log(response.data);
         const result = response.data;
         setUser(result["data"]);
       })

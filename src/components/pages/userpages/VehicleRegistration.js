@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
+import FooterD from "../../FooterD";
 
 const VehicleRegistration = () => {
   const [owner, setOwner] = useState("");
@@ -24,6 +25,16 @@ const VehicleRegistration = () => {
   const [seat_capacity, setSeat_capacity] = useState("");
 
   const navigate = useNavigate();
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
 
   // ############################
   const registerVehicle = () => {
@@ -50,13 +61,13 @@ const VehicleRegistration = () => {
 
       const url = `${URL}/rc/add_rc`;
 
-      axios.post(url, body).then((response) => {
+      authAxios.post(url, body).then((response) => {
         const result = response.data;
-        console.log("regID ");
+        // console.log("regID ");
 
-        console.log(result);
+        // console.log(result);
 
-        console.log("regID ");
+        // console.log("regID ");
         if (result["status"] == "success") {
           const { id } = result["data"];
 
@@ -396,6 +407,7 @@ const VehicleRegistration = () => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

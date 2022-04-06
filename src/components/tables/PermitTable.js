@@ -10,7 +10,6 @@ const PermitTable = (props) => {
   useEffect(() => {
     PermitService.getPermit()
       .then((response) => {
-        console.log(response.data);
         const result = response.data;
         setPermit(result["data"]);
       })

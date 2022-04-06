@@ -17,6 +17,7 @@ function Navbar() {
     sessionStorage.removeItem("llid");
     sessionStorage.removeItem("role");
     sessionStorage.removeItem("loginStatus");
+    localStorage.removeItem("token");
     navigate("/");
   };
   return (
@@ -74,18 +75,6 @@ function Navbar() {
                 </li>
               </ul>
             )}
-            {/* <button
-              type="button"
-              className="btn btn-outline-secondary shadow-w-100"
-              // className="btn btn-bg-primary shadow-w-100"
-              // style={{ marginLeft: "100px" }}
-              style={{ marginRight: "-200px" }}
-              onClick={() => navigate("/login")}
-            >
-              back
-            </button> */}
-            {/* UserTable */}
-            {/* <nav class="navbar navbar-light bg-light"> */}
 
             {id > 0 && (
               <div className="col-md-3">

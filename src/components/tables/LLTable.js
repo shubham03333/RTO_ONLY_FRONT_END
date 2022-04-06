@@ -12,7 +12,6 @@ const LLTable = (props) => {
   useEffect(() => {
     LLService.getLL()
       .then((response) => {
-        console.log(response.data);
         const result = response.data;
         setLL(result["data"]);
       })

@@ -15,7 +15,7 @@ const ViewPermit = (props) => {
     console.log({ id });
     PermitService.getPermitById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setPermit(response.data);
         // const result = response.data;
         // setvtransfer(result["data"]);

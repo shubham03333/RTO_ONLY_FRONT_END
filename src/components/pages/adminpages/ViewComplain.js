@@ -15,7 +15,7 @@ const ViewComplain = (props) => {
     console.log({ id });
     ComplainService.getComplainById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setComplain(response.data);
         // const result = response.data;
         // setvtransfer(result["data"]);

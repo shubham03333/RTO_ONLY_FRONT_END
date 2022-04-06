@@ -9,6 +9,7 @@ const ViewLL = (props) => {
   const { id } = useParams();
   const [ll, setLL] = useState([]);
   const [user, setUser] = useState([]);
+  const [qresult, setQresult] = useState("not attempted");
   console.log(id);
   const navigate = useNavigate();
 
@@ -16,10 +17,18 @@ const ViewLL = (props) => {
     console.log({ id });
     LLService.getLLById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // console.log(response.data.user);
         setUser(response.data.user);
         setLL(response.data);
+        if (response.data.quizMarks > 5) {
+          setQresult("pass");
+        } else if (response.data.quizMarks === 0) {
+          setQresult("not attempted");
+        } else if (response.data.quizMarks <= 5) {
+          setQresult("failed");
+        }
+
         // const result = response.data;
         // setrc(result["data"]);
       })
@@ -213,6 +222,20 @@ const ViewLL = (props) => {
                       aria-label="text"
                       autoComplete="new-text"
                       value={ll.rto}
+                    />
+                  </div>
+                  <label htmlFor="name">Written test Result</label>
+                  <div className="input-group flex-nowrap ">
+                    <span className="input-group-text" id="addon-wrapping">
+                      <i className="zmdi zmdi-lock"></i>
+                    </span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="text"
+                      aria-label="text"
+                      autoComplete="new-text"
+                      value={qresult}
                     />
                   </div>
                   <label htmlFor="name">Status</label>

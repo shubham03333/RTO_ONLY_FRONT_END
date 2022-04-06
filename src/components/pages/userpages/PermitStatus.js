@@ -9,6 +9,7 @@ import Service5 from "../../../assets/puc1.png";
 import Service6 from "../../../assets/lidence services1.png";
 import PermitService from "../../../Services/PermitService";
 import RcService from "../../../Services/RcService";
+import FooterD from "../../FooterD";
 
 import { toast } from "react-toastify";
 function PermitStatus() {
@@ -20,8 +21,8 @@ function PermitStatus() {
   const [rc, setRc] = useState([]);
   const [rcNo, setRcNo] = useState("");
 
-  console.log(id);
-  console.log(name);
+  // console.log(id);
+  // console.log(name);
   const navigate = useNavigate();
   // useEffect(() => {
   //   // console.log({ id });
@@ -39,21 +40,21 @@ function PermitStatus() {
   // }, [permit]);
 
   const renderStatus = () => {
-    console.log("renderColled");
-    console.log(permit.status);
+    // console.log("renderColled");
+    // console.log(permit.status);
     setStatus(permit.status);
     PermitService.getPermitStatusByRcNo(rcNo)
       .then((response) => {
         const result = response.data;
         setRc(response.data);
         setStatus(response.data.status);
-        console.log(response.data);
+        // console.log(response.data);
         // setUser(response.data.user);
-        console.log(rc);
+        // console.log(rc);
       })
       .catch((err) => {
         toast.error(err);
-        console.log(err);
+        // console.log(err);
       });
     console.log(rc.status);
 
@@ -152,6 +153,7 @@ function PermitStatus() {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 }

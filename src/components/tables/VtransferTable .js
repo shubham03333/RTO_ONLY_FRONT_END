@@ -10,7 +10,6 @@ const VtransferTable = (props) => {
   useEffect(() => {
     VehicleTransferService.getVtransfer()
       .then((response) => {
-        console.log(response.data);
         const result = response.data;
         setVtransfer(result["data"]);
       })

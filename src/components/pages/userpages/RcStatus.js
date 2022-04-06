@@ -9,6 +9,7 @@ import Service5 from "../../../assets/puc1.png";
 import Service6 from "../../../assets/lidence services1.png";
 import RcService from "../../../Services/RcService";
 import { toast } from "react-toastify";
+import FooterD from "../../FooterD";
 function RcStatus() {
   const { id, name } = sessionStorage;
   const [rcId, setRcid] = useState();
@@ -41,16 +42,14 @@ function RcStatus() {
       .then((response) => {
         setRc(response.data);
         setStatus(response.data.status);
-        console.log(response.data);
+        // console.log(response.data);
         // setUser(response.data.user);
-        console.log(rc);
+        // console.log(rc);
       })
       .catch((err) => {
         console.log(err);
       });
     // setStatus(rc.status);
-    console.log("renderCalled");
-    console.log(rc.status);
 
     if (status === "Approved") {
       sessionStorage["regid"] = rcId;
@@ -140,6 +139,7 @@ function RcStatus() {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 }

@@ -39,12 +39,9 @@ function AdminHome() {
   useEffect(() => {
     DLService.getDLByUserId(id)
       .then((response) => {
-        console.log(response.data);
         SetDL(response.data);
         SetPendingDLCount(response.data.pendingCount);
         SetDLCount(response.data.count);
-        console.log(pendingDLCount);
-        console.log(id);
       })
       .catch((err) => {
         console.log(err);
@@ -54,11 +51,8 @@ function AdminHome() {
   useEffect(() => {
     LLService.getLLByUserId(id)
       .then((response) => {
-        console.log(response.data);
         SetDL(response.data);
         SetPendingLLCount(response.data.pendingCount);
-        console.log(pendingDLCount);
-        console.log(id);
       })
       .catch((err) => {
         console.log(err);
@@ -68,12 +62,9 @@ function AdminHome() {
   useEffect(() => {
     RcService.getRcByUserId(id)
       .then((response) => {
-        console.log(response.data);
         SetDL(response.data);
         SetPendingVRCount(response.data.pendingCount);
         SetVrCount(response.data.count);
-        console.log(pendingDLCount);
-        console.log(id);
       })
       .catch((err) => {
         console.log(err);
@@ -83,11 +74,8 @@ function AdminHome() {
   useEffect(() => {
     VehicleTransferService.getVehicleTransferByUserId(id)
       .then((response) => {
-        console.log(response.data);
         SetDL(response.data);
         SetPendingVTCount(response.data.pendingCount);
-        console.log(pendingDLCount);
-        console.log(id);
       })
       .catch((err) => {
         console.log(err);
@@ -97,10 +85,7 @@ function AdminHome() {
   useEffect(() => {
     PermitService.getPermitByUserId(id)
       .then((response) => {
-        console.log(response.data);
         SetPendingPermitCount(response.data.pendingCount);
-        console.log(pendingDLCount);
-        console.log(id);
       })
       .catch((err) => {
         console.log(err);
@@ -110,12 +95,8 @@ function AdminHome() {
   useEffect(() => {
     PucService.getPucByUserId(id)
       .then((response) => {
-        console.log(response.data);
         SetPendingPucCount(response.data.pendingCount);
         SetPucCount(response.data.count);
-        console.log("puc count");
-        console.log(PucCount);
-        console.log(id);
       })
       .catch((err) => {
         console.log(err);
@@ -125,11 +106,7 @@ function AdminHome() {
   useEffect(() => {
     UserService.getUserById(id)
       .then((response) => {
-        console.log(response.data);
-
         SetUserCount(response.data.count);
-        console.log("usercount");
-        console.log(UserCount);
         // console.log(id);
       })
       .catch((err) => {

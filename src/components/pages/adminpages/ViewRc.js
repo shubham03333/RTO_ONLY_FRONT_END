@@ -15,7 +15,7 @@ const Viewrc = (props) => {
     console.log({ id });
     RcService.getRcById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setRc(response.data);
         // const result = response.data;
         // setrc(result["data"]);

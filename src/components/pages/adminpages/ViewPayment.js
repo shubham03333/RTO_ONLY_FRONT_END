@@ -6,7 +6,6 @@ import { useLocation, useNavigate } from "react-router";
 import PaymentService from "../../../Services/PaymentService";
 import FooterD from "../../FooterD";
 const ViewPayment = (props) => {
-  
   const { id } = useParams();
   const [payment, setPayment] = useState([]);
   const [user, setUser] = useState([]);
@@ -14,11 +13,11 @@ const ViewPayment = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log({ id });
+    // console.log({ id });
     PaymentService.getPaymentById(id)
       .then((response) => {
-        console.log(response.data);
-        console.log(response.data.user);
+        // console.log(response.data);
+        // console.log(response.data.user);
         setUser(response.data.user);
         setPayment(response.data);
         // const result = response.data;

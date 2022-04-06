@@ -9,7 +9,7 @@ import Service5 from "../../../assets/puc1.png";
 import Service6 from "../../../assets/lidence services1.png";
 import VehicleTransfer from "../../../Services/VehicleTransferService";
 import VehicleTransferService from "../../../Services/VehicleTransferService";
-
+import FooterD from "../../FooterD";
 import { toast } from "react-toastify";
 function VehicleTransferStatus() {
   const { id, name } = sessionStorage;
@@ -20,8 +20,8 @@ function VehicleTransferStatus() {
   const [status, setStatus] = useState("");
   const [rc, setRc] = useState([]);
 
-  console.log(id);
-  console.log(name);
+  // console.log(id);
+  // console.log(name);
   const navigate = useNavigate();
   // useEffect(() => {
   //   // console.log({ id });
@@ -45,17 +45,17 @@ function VehicleTransferStatus() {
       .then((response) => {
         setRc(response.data);
         setStatus(response.data.status);
-        console.log(response.data);
+        // console.log(response.data);
         setVtransfer(response.data);
         // setUser(response.data.user);
-        console.log("transfer_id" + vtransfer.id);
-        console.log(rc);
+        // console.log("transfer_id" + vtransfer.id);
+        // console.log(rc);
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log("renderCalled");
-    console.log(rc.status);
+    // console.log("renderCalled");
+    // console.log(rc.status);
 
     if (status === "Approved") {
       toast.success("Congratulations Your Vehicle Transfer  is Approved");
@@ -146,6 +146,7 @@ function VehicleTransferStatus() {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 }

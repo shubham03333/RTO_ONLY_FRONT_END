@@ -16,7 +16,7 @@ const ViewUser = (props) => {
     console.log({ id });
     UserService.getUserById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setUser(response.data);
         // const result = response.data;
         // setUser(result["data"]);

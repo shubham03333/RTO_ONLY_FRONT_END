@@ -7,16 +7,13 @@ const PaymentTable = (props) => {
   const [amount, setAmount] = useState([]);
   const [userid, setUserid] = useState([]);
 
-  // console.log("session");
-  // console.log(id);
-  // console.log("session");
+
 
   const navigate = useNavigate();
 
   useEffect(() => {
     PaymentService.getPayment()
       .then((response) => {
-        console.log(response.data);
         const result = response.data;
         setPayment(result["data"]);
       })

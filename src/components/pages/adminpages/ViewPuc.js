@@ -15,7 +15,7 @@ const ViewPuc = (props) => {
     console.log({ id });
     PucServices.getPucById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setPuc(response.data);
         // const result = response.data;
         // setvtransfer(result["data"]);

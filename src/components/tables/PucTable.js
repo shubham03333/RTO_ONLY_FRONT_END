@@ -10,7 +10,6 @@ const PucTable = (props) => {
   useEffect(() => {
     PucServices.getPuc()
       .then((response) => {
-        console.log(response.data);
         const result = response.data;
         setPuc(result["data"]);
       })
@@ -18,7 +17,6 @@ const PucTable = (props) => {
         console.log(err);
       });
   }, []);
-  console.log(puc);
   const deletePuc = (id) => {
     PucServices.deletePuc(id).then((res) => {
       setPuc(puc.filter((permit) => permit.id !== id));
@@ -32,7 +30,6 @@ const PucTable = (props) => {
     navigate(`/update-puc/${id}`);
   };
 
-  console.log(puc);
   const pucList = puc.map((obj) => {
     return (
       <div className="pucTable">

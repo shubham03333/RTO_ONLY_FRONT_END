@@ -6,27 +6,39 @@ import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
 import UserService from "../../../Services/UserService";
+import FooterD from "../../FooterD";
 const ApplyDL = () => {
   const { id, name } = sessionStorage;
   const [user_id, setUser_id] = useState();
   const [rto, setRto] = useState("");
   const [l_category, setL_category] = useState("");
   const [tempLLNo, setTempLLNo] = useState("");
-  const navigate = useNavigate();
   const [user, setUser] = useState([]);
   const [aadhar_no, setaadhar_no] = useState();
 
+  const navigate = useNavigate();
   // ############################
+
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
 
   useEffect(() => {
     // console.log({ id });
     UserService.getUserById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // console.log(response.data.user);
         setUser(response.data);
         setaadhar_no(response.data.aadhar_no);
-        console.log(aadhar_no);
+        // console.log(aadhar_no);
 
         // setLlId(ll.id);
         // console.log(llId);
@@ -58,11 +70,11 @@ const ApplyDL = () => {
 
         const url = `${URL}/dl/add_dl`;
 
-        axios.post(url, body).then((response) => {
+        authAxios.post(url, body).then((response) => {
           // get the data from the response
           const result = response.data;
 
-          console.log(result);
+          // console.log(result);
 
           if (result["status"] == "success") {
             const { id } = result["data"];
@@ -70,7 +82,7 @@ const ApplyDL = () => {
             sessionStorage["dlid"] = id;
 
             toast.success("Proceed for payment");
-            console.log(response.data);
+            // console.log(response.data);
             // navigate to the home page
             navigate("/payment");
           } else {
@@ -259,6 +271,7 @@ const ApplyDL = () => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

@@ -22,7 +22,6 @@ const UpdatePuc = (props) => {
   useEffect(() => {
     PucServices.getPucById(id)
       .then((response) => {
-        console.log(response.data);
         let puc = response.data;
         setPuc_no(puc.puc_no);
         setRegistration_no(puc.registration_no);

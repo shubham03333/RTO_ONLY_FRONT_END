@@ -18,7 +18,7 @@ const ResetPassword = () => {
   const emailSend = () => {};
 
   const renderOtp = () => {
-    console.log("render called");
+    // console.log("render called");
     const url = `${URL}/user/forgotPasswordinit`;
 
     const body = {
@@ -27,7 +27,7 @@ const ResetPassword = () => {
     axios.post(url, body).then((response) => {
       // get the server result
       const result = response.data;
-      console.log(result);
+      // console.log(result);
       if (result["status"] == "success") {
         toast.success("OTP has been sent to your registered email id");
       } else {
@@ -79,9 +79,9 @@ const ResetPassword = () => {
   const validate = (event) => {
     event.preventDefault();
 
-    console.log(email);
+    // console.log(email);
 
-    console.log(otp);
+    // console.log(otp);
 
     if (email.length == 0) {
       toast.warning("please enter email");
@@ -101,7 +101,7 @@ const ResetPassword = () => {
       axios.post(url, body).then((response) => {
         // get the server result
         const result = response.data;
-        console.log(result);
+        // console.log(result);
         if (result["status"] == "success") {
           toast.success("Your password has been reset sucessfully ");
 
@@ -117,7 +117,7 @@ const ResetPassword = () => {
     <div className="body">
       <div className="row justify-content-center">
         <div className="col-md-4 " id="lf">
-          <h2 style={{ marginBottom: "20px" }}>RESET PASSWORD</h2>
+          <h2 style={{ marginBottom: "25px" }}>RESET PASSWORD</h2>
           <form onSubmit={validate}>
             <p>
               <i className="text-danger">*</i> Please enter your email address.

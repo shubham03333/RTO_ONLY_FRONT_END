@@ -15,7 +15,7 @@ const ViewVehicleTransferCertificate = (props) => {
     console.log({ id });
     VehicleTransferService.getVtransferById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setVtransfer(response.data);
         // const result = response.data;
         // setvtransfer(result["data"]);

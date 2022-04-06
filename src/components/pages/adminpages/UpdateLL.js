@@ -54,9 +54,9 @@ const UpdateLL = (props) => {
   useEffect(() => {
     LLService.getLLById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
 
-        console.log(getCurrentDate());
+        // console.log(getCurrentDate());
         let ll = response.data;
         setTempLLNo(ll.tempLLNo);
         setIssue_date(ll.issue_date);
@@ -93,9 +93,6 @@ const UpdateLL = (props) => {
     // setIssue_date(new Date(todDate));
     setExpiry_date(todaysDate);
     setTempLLNo(event.target.value);
-
-    console.log("Inside handler " + todDate);
-    console.log("Inside handler " + todaysDate);
   };
   // const changeIssue_dateHandler = (event) => {
   //   // setIssue_date(event.target.value);

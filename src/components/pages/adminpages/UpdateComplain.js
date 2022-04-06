@@ -21,7 +21,6 @@ const UpdateComplain = (props) => {
   useEffect(() => {
     ComplainService.getComplainById(id)
       .then((response) => {
-        console.log(response.data);
         let complain = response.data;
         setComplain_no(complain.complain_no);
         setAadhar_no(complain.aadhar_no);

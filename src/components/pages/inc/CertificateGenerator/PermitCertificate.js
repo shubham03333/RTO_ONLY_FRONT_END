@@ -23,7 +23,7 @@ const PermitDownload = () => {
     console.log({ id });
     PermitService.getPermitStatusByRcNo(regNO)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setFrom_date(response.data.from_date);
         setTo_date(response.data.to_date);
         setFrom_state(response.data.from_state);
@@ -49,7 +49,7 @@ const PermitDownload = () => {
     console.log({ id });
     UserService.getUserById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // setUser(response.data);
       })
 

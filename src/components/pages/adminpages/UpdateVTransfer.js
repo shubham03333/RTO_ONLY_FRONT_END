@@ -23,7 +23,6 @@ const UpdateVTransfer = (props) => {
   useEffect(() => {
     VehicleTransferService.getVtransferById(id)
       .then((response) => {
-        console.log(response.data);
         // setvtransfer(response.data);
         let vtransfer = response.data;
         setOwner(vtransfer.new_owner);

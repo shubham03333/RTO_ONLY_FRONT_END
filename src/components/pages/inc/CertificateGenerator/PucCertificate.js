@@ -21,7 +21,7 @@ const PucDownload = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log({ id });
+    // console.log({ id });
     PucService.getPucStatusByRcNo(regNO)
       .then((response) => {
         // console.log(response.data);

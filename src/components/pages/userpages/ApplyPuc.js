@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
+import FooterD from "../../FooterD";
 
 const ApplyPuc = () => {
   const { id } = sessionStorage;
@@ -20,6 +21,17 @@ const ApplyPuc = () => {
   const navigate = useNavigate();
 
   // ############################
+
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
   const applyPuc = () => {
     // navigate("/");
 
@@ -41,10 +53,10 @@ const ApplyPuc = () => {
 
       const url = `${URL}/puc/add_puc`;
 
-      axios.post(url, body).then((response) => {
+      authAxios.post(url, body).then((response) => {
         // get the data from the response
         const result = response.data;
-        console.log(result);
+        // console.log(result);
         if (result["status"] == "success") {
           toast.success("Proceed for payment");
           // const { id } = result["data"];
@@ -205,6 +217,7 @@ const ApplyPuc = () => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

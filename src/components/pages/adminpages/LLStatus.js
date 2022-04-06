@@ -18,9 +18,6 @@ const ViewLL = (props) => {
     console.log({ id });
     LLService.getLLById(id)
       .then((response) => {
-        console.log(response.data);
-        console.log(getCurrentDate());
-        // console.log(response.data.user);
         setUser(response.data.user);
         setLL(response.data);
         // const result = response.data;

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
 import VehicleTransferService from "../../../Services/VehicleTransferService";
+import FooterD from "../../FooterD";
 
 const Payment = () => {
   // const { chassis_no } = sessionStorage;
@@ -25,14 +26,24 @@ const Payment = () => {
   const [learningLicence_id, setLearningLicence_id] = useState("");
   const [drivingLicence_id, setDrivingLicence_id] = useState("");
 
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
   const { tid } = useParams();
-  console.log("tid");
-  console.log(tid);
+  // console.log("tid");
+  // console.log(tid);
   const [vtransfer, setVtransfer] = useState([]);
 
-  console.log("session");
+  // console.log("session");
   console.log(regid);
-  console.log("session");
+  // console.log("session");
   // useEffect(() => {
   //   VehicleTransferService.getVtransferStatusByReg_id(tid)
   //     .then((response) => {
@@ -52,9 +63,9 @@ const Payment = () => {
   //############### under test ################//
   var d = new Date();
   const separator = "-";
-  console.log(d.toLocaleDateString());
+  // console.log(d.toLocaleDateString());
   // d.setMonth(d.getMonth() + 180);npm install react-scripts --save
-  console.log(d.toLocaleDateString());
+  // console.log(d.toLocaleDateString());
   let date = d.getDate();
   let month = d.getMonth() + 1;
   let year = d.getFullYear();
@@ -63,8 +74,8 @@ const Payment = () => {
     month < 10 ? `0${month}` : `${month}`
   }${separator}${date < 10 ? `0${date}` : `${date}`}`;
 
-  console.log(todaysDate);
-  console.log(id);
+  // console.log(todaysDate);
+  // console.log(id);
 
   // const [hc, setHc] = useState("");
   // const [aadhar_no, setAadhar_no] = useState();
@@ -74,7 +85,7 @@ const Payment = () => {
   // ############################
   const pay = () => {
     setPayment_date(todaysDate);
-    console.log(payment_for);
+    // console.log(payment_for);
     // e.preventDefault();
 
     if (user_id.length == 0) {
@@ -91,17 +102,17 @@ const Payment = () => {
         drivingLicence_id,
         learningLicence_id,
       };
-      console.log(body);
+      // console.log(body);
       setVtransfer();
 
       const url = `${URL}/payment/add_payment`;
 
-      axios.post(url, body).then((response) => {
+      authAxios.post(url, body).then((response) => {
         // get the data from the response
         const result = response.data;
-        console.log(result);
+        // console.log(result);
         // console.log(body.id);
-        console.log("id printed");
+        // console.log("id printed");
         // navigate("/");
         if (result["status"] == "success") {
           toast.success("Payment Successfull");
@@ -285,6 +296,7 @@ const Payment = () => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

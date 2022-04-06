@@ -1,32 +1,42 @@
 import axios from "axios";
 
 const RTO_API_BASE_URL = "http://localhost:8080";
+const accessToken = localStorage.getItem("token");
+
+const authAxios = axios.create({
+  baseURL: URL,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + accessToken,
+  },
+});
 
 class Puc {
   getPuc() {
-    return axios.get(RTO_API_BASE_URL + "/puc/search");
+    return authAxios.get(RTO_API_BASE_URL + "/puc/search");
   }
 
   getPucById(pucId) {
-    return axios.get(RTO_API_BASE_URL + "/puc/" + pucId);
+    return authAxios.get(RTO_API_BASE_URL + "/puc/" + pucId);
   }
 
   updatePuc(puc, pucId) {
-    return axios.put(RTO_API_BASE_URL + "/puc/" + pucId, puc);
+    return authAxios.put(RTO_API_BASE_URL + "/puc/" + pucId, puc);
   }
 
   deletePuc(pucId) {
-    return axios.delete(RTO_API_BASE_URL + "/puc/" + pucId);
+    return authAxios.delete(RTO_API_BASE_URL + "/puc/" + pucId);
   }
   getPucByUserId(userId) {
-    return axios.get(RTO_API_BASE_URL + "/puc/byUserId/" + userId);
+    return authAxios.get(RTO_API_BASE_URL + "/puc/byUserId/" + userId);
   }
   getPucByUserId1(userId) {
-    return axios.get(RTO_API_BASE_URL + "/puc/byUserId1/" + userId);
+    return authAxios.get(RTO_API_BASE_URL + "/puc/byUserId1/" + userId);
   }
 
   getPucStatusByRcNo(RcNo) {
-    return axios.get(RTO_API_BASE_URL + "/puc/rcNo/" + RcNo);
+    return authAxios.get(RTO_API_BASE_URL + "/puc/rcNo/" + RcNo);
   }
 }
 

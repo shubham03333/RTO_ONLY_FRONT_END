@@ -46,13 +46,13 @@ function LLStatus() {
     // console.log({ id });
     LLService.getLLByUserIdforcert(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // console.log(response.data.user);
         setUser(response.data.user);
         setaadhar_no(response.data.aadhar_no);
         setLL(response.data);
-        console.log(ll);
-        console.log(aadhar_no);
+        // console.log(ll);
+        // console.log(aadhar_no);
 
         // setLlId(ll.id);
         // console.log(llId);
@@ -70,13 +70,12 @@ function LLStatus() {
     if (aadhar_no === null) {
       toast.warning("You need to Register first to use this service");
     } else {
-    
-      console.log(ll);
-      console.log("renderColled");
-      console.log(ll.status);
+      // console.log(ll);
+      // console.log("renderColled");
+      // console.log(ll.status);
       setStatus(ll.status);
-      console.log(ll);
-      console.log(user);
+      // console.log(ll);
+      // console.log(user);
 
       if (ll.status === "Approved") {
         toast.success("Congratulations Your Learning Licence is Approved");
@@ -220,6 +219,7 @@ function LLStatus() {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 }

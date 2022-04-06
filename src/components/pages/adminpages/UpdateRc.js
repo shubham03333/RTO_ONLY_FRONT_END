@@ -27,7 +27,7 @@ const UpdateRc = (props) => {
   const separator = "-";
 
   d.setMonth(d.getMonth() + 180);
-  console.log(d.toLocaleDateString());
+  // console.log(d.toLocaleDateString());
   let date = d.getDate();
   let month = d.getMonth() + 1;
   let year = d.getFullYear();
@@ -40,9 +40,6 @@ const UpdateRc = (props) => {
   let todDate = `${tyear}${separator}${
     tmonth < 10 ? `0${tmonth}` : `${tmonth}`
   }${separator}${tdate < 10 ? `0${tdate}` : `${tdate}`}`;
-  console.log("today is " + todDate);
-
-  console.log("today is " + todDate);
 
   let todaysDate = `${year}${separator}${
     month < 10 ? `0${month}` : `${month}`
@@ -51,7 +48,6 @@ const UpdateRc = (props) => {
   useEffect(() => {
     RcService.getRcById(id)
       .then((response) => {
-        console.log(response.data);
         // setRc(response.data);
         let rc = response.data;
         setOwner(rc.owner);

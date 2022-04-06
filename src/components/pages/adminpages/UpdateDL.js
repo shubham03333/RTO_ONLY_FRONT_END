@@ -24,17 +24,16 @@ const UpdateDL = (props) => {
 
   const separator = "-";
 
-  console.log(d.toLocaleDateString());
+  // console.log(d.toLocaleDateString());
 
   d.setMonth(d.getMonth() + 180);
-  console.log(d.toLocaleDateString());
+  // console.log(d.toLocaleDateString());
   let date = d.getDate();
   let month = d.getMonth() + 1;
   let year = d.getFullYear();
 
   //############
-  console.log(td.toLocaleDateString());
-  console.log(td.toLocaleDateString());
+
   let tdate = td.getDate();
   let tmonth = td.getMonth() + 1;
   let tyear = td.getFullYear();
@@ -53,7 +52,6 @@ const UpdateDL = (props) => {
   useEffect(() => {
     DLService.getDLById(id)
       .then((response) => {
-        console.log(response.data);
         let dl = response.data;
         setDl_no(dl.dl_no);
         setDl_issue_date(dl.dl_issue_date);

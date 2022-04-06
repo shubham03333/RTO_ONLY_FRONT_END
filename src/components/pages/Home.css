@@ -3,7 +3,12 @@
   cursor: pointer;
   text-align: center !important;
   align-items: center;
+
   /* margin-top: -10%; */
+}
+
+.sevice-card:hover {
+  transform: scale(1.1);
 }
 .sevice-card img {
   height: 100px;
@@ -27,7 +32,7 @@ h6 {
 p {
   font-family: "Poppins", sans-serif;
 }
-#btnGroupDrop1{
+#btnGroupDrop1 {
   /* margin-bottom: -13%; */
   margin-top: -13%;
 }

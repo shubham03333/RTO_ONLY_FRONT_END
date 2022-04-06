@@ -126,7 +126,7 @@ function Privacy() {
               RTO Works welcomes your comments regarding this Privacy Policy. If
               you have any questions about this Privacy Policy and would like
               further information, please contact us during business hours,
-              Monday to Friday, via email at hello@rtoworks.com.au
+              Monday to Friday, via email at rto.management.info@gmail.com
             </p>
           </div>
         </a>

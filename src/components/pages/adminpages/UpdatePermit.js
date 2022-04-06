@@ -22,7 +22,6 @@ const UpdatePermit = (props) => {
   useEffect(() => {
     PermitService.getPermitById(id)
       .then((response) => {
-        console.log(response.data);
         let permit = response.data;
         setPermit_no(permit.permit_no);
         setRegistration_no(permit.registration_no);

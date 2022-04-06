@@ -143,7 +143,11 @@ export default function Footer() {
             &emsp;Guidelines &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; */}
             &copy; {fullYear}-{fullYear + 1} &emsp;&emsp;&emsp;&emsp;Contact at:
-            &emsp;<Link to="#"> rto.management.info@gmail.com </Link>{" "}
+            &emsp;
+            <Link to="#" style={{ textDecoration: "none" }}>
+              {" "}
+              rto.management.info@gmail.com{" "}
+            </Link>{" "}
             &emsp;&emsp; | &emsp;&emsp;&emsp;{" "}
             <a
               href="/privacypolicy#privacyt"

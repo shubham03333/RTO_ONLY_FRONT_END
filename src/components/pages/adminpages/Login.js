@@ -17,7 +17,7 @@ const AdminLogin = () => {
 
   const navigate = useNavigate();
 
-  const validate = (event) => {
+  const validate = async (event) => {
     event.preventDefault();
 
     if (email.length == 0) {
@@ -32,23 +32,45 @@ const AdminLogin = () => {
         status1,
       };
 
+      const url = `${URL}/user/authenticate`;
+
+      try {
+        // make api call using axios
+        await axios.post(url, body).then((response) => {
+          // get the server result
+          const result = response.data;
+
+          // console.log("token  " + accessToken);
+          // const { token } = response.data;
+
+          // const { response } = response.data;
+          localStorage.setItem("token", result);
+        });
+      } catch {
+        toast.error("Invalid user name or password");
+      }
+      const accessToken = localStorage.getItem("token");
+      const authAxios = axios.create({
+        baseURL: URL,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + accessToken,
+        },
+      });
       // url to make signin api call
-      const url = `${URL}/user/signin`;
+      const url1 = `${URL}/user/signin`;
 
       // make api call using axios
-      axios.post(url, body).then((response) => {
+      authAxios.post(url1, body).then((response) => {
         // get the server result
         const result = response.data;
-        console.log(result);
-        console.log(result.status1);
         if (result["status"] == "success") {
           toast.success("Welcome to the application");
 
           // console.log("status " + status1);
 
           const { id, name, role, status1 } = result["data"];
-          console.log("role " + role);
-          console.log("status " + status1);
 
           if (role === "admin" && status1 === "approved") {
             // persist the logged in user's information for future use

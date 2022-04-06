@@ -24,7 +24,6 @@ const UpdateRc = (props) => {
     console.log({ id });
     UserService.getUserById(id)
       .then((response) => {
-        console.log(response.data);
         // setUser(response.data);
         let user = response.data;
         setName(user.name);

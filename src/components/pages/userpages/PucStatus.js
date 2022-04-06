@@ -9,6 +9,7 @@ import Service5 from "../../../assets/puc1.png";
 import Service6 from "../../../assets/lidence services1.png";
 import PucService from "../../../Services/PucService";
 import { toast } from "react-toastify";
+import FooterD from "../../FooterD";
 
 function PucStatus() {
   const { id, name } = sessionStorage;
@@ -40,24 +41,24 @@ function PucStatus() {
   // }, [puc]);
 
   const renderStatus = () => {
-    console.log("renderColled");
-    console.log(puc.status);
+    // console.log("renderColled");
+    // console.log(puc.status);
     setStatus(puc.status);
     PucService.getPucStatusByRcNo(rcNo)
       .then((response) => {
         setRc(response.data);
         setStatus(response.data.status);
-        console.log(response.data);
+        // console.log(response.data);
         setRcid(response.data.registration_id);
-        console.log(rcId);
+        // console.log(rcId);
         // setUser(response.data.user);
-        console.log(rc);
+        // console.log(rc);
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log("renderCalled");
-    console.log(rc.status);
+    // console.log("renderCalled");
+    // console.log(rc.status);
 
     if (status === "Approved") {
       toast.success("Congratulations Your puc is Approved");
@@ -150,6 +151,7 @@ function PucStatus() {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 }

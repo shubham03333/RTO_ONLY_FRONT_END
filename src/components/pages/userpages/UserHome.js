@@ -8,12 +8,16 @@ import Service3 from "../../../assets/v-transfer-ownership.png";
 import Service4 from "../../../assets/v-permit-services.png";
 import Service5 from "../../../assets/puc1.png";
 import bg from "../../../assets/1.png";
-
+import LLService from "../../../Services/LLService";
 function UserHome() {
   const { id, name } = sessionStorage;
   console.log(id);
   console.log(name);
+
+  const [qresult, setQresult] = useState();
   const navigate = useNavigate();
+
+  useEffect(() => {}, []);
   const viewUser = (id) => {
     navigate(`/view-userProfile/${id}`);
   };
@@ -29,6 +33,15 @@ function UserHome() {
               <h3 className="main-heading">
                 {" "}
                 <div className="col">
+                  <div>
+                    <button
+                      className="btn btn-warning float-md-start"
+                      onClick={() => navigate("/quiz")}
+                    >
+                      Written exam
+                    </button>
+                  </div>
+
                   <div className="float-end">
                     <div className="btn-group " role="group">
                       <button

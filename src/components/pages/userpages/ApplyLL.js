@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
 import UserService from "../../../Services/UserService";
+import FooterD from "../../FooterD";
 const ApplyLL = () => {
   const { id, name } = sessionStorage;
   const [user_id, setUser_id] = useState();
@@ -21,16 +22,26 @@ const ApplyLL = () => {
   const navigate = useNavigate();
 
   // ############################
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
 
   useEffect(() => {
     // console.log({ id });
     UserService.getUserById(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // console.log(response.data.user);
         setUser(response.data);
         setaadhar_no(response.data.aadhar_no);
-        console.log(aadhar_no);
+        // console.log(aadhar_no);
 
         // setLlId(ll.id);
         // console.log(llId);
@@ -67,10 +78,10 @@ const ApplyLL = () => {
 
         const url = `${URL}/ll/add_ll`;
 
-        axios.post(url, body).then((response) => {
+        authAxios.post(url, body).then((response) => {
           // get the data from the response
           const result = response.data;
-          console.log(result);
+          // console.log(result);
           if (result["status"] == "success") {
             const { id } = result["data"];
 
@@ -234,6 +245,7 @@ const ApplyLL = () => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

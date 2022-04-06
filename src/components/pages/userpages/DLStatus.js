@@ -9,6 +9,7 @@ import Service5 from "../../../assets/puc1.png";
 import Service6 from "../../../assets/lidence services1.png";
 import DLService from "../../../Services/DLService";
 import { toast } from "react-toastify";
+import FooterD from "../../FooterD";
 function DLStatus() {
   const { id, name } = sessionStorage;
   const [dlId, setDlId] = useState("");
@@ -39,16 +40,16 @@ function DLStatus() {
 
         setUser(response.data.user);
         setDL(response.data);
-        console.log(dl);
+        // console.log(dl);
 
-        console.log("photo Id is");
-        console.log(user.photo_id);
-        console.log(user);
-        console.log(response.data.user);
-        // setUser(response.data.user);
-        console.log(user);
+        // console.log("photo Id is");
+        // console.log(user.photo_id);
+        // console.log(user);
+        // console.log(response.data.user);
+        // // setUser(response.data.user);
+        // console.log(user);
         setDlphoto(response.data.user.photo_id);
-        console.log(dlphoto);
+        // console.log(dlphoto);
         // sessionStorage["dl_no"] = dl.dl_no;
         // sessionStorage["dl_issue_date"] = dl.dl_issue_date;
         // sessionStorage["dl_expiry_date"] = dl.dl_expiry_date;
@@ -69,11 +70,11 @@ function DLStatus() {
   };
 
   const renderStatus = () => {
-    console.log("renderColled");
-    console.log(dl.status);
+    // console.log("renderColled");
+    // console.log(dl.status);
     setStatus(dl.status);
-    console.log(dl);
-    console.log(user);
+    // console.log(dl);
+    // console.log(user);
     setBlood_group(user.blood_group);
     setAddress(user.address);
     setDob(user.dob);
@@ -82,8 +83,8 @@ function DLStatus() {
     setDl_expiry_date(dl.dl_expiry_date);
     setL_category(dl.l_category);
     setDl_no(dl.dl_no);
-    console.log("photo id is");
-    console.log(dlphoto);
+    // console.log("photo id is");
+    // console.log(dlphoto);
     setPhoto();
 
     if (dl.status === "Approved") {
@@ -171,6 +172,7 @@ function DLStatus() {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 }

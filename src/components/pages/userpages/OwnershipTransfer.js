@@ -7,7 +7,7 @@ import { URL } from "../../../config";
 import { toast } from "react-toastify";
 import Payment from "../inc/../userpages/Payment";
 import VehicleTransferService from "../../../Services/VehicleTransferService";
-
+import FooterD from "../../FooterD";
 const OwnershipTransfer = () => {
   const [registration_no, setRegistration_no] = useState("");
   const [transfer_no, setTransfer_no] = useState();
@@ -22,6 +22,16 @@ const OwnershipTransfer = () => {
   const [vtransfer, setVtransfer] = useState([]);
   const [payment, setPayment] = useState([]);
 
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
   const navigate = useNavigate();
   console.log("tid");
   console.log("regId");
@@ -68,13 +78,13 @@ const OwnershipTransfer = () => {
       // setTid(body.id);
       const url = `${URL}/vehicle_transfer/add_vehicleTransfer`;
 
-      axios.post(url, body).then((response) => {
+      authAxios.post(url, body).then((response) => {
         // get the data from the response
         const result = response.data;
         setTid(response.data.id);
 
-        console.log(result);
-        console.log("resu");
+        // console.log(result);
+        // console.log("resu");
 
         if (result["status"] == "success") {
           const { registration_id } = result["data"];
@@ -255,6 +265,7 @@ const OwnershipTransfer = () => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };

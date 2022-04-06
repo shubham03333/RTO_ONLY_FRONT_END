@@ -35,7 +35,7 @@ const RCDownload = () => {
     console.log({ id });
     RCService.getRcById(regid)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setOwner(response.data.owner);
         setChassis_no(response.data.chassis_no);
         setFuel_type(response.data.fuel_type);

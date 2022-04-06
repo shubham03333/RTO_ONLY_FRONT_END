@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { URL } from "../../../config";
 import { toast } from "react-toastify";
+import FooterD from "../../FooterD";
 
 const ApplyPermit = () => {
   const { id } = sessionStorage;
@@ -24,6 +25,17 @@ const ApplyPermit = () => {
   // find about image
 
   const navigate = useNavigate();
+
+  const accessToken = localStorage.getItem("token");
+
+  const authAxios = axios.create({
+    baseURL: URL,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
 
   // ############################
   const applyPermit = () => {
@@ -51,10 +63,10 @@ const ApplyPermit = () => {
 
       const url = `${URL}/permit/add_permit`;
 
-      axios.post(url, body).then((response) => {
+      authAxios.post(url, body).then((response) => {
         // get the data from the response
         const result = response.data;
-        console.log(result);
+        // console.log(result);
         if (result["status"] == "success") {
           toast.success("Proceed for payment");
           sessionStorage["regid"] = registration_id;
@@ -213,6 +225,7 @@ const ApplyPermit = () => {
           </div>
         </div>
       </section>
+      <FooterD />
     </div>
   );
 };
