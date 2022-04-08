@@ -5,7 +5,7 @@ import axios from "axios";
 import imgcart from "../../../../assets/exam/img100.png";
 import imgBluecircle from "../../../../assets/exam/img115.png";
 import imgprohibate from "../../../../assets/exam/img74.png";
-
+import { toast } from "react-toastify";
 import LLService from "../../../../Services/LLService";
 
 import "./RtoQuiz.css";
@@ -59,6 +59,9 @@ export default function RtoQuiz() {
 
         setLL(response.data);
         if (response.data.quizMarks > 5) {
+          toast.warning(
+            "Your are not allowed to give test again you have passesd the written test!"
+          );
           navigate("/userHome");
         }
         setLl_id(response.data.id);

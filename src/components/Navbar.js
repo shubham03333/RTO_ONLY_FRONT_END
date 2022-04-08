@@ -1,13 +1,64 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/RTOLOGO.png";
 import bg from "../assets/1.png";
+import UserService from "../Services/UserService";
+import "./Navbar.css";
+import notification from "../assets/exam/notificationicon.png";
+
 function Navbar() {
   const { id, name } = sessionStorage;
   const navigate = useNavigate();
   console.log(id);
   console.log(name);
+  const canvas = useRef(null);
+
+  // const [image, setImage] = useState(null);
+  const [Idphoto, setIdphoto] = useState(null);
+  const [photoId, setPhotoid] = useState("");
+  const [user, setUser] = useState([]);
+
+  const viewUser = (id) => {
+    navigate(`/view-userProfile/${id}`);
+  };
+
+  useEffect(() => {
+    console.log({ id });
+    UserService.getUserById(id)
+      .then((response) => {
+        setUser(response.data);
+        console.log(user);
+        setPhotoid(response.data.photo_id);
+        console.log("photoId " + response.data.photo_id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [photoId]);
+
+  useEffect(() => {
+    // const catImage = new Image();
+    const IdImage = new Image();
+    // catImage.src = dlImage;
+    // IdImage.src = UserService.getPhotoById(photoId);
+    IdImage.src = `http://localhost:8080/downloadFile/${photoId}`;
+    // catImage.onload = () => setImage(catImage);
+    IdImage.onload = () => setIdphoto(IdImage);
+    // console.log(IdImage);
+  }, [photoId]);
+
+  useEffect(() => {
+    if (Idphoto && canvas) {
+      const ctx = canvas.current.getContext("2d");
+      // ctx.fillStyle = "white";
+      // ctx.drawImage(image, 100, 0, 400, 300);
+      // ctx.drawImage(Idphoto, 110, -90, 100, 200);
+      ctx.drawImage(Idphoto, 118, -35, 100, 165);
+
+      // ctx.font = "15px Comic Sans MS";
+    }
+  }, [Idphoto, canvas]);
 
   const logoutUser = () => {
     sessionStorage.removeItem("id");
@@ -75,7 +126,7 @@ function Navbar() {
                 </li>
               </ul>
             )}
-
+            {/* 
             {id > 0 && (
               <div className="col-md-3">
                 <div class="container-fluid">
@@ -92,7 +143,7 @@ function Navbar() {
                   </form>
                 </div>
               </div>
-            )}
+            )} */}
 
             {/* </nav> */}
             <div className="d-flex">
@@ -100,7 +151,7 @@ function Navbar() {
                 <button
                   type="button"
                   className="btn btn-outline-secondary shadow-w-100"
-                  style={{ marginLeft: "300px" }}
+                  style={{ marginLeft: "" }}
                   // className="btn btn-bg-primary shadow-w-100"
                   onClick={() => navigate("/login")}
                 >
@@ -120,6 +171,7 @@ function Navbar() {
                   Logout
                 </button>
               )}
+
               <button
                 type="button"
                 className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
@@ -146,6 +198,38 @@ function Navbar() {
                   </li>
                 )}
               </ul>
+              {id > 0 && (
+                <div className="profileImage">
+                  <span
+                    type="button"
+                    style={{
+                      marginLeft: "5%",
+                      height: "60px",
+                      // width: "50PX",
+                      zIndex: "2",
+                      color: "white",
+                      borderRadius: "100%",
+                    }}
+                  >
+                    <div
+                      id={"invoice"}
+                      style={{ borderRadius: "50%", cursor: "pointer" }}
+                    >
+                      <canvas
+                        ref={canvas}
+                        width={"230px"}
+                        height={"50px"}
+                        style={{
+                          marginTop: "1px",
+                          marginLeft: "350%",
+                          paddingTop: "-20px",
+                        }}
+                        onClick={() => viewUser(id)}
+                      />
+                    </div>
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>

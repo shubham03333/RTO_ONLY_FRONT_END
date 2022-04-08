@@ -15,29 +15,26 @@ const authAxios = axios.create({
 
 class Complain {
   getComplain() {
-    return authAxios.get(RTO_API_BASE_URL + "/complain/search");
+    return axios.get(RTO_API_BASE_URL + "/complain/search");
   }
 
   getComplainById(complainId) {
-    return authAxios.get(RTO_API_BASE_URL + "/complain/" + complainId);
+    return axios.get(RTO_API_BASE_URL + "/complain/" + complainId);
   }
 
   updateComplain(complain, complainId) {
-    return authAxios.put(
-      RTO_API_BASE_URL + "/complain/" + complainId,
-      complain
-    );
+    return axios.put(RTO_API_BASE_URL + "/complain/" + complainId, complain);
   }
 
   deleteComplain(complainId) {
-    return authAxios.delete(RTO_API_BASE_URL + "/complain/" + complainId);
+    return axios.delete(RTO_API_BASE_URL + "/complain/" + complainId);
   }
   getComplainByUserId(userId) {
-    return authAxios.get(RTO_API_BASE_URL + "/complain/byUserId/" + userId);
+    return axios.get(RTO_API_BASE_URL + "/complain/byUserId/" + userId);
   }
 
   getComplainByUserId1(userId) {
-    return authAxios.get(RTO_API_BASE_URL + "/complain/byUserId1/" + userId);
+    return axios.get(RTO_API_BASE_URL + "/complain/byUserId1/" + userId);
   }
 }
 

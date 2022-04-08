@@ -9,17 +9,84 @@ import Service4 from "../../../assets/v-permit-services.png";
 import Service5 from "../../../assets/puc1.png";
 import bg from "../../../assets/1.png";
 import LLService from "../../../Services/LLService";
+import notification from "../../../assets/exam/notificationicon.png";
+import notificationblink from "../../../assets/exam/notify1.png";
+import UserService from "../../../Services/UserService";
 function UserHome() {
   const { id, name } = sessionStorage;
   console.log(id);
   console.log(name);
 
   const [qresult, setQresult] = useState();
+
+  const [notificationMsg, setNotificationMsg] = useState();
+  const [msg, setMsg] = useState("");
+  const [incommingMsg, setIncommingMsg] = useState("");
+  const [user, setUser] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {}, []);
+  const close = () => {
+    window.location.reload(false);
+  };
+
+  // useEffect(() => {}, []);
   const viewUser = (id) => {
     navigate(`/view-userProfile/${id}`);
+  };
+  useEffect(() => {
+    console.log({ id });
+    UserService.getUserById(id)
+      .then((response) => {
+        setUser(response.data);
+        setIncommingMsg(response.data.notification);
+        console.log(user);
+        console.log(response.data);
+        // console.log("photoId " + response.data.photo_id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  const seeNotification = () => {
+    setNotificationMsg(
+      <>
+        <input
+          type="text"
+          placeholder="notification"
+          className="form-control"
+          // value={password}
+          value={incommingMsg}
+        />
+        {/* <input
+          type="text"
+          placeholder="new password"
+          className="form-control"
+          // value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        /> */}
+
+        {/* <input
+          type="submit"
+          className="btn btn-primary button form-control"
+          value="send"
+        /> */}
+
+        <button
+          type="submit"
+          className="btn btn-primary button form-control"
+          onClick={close}
+        >
+          close
+        </button>
+
+        {/* <button className="btn btn-success button" onClick={pass}>
+          reset password
+        </button> */}
+        {/* {passwordCard} */}
+      </>
+    );
   };
 
   return (
@@ -32,14 +99,26 @@ function UserHome() {
             <div className="col-md-12 mb-5 text-center">
               <h3 className="main-heading">
                 {" "}
-                <div className="col">
-                  <div>
+                <div className="col-md-12">
+                  <div className="float-start">
                     <button
                       className="btn btn-warning float-md-start"
                       onClick={() => navigate("/quiz")}
                     >
                       Written exam
                     </button>
+                    {incommingMsg && (
+                      <img
+                        src={notification}
+                        alt="services"
+                        // onClick={() => navigate("/login")}
+                        onClick={seeNotification}
+                        style={{
+                          height: "30px",
+                          marginLeft: "30px",
+                        }}
+                      />
+                    )}
                   </div>
 
                   <div className="float-end">
@@ -80,6 +159,7 @@ function UserHome() {
               </h3>
               {/* <div className="underline mx-auto"></div> */}
             </div>
+            {notificationMsg}
             <div className="col-md-4 mt-2">
               <div className="card shadow sevice-card">
                 <img

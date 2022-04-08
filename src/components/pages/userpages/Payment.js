@@ -36,29 +36,12 @@ const Payment = () => {
       Authorization: "Bearer " + accessToken,
     },
   });
+
   const { tid } = useParams();
-  // console.log("tid");
-  // console.log(tid);
+
   const [vtransfer, setVtransfer] = useState([]);
 
-  // console.log("session");
   console.log(regid);
-  // console.log("session");
-  // useEffect(() => {
-  //   VehicleTransferService.getVtransferStatusByReg_id(tid)
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setVtransfer(response.data);
-  //       setVtid(response.data.id);
-  //       setPayment(response.data.payment);
-  //       console.log(vtransfer);
-  //       //  setTid(vtransfer.id);
-  //       console.log(tid);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
 
   //############### under test ################//
   var d = new Date();
@@ -232,7 +215,14 @@ const Payment = () => {
 
                 <div className="col-md-6 border-start gender">
                   <hr />
-                  <label htmlFor="name">vehicle registration id</label>
+
+                  <label htmlFor="name">
+                    Vehicle registration id{" "}
+                    <i style={{ color: "red", fontSize: "15px" }}>
+                      (if your paying for any Licence, DONOT enter any
+                      registration id)
+                    </i>
+                  </label>
                   <div className="input-group flex-nowrap mt-2">
                     <span className="input-group-text" id="addon-wrapping">
                       <i className="zmdi zmdi-assignment-account"></i>
@@ -248,7 +238,14 @@ const Payment = () => {
                     />
                   </div>
                   {/* { payment_for == "LL" && ( */}
-                  <label htmlFor="name">licence category</label>
+                  <label htmlFor="name">
+                    Licence category{" "}
+                    <i style={{ color: "red", fontSize: "15px" }}>
+                      ( if your paying for any Licence, then only select its
+                      Category)
+                    </i>
+                  </label>
+
                   <select
                     class="form-select"
                     aria-label="Default select example"
@@ -257,7 +254,10 @@ const Payment = () => {
                       setLcategory(e.target.value);
                     }}
                   >
-                    <option>Select Licence Category</option>
+                    <option>
+                      Select Licence Category Only if you are applying for any
+                      licence
+                    </option>
                     <option value="LMV">Light Motor vehicle</option>
                     <option value="HMV">Heavy Motor Vehicles</option>
                     <option value="MCWG ">Motor Cycle With Gear</option>

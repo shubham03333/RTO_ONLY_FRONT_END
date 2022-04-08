@@ -187,12 +187,14 @@ const ViewUsersProfile = (props) => {
                     />
                   </div>
                   <div className="form-group py-3">
-                    <button
-                      className="btn btn-primary shadow w-100"
-                      onClick={() => navigate("/userHome")}
-                    >
-                      Back
-                    </button>
+                    {user.role == user && (
+                      <button
+                        className="btn btn-primary shadow w-100"
+                        onClick={() => navigate("/userHome")}
+                      >
+                        Back
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

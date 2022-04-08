@@ -123,7 +123,12 @@ function LLStatus() {
                   <p></p>
                 </div>
               </div>
+              <h6 style={{ marginTop: "10%", color: "red" }}>
+                if you are applying for Learners Licence first time you need to
+                pass written test first{" "}
+              </h6>
             </div>
+
             <div className="col-md-3 mt-2">
               <div className="card shadow sevice-card">
                 <img
@@ -142,6 +147,7 @@ function LLStatus() {
                 </div>
               </div>
             </div>
+
             {/* <div className="col-md-4 mt-2">
               <div className="card shadow sevice-card">
                 <img

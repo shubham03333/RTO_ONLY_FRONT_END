@@ -18,6 +18,7 @@ const UpdateRc = (props) => {
   const [mobile_no, setmobile_no] = useState();
   const [aadhar_no, setAadhar_no] = useState("");
   const [status, setStatus] = useState("");
+  const [notification, setNotification] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const UpdateRc = (props) => {
         setAddress(user.address);
         setmobile_no(user.mobile_no);
         setAadhar_no(user.aadhar_no);
+        setNotification(user.notification);
       })
       .catch((err) => {
         console.log(err);
@@ -49,6 +51,7 @@ const UpdateRc = (props) => {
       mobile_no: mobile_no,
       aadhar_no: aadhar_no,
       status: status,
+      notification: notification,
     };
     console.log("user => " + JSON.stringify(user));
     console.log("id => " + JSON.stringify(id));
@@ -70,6 +73,9 @@ const UpdateRc = (props) => {
 
   const changeEmailHandler = (event) => {
     setEmail(event.target.value);
+  };
+  const changeNotificationHandler = (event) => {
+    setNotification(event.target.value);
   };
   return (
     <div>
@@ -182,6 +188,19 @@ const UpdateRc = (props) => {
                       aria-describedby="addon-wrapping"
                       value={mobile_no}
                       onChange={changeMobileNoHandler}
+                    />
+                  </div>
+                  <label htmlFor="name">Send message to User</label>
+                  <div className="input-group flex-nowrap mt-2">
+                    <span className="input-group-text" id="addon-wrapping">
+                      <i className="zmdi zmdi-smartphone"></i>
+                    </span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      aria-describedby="addon-wrapping"
+                      value={notification}
+                      onChange={changeNotificationHandler}
                     />
                   </div>
                   <label htmlFor="name">Status</label>

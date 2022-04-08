@@ -90,6 +90,7 @@ const DLDownload = () => {
     const catImage = new Image();
     const IdImage = new Image();
     catImage.src = dlImage;
+    console.log(photoId);
     // IdImage.src = UserService.getPhotoById(photoId);
     IdImage.src = `http://localhost:8080/downloadFile/${photoId}`;
     catImage.onload = () => setImage(catImage);
