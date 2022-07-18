@@ -169,7 +169,7 @@ export default function Footer() {
               </a>
               &emsp;
               <a
-                href="https://shubhamsjadhav.blogspot.com/"
+                href="http://shubhamsportfolio.saheeldrivetech.com/"
                 className="facebook social"
               >
                 <FontAwesomeIcon icon={faFacebook} size="2x" />
